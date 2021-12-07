@@ -1,0 +1,250 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../numbers.rst:7
+msgid "Number Formatting"
+msgstr ""
+
+#: ../../numbers.rst:10
+msgid ""
+"Support for locale-specific formatting and parsing of numbers is provided"
+" by the ``babel.numbers`` module:"
+msgstr ""
+
+#: ../../numbers.rst:17 ../../numbers.rst:37 ../../numbers.rst:150
+#: ../../numbers.rst:168
+msgid "Examples:"
+msgstr ""
+
+#: ../../numbers.rst:30
+msgid "Pattern Syntax"
+msgstr ""
+
+#: ../../numbers.rst:32
+msgid ""
+"While Babel makes it simple to use the appropriate number format for a "
+"given locale, you can also force it to use custom patterns. As with "
+"date/time formatting patterns, the patterns Babel supports for number "
+"formatting are based on the `Locale Data Markup Language specification`_ "
+"(LDML)."
+msgstr ""
+
+#: ../../numbers.rst:46
+msgid ""
+"The syntax for custom number format patterns is described in detail in "
+"the the specification. The following table is just a relatively brief "
+"overview."
+msgstr ""
+
+#: ../../numbers.rst:53
+msgid "Symbol"
+msgstr ""
+
+#: ../../numbers.rst:53
+msgid "Description"
+msgstr ""
+
+#: ../../numbers.rst:55
+msgid "``0``"
+msgstr ""
+
+#: ../../numbers.rst:55
+msgid "Digit"
+msgstr ""
+
+#: ../../numbers.rst:57
+msgid "``1-9``"
+msgstr ""
+
+#: ../../numbers.rst:57
+msgid "'1' through '9' indicate rounding."
+msgstr ""
+
+#: ../../numbers.rst:59
+msgid "``@``"
+msgstr ""
+
+#: ../../numbers.rst:59
+msgid "Significant digit"
+msgstr ""
+
+#: ../../numbers.rst:61
+msgid "``#``"
+msgstr ""
+
+#: ../../numbers.rst:61
+msgid "Digit, zero shows as absent"
+msgstr ""
+
+#: ../../numbers.rst:63
+msgid "``.``"
+msgstr ""
+
+#: ../../numbers.rst:63
+msgid "Decimal separator or monetary decimal separator"
+msgstr ""
+
+#: ../../numbers.rst:65
+msgid "``-``"
+msgstr ""
+
+#: ../../numbers.rst:65
+msgid "Minus sign"
+msgstr ""
+
+#: ../../numbers.rst:67
+msgid "``,``"
+msgstr ""
+
+#: ../../numbers.rst:67
+msgid "Grouping separator"
+msgstr ""
+
+#: ../../numbers.rst:69
+msgid "``E``"
+msgstr ""
+
+#: ../../numbers.rst:69
+msgid "Separates mantissa and exponent in scientific notation"
+msgstr ""
+
+#: ../../numbers.rst:71
+msgid "``+``"
+msgstr ""
+
+#: ../../numbers.rst:71
+msgid "Prefix positive exponents with localized plus sign"
+msgstr ""
+
+#: ../../numbers.rst:73
+msgid "``;``"
+msgstr ""
+
+#: ../../numbers.rst:73
+msgid "Separates positive and negative subpatterns"
+msgstr ""
+
+#: ../../numbers.rst:75
+msgid "``%``"
+msgstr ""
+
+#: ../../numbers.rst:75
+msgid "Multiply by 100 and show as percentage"
+msgstr ""
+
+#: ../../numbers.rst:77
+msgid "``‰``"
+msgstr ""
+
+#: ../../numbers.rst:77
+msgid "Multiply by 1000 and show as per mille"
+msgstr ""
+
+#: ../../numbers.rst:79
+msgid "``¤``"
+msgstr ""
+
+#: ../../numbers.rst:79
+msgid ""
+"Currency sign, replaced by currency symbol. If doubled, replaced by "
+"international currency symbol. If tripled, uses the long form of the "
+"decimal symbol."
+msgstr ""
+
+#: ../../numbers.rst:83
+msgid "``'``"
+msgstr ""
+
+#: ../../numbers.rst:83
+msgid "Used to quote special characters in a prefix or suffix"
+msgstr ""
+
+#: ../../numbers.rst:85
+msgid "``*``"
+msgstr ""
+
+#: ../../numbers.rst:85
+msgid "Pad escape, precedes pad character"
+msgstr ""
+
+#: ../../numbers.rst:90
+msgid "Rounding Modes"
+msgstr ""
+
+#: ../../numbers.rst:92
+msgid ""
+"Since Babel makes full use of Python's `Decimal`_ type to perform number "
+"rounding before formatting, users have the chance to control the rounding"
+" mode and other configurable parameters through the active `Context`_ "
+"instance."
+msgstr ""
+
+#: ../../numbers.rst:96
+msgid ""
+"By default, Python rounding mode is ``ROUND_HALF_EVEN`` which complies "
+"with `UTS #35 section 3.3`_.  Yet, the caller has the opportunity to "
+"tweak the current context before formatting a number or currency:"
+msgstr ""
+
+#: ../../numbers.rst:108
+msgid ""
+"It is also possible to use ``decimal.setcontext`` or directly modifying "
+"the instance returned by ``decimal.getcontext``.  However, using a "
+"context manager is always more convenient due to the automatic "
+"restoration and the ability to nest them."
+msgstr ""
+
+#: ../../numbers.rst:113
+msgid ""
+"Whatever mechanism is chosen, always make use of the ``decimal`` module "
+"imported from ``babel.numbers``.  For efficiency reasons, Babel uses the "
+"fastest decimal implementation available, such as `cdecimal`_.  These "
+"various implementation offer an identical API, but their types and "
+"instances do **not** interoperate with each other."
+msgstr ""
+
+#: ../../numbers.rst:119
+msgid ""
+"For example, the previous example can be slightly modified to generate "
+"unexpected results on Python 2.7, with the `cdecimal`_ module installed:"
+msgstr ""
+
+#: ../../numbers.rst:131
+msgid ""
+"Changing other parameters such as the precision may also alter the "
+"results of the number formatting functions.  Remember to test your code "
+"to make sure it behaves as desired."
+msgstr ""
+
+#: ../../numbers.rst:142
+msgid "Parsing Numbers"
+msgstr ""
+
+#: ../../numbers.rst:144
+msgid "Babel can also parse numeric data in a locale-sensitive manner:"
+msgstr ""
+
+#: ../../numbers.rst:163
+msgid ""
+"Note: as of version 2.8.0, the ``parse_number`` function has limited "
+"functionality. It can remove group symbols of certain locales from "
+"numeric strings, but may behave unexpectedly until its logic handles more"
+" encoding issues and other special cases."
+msgstr ""
+

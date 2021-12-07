@@ -1,0 +1,68 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../support.rst:5
+msgid "Support Classes and Functions"
+msgstr ""
+
+#: ../../support.rst:7
+msgid ""
+"The ``babel.support`` modules contains a number of classes and functions "
+"that can help with integrating Babel, and internationalization in "
+"general, into your application or framework. The code in this module is "
+"not used by Babel itself, but instead is provided to address common "
+"requirements of applications that should handle internationalization."
+msgstr ""
+
+#: ../../support.rst:16
+msgid "Lazy Evaluation"
+msgstr ""
+
+#: ../../support.rst:18
+msgid ""
+"One such requirement is lazy evaluation of translations. Many web-based "
+"applications define some localizable message at the module level, or in "
+"general at some level where the locale of the remote user is not yet "
+"known. For such cases, web frameworks generally provide a \"lazy\" "
+"variant of the ``gettext`` functions, which basically translates the "
+"message not when the ``gettext`` function is invoked, but when the string"
+" is accessed in some manner."
+msgstr ""
+
+#: ../../support.rst:28
+msgid "Extended Translations Class"
+msgstr ""
+
+#: ../../support.rst:30
+msgid ""
+"Many web-based applications are composed of a variety of different "
+"components (possibly using some kind of plugin system), and some of those"
+" components may provide their own message catalogs that need to be "
+"integrated into the larger system."
+msgstr ""
+
+#: ../../support.rst:35
+msgid ""
+"To support this usage pattern, Babel provides a ``Translations`` class "
+"that is derived from the ``GNUTranslations`` class in the ``gettext`` "
+"module. This class adds a ``merge()`` method that takes another "
+"``Translations`` instance, and merges the content of the latter into the "
+"main catalog:"
+msgstr ""
+

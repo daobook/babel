@@ -1,0 +1,641 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/core.rst:2
+msgid "Core Functionality"
+msgstr ""
+
+#: ../../api/core.rst:6
+msgid ""
+"The core API provides the basic core functionality.  Primarily it "
+"provides the :class:`Locale` object and ways to create it.  This object "
+"encapsulates a locale and exposes all the data it contains."
+msgstr ""
+
+#: ../../api/core.rst:10
+msgid ""
+"All the core functionality is also directly importable from the `babel` "
+"module for convenience."
+msgstr ""
+
+#: ../../api/core.rst:14
+msgid "Basic Interface"
+msgstr ""
+
+#: babel.core.Locale:1 of
+msgid "Representation of a specific locale."
+msgstr ""
+
+#: babel.core.Locale:9 of
+msgid "A `Locale` object can also be instantiated from a raw locale string:"
+msgstr ""
+
+#: babel.core.Locale:15 of
+msgid ""
+"`Locale` objects provide access to a collection of locale data, such as "
+"territory and language names, number and date format patterns, and more:"
+msgstr ""
+
+#: babel.core.Locale:21 of
+msgid ""
+"If a locale is requested for which no locale data is available, an "
+"`UnknownLocaleError` is raised:"
+msgstr ""
+
+#: babel.core.Locale:29 of
+msgid "For more information see :rfc:`3066`."
+msgstr ""
+
+#: babel.core.Locale.character_order:1 of
+msgid "The text direction for the language."
+msgstr ""
+
+#: babel.core.Locale.currencies:1 of
+msgid ""
+"Mapping of currency codes to translated currency names.  This only "
+"returns the generic form of the currency name, not the count specific "
+"one.  If an actual number is requested use the "
+":func:`babel.numbers.get_currency_name` function."
+msgstr ""
+
+#: babel.core.Locale.currency_formats:1 of
+msgid "Locale patterns for currency number formatting."
+msgstr ""
+
+#: babel.core.Locale.currency_formats:3 babel.core.Locale.date_formats:3
+#: babel.core.Locale.datetime_formats:3 babel.core.Locale.decimal_formats:3
+#: babel.core.Locale.eras:3 babel.core.Locale.interval_formats:3
+#: babel.core.Locale.list_patterns:3 babel.core.Locale.meta_zones:6
+#: babel.core.Locale.number_symbols:3 babel.core.Locale.percent_formats:3
+#: babel.core.Locale.scientific_formats:3 babel.core.Locale.time_formats:3
+#: babel.core.Locale.time_zones:3 babel.core.Locale.unit_display_names:7
+#: babel.core.Locale.zone_formats:3 of
+msgid "The format of the value returned may change between Babel versions."
+msgstr ""
+
+#: babel.core.Locale.currency_symbols:1 of
+msgid "Mapping of currency codes to symbols."
+msgstr ""
+
+#: babel.core.Locale.date_formats:1 of
+msgid "Locale patterns for date formatting."
+msgstr ""
+
+#: babel.core.Locale.datetime_formats:1 of
+msgid "Locale patterns for datetime formatting."
+msgstr ""
+
+#: babel.core.Locale.datetime_skeletons:1 of
+msgid "Locale patterns for formatting parts of a datetime."
+msgstr ""
+
+#: babel.core.Locale.day_period_rules:1 of
+msgid "Day period rules for the locale.  Used by `get_period_id`."
+msgstr ""
+
+#: babel.core.Locale.day_periods:1 of
+msgid "Locale display names for various day periods (not necessarily only AM/PM)."
+msgstr ""
+
+#: babel.core.Locale.day_periods:3 of
+msgid "These are not meant to be used without the relevant `day_period_rules`."
+msgstr ""
+
+#: babel.core.Locale.days:1 of
+msgid "Locale display names for weekdays."
+msgstr ""
+
+#: babel.core.Locale.decimal_formats:1 of
+msgid "Locale patterns for decimal number formatting."
+msgstr ""
+
+#: babel.core.Locale.default:1 of
+msgid "Return the system default locale for the specified category."
+msgstr ""
+
+#: babel.core.Locale.default:9 babel.core.default_locale:17 of
+msgid "The following fallbacks to the variable are always considered:"
+msgstr ""
+
+#: babel.core.Locale.default:11 babel.core.default_locale:19 of
+msgid "``LANGUAGE``"
+msgstr ""
+
+#: babel.core.Locale.default:12 babel.core.default_locale:20 of
+msgid "``LC_ALL``"
+msgstr ""
+
+#: babel.core.Locale.default:13 babel.core.default_locale:21 of
+msgid "``LC_CTYPE``"
+msgstr ""
+
+#: babel.core.Locale.default:14 babel.core.default_locale:22 of
+msgid "``LANG``"
+msgstr ""
+
+#: babel.core.Locale.default babel.core.Locale.get_display_name
+#: babel.core.Locale.get_language_name babel.core.Locale.negotiate
+#: babel.core.Locale.parse babel.core.default_locale babel.core.get_global
+#: babel.core.get_locale_identifier babel.core.negotiate_locale
+#: babel.core.parse_locale of
+msgid "Parameters"
+msgstr ""
+
+#: babel.core.Locale.default:16 babel.core.default_locale:24 of
+msgid "one of the ``LC_XXX`` environment variable names"
+msgstr ""
+
+#: babel.core.Locale.default:17 babel.core.Locale.negotiate:18
+#: babel.core.default_locale:25 babel.core.negotiate_locale:44 of
+msgid "a dictionary of aliases for locale identifiers"
+msgstr ""
+
+#: babel.core.Locale.display_name:1 of
+msgid "The localized display name of the locale."
+msgstr ""
+
+#: babel.core.Locale.display_name babel.core.Locale.english_name of
+msgid "type"
+msgstr ""
+
+#: babel.core.Locale.display_name:10 babel.core.Locale.english_name:8 of
+msgid "`unicode`"
+msgstr ""
+
+#: babel.core.Locale.english_name:1 of
+msgid "The english display name of the locale."
+msgstr ""
+
+#: babel.core.Locale.eras:1 of
+msgid "Locale display names for eras."
+msgstr ""
+
+#: babel.core.Locale.first_week_day:1 of
+msgid "The first day of a week, with 0 being Monday."
+msgstr ""
+
+#: babel.core.Locale.get_display_name:1 of
+msgid "Return the display name of the locale using the given locale."
+msgstr ""
+
+#: babel.core.Locale.get_display_name:3 of
+msgid ""
+"The display name will include the language, territory, script, and "
+"variant, if those are specified."
+msgstr ""
+
+#: babel.core.Locale.get_display_name:9 babel.core.Locale.get_language_name:8
+#: of
+msgid "the locale to use"
+msgstr ""
+
+#: babel.core.Locale.get_language_name:1 of
+msgid "Return the language of this locale in the given locale."
+msgstr ""
+
+#: babel.core.Locale.get_script_name:1 of
+msgid "Return the script name in the given locale."
+msgstr ""
+
+#: babel.core.Locale.get_territory_name:1 of
+msgid "Return the territory name in the given locale."
+msgstr ""
+
+#: babel.core.Locale.interval_formats:1 of
+msgid "Locale patterns for interval formatting."
+msgstr ""
+
+#: babel.core.Locale.interval_formats:6 of
+msgid ""
+"How to format date intervals in Finnish when the day is the smallest "
+"changing component:"
+msgstr ""
+
+#: babel.core.Locale.interval_formats:14 of
+msgid ""
+"The primary API to use this data is "
+":py:func:`babel.dates.format_interval`."
+msgstr ""
+
+#: babel.core.Locale.interval_formats of
+msgid "Return type"
+msgstr ""
+
+#: ../../docstring babel.core.Locale.language:1 of
+msgid "the language code"
+msgstr ""
+
+#: babel.core.Locale.language_name:1 of
+msgid "The localized language name of the locale."
+msgstr ""
+
+#: babel.core.Locale.languages:1 of
+msgid "Mapping of language codes to translated language names."
+msgstr ""
+
+#: babel.core.Locale.languages:6 of
+msgid ""
+"See `ISO 639 <http://www.loc.gov/standards/iso639-2/>`_ for more "
+"information."
+msgstr ""
+
+#: babel.core.Locale.list_patterns:1 of
+msgid "Patterns for generating lists"
+msgstr ""
+
+#: babel.core.Locale.measurement_systems:1 of
+msgid "Localized names for various measurement systems."
+msgstr ""
+
+#: babel.core.Locale.meta_zones:1 of
+msgid "Locale display names for meta time zones."
+msgstr ""
+
+#: babel.core.Locale.meta_zones:3 of
+msgid ""
+"Meta time zones are basically groups of different Olson time zones that "
+"have the same GMT offset and daylight savings time."
+msgstr ""
+
+#: babel.core.Locale.min_week_days:1 of
+msgid ""
+"The minimum number of days in a week so that the week is counted as the "
+"first week of a year or month."
+msgstr ""
+
+#: babel.core.Locale.months:1 of
+msgid "Locale display names for months."
+msgstr ""
+
+#: babel.core.Locale.negotiate:1 babel.core.negotiate_locale:1 of
+msgid "Find the best match between available and requested locale strings."
+msgstr ""
+
+#: babel.core.Locale.negotiate:9 of
+msgid ""
+"You can specify the character used in the locale identifiers to separate "
+"the differnet components. This separator is applied to both lists. Also, "
+"case is ignored in the comparison:"
+msgstr ""
+
+#: babel.core.Locale.negotiate:16 of
+msgid "the list of locale identifers preferred by the user"
+msgstr ""
+
+#: babel.core.Locale.negotiate:17 of
+msgid "the list of locale identifiers available"
+msgstr ""
+
+#: babel.core.Locale.number_symbols:1 of
+msgid "Symbols used in number formatting."
+msgstr ""
+
+#: babel.core.Locale.ordinal_form:1 babel.core.Locale.plural_form:1 of
+msgid "Plural rules for the locale."
+msgstr ""
+
+#: babel.core.Locale.parse:1 of
+msgid "Create a `Locale` instance for the given locale identifier."
+msgstr ""
+
+#: babel.core.Locale.parse:7 of
+msgid ""
+"If the `identifier` parameter is not a string, but actually a `Locale` "
+"object, that object is returned:"
+msgstr ""
+
+#: babel.core.Locale.parse:13 of
+msgid ""
+"This also can perform resolving of likely subtags which it does by "
+"default.  This is for instance useful to figure out the most likely "
+"locale for a territory you can use ``'und'`` as the language tag:"
+msgstr ""
+
+#: babel.core.Locale.parse:21 babel.core.parse_locale:34 of
+msgid "the locale identifier string"
+msgstr ""
+
+#: babel.core.Locale.parse:22 of
+msgid "optional component separator"
+msgstr ""
+
+#: babel.core.Locale.parse:23 of
+msgid ""
+"if this is specified then a locale will have its likely subtag resolved "
+"if the locale otherwise does not exist.  For instance ``zh_TW`` by itself"
+" is not a locale that exists but Babel can automatically expand it to the"
+" full form of ``zh_hant_TW``.  Note that this expansion is only taking "
+"place if no locale exists otherwise.  For instance there is a locale "
+"``en`` that can exist by itself."
+msgstr ""
+
+#: babel.core.Locale.parse babel.core.parse_locale of
+msgid "Raises"
+msgstr ""
+
+#: babel.core.Locale.parse:34 babel.core.parse_locale:37 of
+msgid "if the string does not appear to be a valid locale identifier"
+msgstr ""
+
+#: babel.core.Locale.parse:36 of
+msgid "if no locale data is available for the requested locale"
+msgstr ""
+
+#: babel.core.Locale.percent_formats:1 of
+msgid "Locale patterns for percent number formatting."
+msgstr ""
+
+#: babel.core.Locale.periods:1 of
+msgid "Locale display names for day periods (AM/PM)."
+msgstr ""
+
+#: babel.core.Locale.quarters:1 of
+msgid "Locale display names for quarters."
+msgstr ""
+
+#: babel.core.Locale.scientific_formats:1 of
+msgid "Locale patterns for scientific number formatting."
+msgstr ""
+
+#: ../../docstring babel.core.Locale.script:1 of
+msgid "the script code"
+msgstr ""
+
+#: babel.core.Locale.script_name:1 of
+msgid "The localized script name of the locale if available."
+msgstr ""
+
+#: babel.core.Locale.scripts:1 babel.core.Locale.territories:1
+#: babel.core.Locale.variants:1 of
+msgid "Mapping of script codes to translated script names."
+msgstr ""
+
+#: babel.core.Locale.scripts:6 of
+msgid ""
+"See `ISO 15924 <http://www.evertype.com/standards/iso15924/>`_ for more "
+"information."
+msgstr ""
+
+#: babel.core.Locale.territories:6 of
+msgid ""
+"See `ISO 3166 <http://www.iso.org/iso/en/prods-services/iso3166ma/>`_ for"
+" more information."
+msgstr ""
+
+#: ../../docstring babel.core.Locale.territory:1 of
+msgid "the territory (country or region) code"
+msgstr ""
+
+#: babel.core.Locale.territory_name:1 of
+msgid "The localized territory name of the locale if available."
+msgstr ""
+
+#: babel.core.Locale.text_direction:1 of
+msgid "The text direction for the language in CSS short-hand form."
+msgstr ""
+
+#: babel.core.Locale.time_formats:1 of
+msgid "Locale patterns for time formatting."
+msgstr ""
+
+#: babel.core.Locale.time_zones:1 of
+msgid "Locale display names for time zones."
+msgstr ""
+
+#: babel.core.Locale.unit_display_names:1 of
+msgid "Display names for units of measurement."
+msgstr ""
+
+#: babel.core.Locale.unit_display_names:5 of
+msgid "You may want to use :py:func:`babel.units.get_unit_name` instead."
+msgstr ""
+
+#: ../../docstring babel.core.Locale.variant:1 of
+msgid "the variant code"
+msgstr ""
+
+#: babel.core.Locale.weekend_end:1 of
+msgid "The day the weekend ends, with 0 being Monday."
+msgstr ""
+
+#: babel.core.Locale.weekend_start:1 of
+msgid "The day the weekend starts, with 0 being Monday."
+msgstr ""
+
+#: babel.core.Locale.zone_formats:1 of
+msgid "Patterns related to the formatting of time zones."
+msgstr ""
+
+#: babel.core.default_locale:1 of
+msgid ""
+"Returns the system default locale for a given category, based on "
+"environment variables."
+msgstr ""
+
+#: babel.core.default_locale:10 of
+msgid ""
+"The \"C\" or \"POSIX\" pseudo-locales are treated as aliases for the "
+"\"en_US_POSIX\" locale:"
+msgstr ""
+
+#: babel.core.negotiate_locale:8 of
+msgid ""
+"Case is ignored by the algorithm, the result uses the case of the "
+"preferred locale identifier:"
+msgstr ""
+
+#: babel.core.negotiate_locale:17 of
+msgid ""
+"By default, some web browsers unfortunately do not include the territory "
+"in the locale identifier for many locales, and some don't even allow the "
+"user to easily add the territory. So while you may prefer using qualified"
+" locale identifiers in your web-application, they would not normally "
+"match the language-only locale sent by such browsers. To workaround that,"
+" this function uses a default mapping of commonly used langauge-only "
+"locale identifiers to identifiers including the territory:"
+msgstr ""
+
+#: babel.core.negotiate_locale:28 of
+msgid ""
+"Some browsers even use an incorrect or outdated language code, such as "
+"\"no\" for Norwegian, where the correct locale identifier would actually "
+"be \"nb_NO\" (Bokmål) or \"nn_NO\" (Nynorsk). The aliases are intended to"
+" take care of such cases, too:"
+msgstr ""
+
+#: babel.core.negotiate_locale:36 of
+msgid ""
+"You can override this default mapping by passing a different `aliases` "
+"dictionary to this function, or you can bypass the behavior althogher by "
+"setting the `aliases` parameter to `None`."
+msgstr ""
+
+#: babel.core.negotiate_locale:40 of
+msgid "the list of locale strings preferred by the user"
+msgstr ""
+
+#: babel.core.negotiate_locale:41 of
+msgid "the list of locale strings available"
+msgstr ""
+
+#: babel.core.negotiate_locale:42 of
+msgid "character that separates the different parts of the locale strings"
+msgstr ""
+
+#: ../../api/core.rst:25
+msgid "Exceptions"
+msgstr ""
+
+#: babel.core.UnknownLocaleError:1 of
+msgid ""
+"Exception thrown when a locale is requested for which no locale data is "
+"available."
+msgstr ""
+
+#: ../../docstring babel.core.UnknownLocaleError.identifier:1 of
+msgid "The identifier of the locale that could not be found."
+msgstr ""
+
+#: ../../api/core.rst:32
+msgid "Utility Functions"
+msgstr ""
+
+#: babel.core.get_global:1 of
+msgid "Return the dictionary for the given key in the global data."
+msgstr ""
+
+#: babel.core.get_global:3 of
+msgid ""
+"The global data is stored in the ``babel/global.dat`` file and contains "
+"information independent of individual locales."
+msgstr ""
+
+#: babel.core.get_global:11 of
+msgid "The keys available are:"
+msgstr ""
+
+#: babel.core.get_global:13 of
+msgid "``all_currencies``"
+msgstr ""
+
+#: babel.core.get_global:14 of
+msgid "``currency_fractions``"
+msgstr ""
+
+#: babel.core.get_global:15 of
+msgid "``language_aliases``"
+msgstr ""
+
+#: babel.core.get_global:16 of
+msgid "``likely_subtags``"
+msgstr ""
+
+#: babel.core.get_global:17 of
+msgid "``parent_exceptions``"
+msgstr ""
+
+#: babel.core.get_global:18 of
+msgid "``script_aliases``"
+msgstr ""
+
+#: babel.core.get_global:19 of
+msgid "``territory_aliases``"
+msgstr ""
+
+#: babel.core.get_global:20 of
+msgid "``territory_currencies``"
+msgstr ""
+
+#: babel.core.get_global:21 of
+msgid "``territory_languages``"
+msgstr ""
+
+#: babel.core.get_global:22 of
+msgid "``territory_zones``"
+msgstr ""
+
+#: babel.core.get_global:23 of
+msgid "``variant_aliases``"
+msgstr ""
+
+#: babel.core.get_global:24 of
+msgid "``windows_zone_mapping``"
+msgstr ""
+
+#: babel.core.get_global:25 of
+msgid "``zone_aliases``"
+msgstr ""
+
+#: babel.core.get_global:26 of
+msgid "``zone_territories``"
+msgstr ""
+
+#: babel.core.get_global:28 of
+msgid "The internal structure of the data may change between versions."
+msgstr ""
+
+#: babel.core.get_global:32 of
+msgid "the data key"
+msgstr ""
+
+#: babel.core.parse_locale:1 of
+msgid ""
+"Parse a locale identifier into a tuple of the form ``(language, "
+"territory, script, variant)``."
+msgstr ""
+
+#: babel.core.parse_locale:9 of
+msgid ""
+"The default component separator is \"_\", but a different separator can "
+"be specified using the `sep` parameter:"
+msgstr ""
+
+#: babel.core.parse_locale:15 of
+msgid ""
+"If the identifier cannot be parsed into a locale, a `ValueError` "
+"exception is raised:"
+msgstr ""
+
+#: babel.core.parse_locale:23 of
+msgid "Encoding information and locale modifiers are removed from the identifier:"
+msgstr ""
+
+#: babel.core.parse_locale:32 of
+msgid "See :rfc:`4646` for more information."
+msgstr ""
+
+#: babel.core.parse_locale:35 of
+msgid "character that separates the different components of the locale identifier"
+msgstr ""
+
+#: babel.core.get_locale_identifier:1 of
+msgid ""
+"The reverse of :func:`parse_locale`.  It creates a locale identifier out "
+"of a ``(language, territory, script, variant)`` tuple.  Items can be set "
+"to ``None`` and trailing ``None``\\s can also be left out of the tuple."
+msgstr ""
+
+#: babel.core.get_locale_identifier:10 of
+msgid "the tuple as returned by :func:`parse_locale`."
+msgstr ""
+
+#: babel.core.get_locale_identifier:11 of
+msgid "the separator for the identifier."
+msgstr ""
+

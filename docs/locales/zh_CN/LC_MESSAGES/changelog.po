@@ -1,0 +1,1799 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../../CHANGES:2
+msgid "Babel Changelog"
+msgstr ""
+
+#: ../../../CHANGES:5
+msgid "Version 2.9.1"
+msgstr ""
+
+#: ../../../CHANGES:8 ../../../CHANGES:29 ../../../CHANGES:54
+#: ../../../CHANGES:68 ../../../CHANGES:110 ../../../CHANGES:154
+#: ../../../CHANGES:183 ../../../CHANGES:269 ../../../CHANGES:280
+#: ../../../CHANGES:290 ../../../CHANGES:327 ../../../CHANGES:342
+msgid "Bugfixes"
+msgstr ""
+
+#: ../../../CHANGES:10
+msgid ""
+"The internal locale-data loading functions now validate the name of the "
+"locale file to be loaded and only allow files within Babel's data "
+"directory.  Thank you to Chris Lyne of Tenable, Inc. for discovering the "
+"issue!"
+msgstr ""
+
+#: ../../../CHANGES:14
+msgid "Version 2.9.0"
+msgstr ""
+
+#: ../../../CHANGES:17
+msgid "Upcoming version support changes"
+msgstr ""
+
+#: ../../../CHANGES:19
+msgid ""
+"This version, Babel 2.9, is the last version of Babel to support Python "
+"2.7, Python 3.4, and Python 3.5."
+msgstr ""
+
+#: ../../../CHANGES:22 ../../../CHANGES:62 ../../../CHANGES:93
+msgid "Improvements"
+msgstr ""
+
+#: ../../../CHANGES:24
+msgid "CLDR: Use CLDR 37 – Aarni Koskela (#734)"
+msgstr ""
+
+#: ../../../CHANGES:25
+msgid ""
+"Dates: Handle ZoneInfo objects in get_timezone_location, "
+"get_timezone_name - Alessio Bogon (#741)"
+msgstr ""
+
+#: ../../../CHANGES:26
+msgid ""
+"Numbers: Add group_separator feature in number formatting - Abdullah "
+"Javed Nesar (#726)"
+msgstr ""
+
+#: ../../../CHANGES:31
+msgid ""
+"Dates: Correct default Format().timedelta format to 'long' to mute "
+"deprecation warnings – Aarni Koskela"
+msgstr ""
+
+#: ../../../CHANGES:32
+msgid "Import: Simplify iteration code in \"import_cldr.py\" – Felix Schwarz"
+msgstr ""
+
+#: ../../../CHANGES:33
+msgid ""
+"Import: Stop using deprecated ElementTree methods \"getchildren()\" and "
+"\"getiterator()\" – Felix Schwarz"
+msgstr ""
+
+#: ../../../CHANGES:34
+msgid ""
+"Messages: Fix unicode printing error on Python 2 without TTY. – Niklas "
+"Hambüchen"
+msgstr ""
+
+#: ../../../CHANGES:35
+msgid ""
+"Messages: Introduce invariant that _invalid_pofile() takes unicode line. "
+"– Niklas Hambüchen"
+msgstr ""
+
+#: ../../../CHANGES:36
+msgid "Tests: fix tests when using Python 3.9 – Felix Schwarz"
+msgstr ""
+
+#: ../../../CHANGES:37
+msgid ""
+"Tests: Remove deprecated 'sudo: false' from Travis configuration – Jon "
+"Dufresne"
+msgstr ""
+
+#: ../../../CHANGES:38
+msgid "Tests: Support Py.test 6.x – Aarni Koskela"
+msgstr ""
+
+#: ../../../CHANGES:39
+msgid ""
+"Utilities: LazyProxy: Handle AttributeError in specified func – Nikiforov"
+" Konstantin (#724)"
+msgstr ""
+
+#: ../../../CHANGES:40
+msgid "Utilities: Replace usage of parser.suite with ast.parse – Miro Hrončok"
+msgstr ""
+
+#: ../../../CHANGES:43
+msgid "Documentation"
+msgstr ""
+
+#: ../../../CHANGES:45
+msgid "Update parse_number comments – Brad Martin (#708)"
+msgstr ""
+
+#: ../../../CHANGES:46
+msgid "Add __iter__ to Catalog documentation – @CyanNani123"
+msgstr ""
+
+#: ../../../CHANGES:49
+msgid "Version 2.8.1"
+msgstr ""
+
+#: ../../../CHANGES:51
+msgid ""
+"This is solely a patch release to make running tests on Py.test 6+ "
+"possible."
+msgstr ""
+
+#: ../../../CHANGES:56
+msgid "Support Py.test 6 - Aarni Koskela (#747, #750, #752)"
+msgstr ""
+
+#: ../../../CHANGES:59
+msgid "Version 2.8.0"
+msgstr ""
+
+#: ../../../CHANGES:64
+msgid "CLDR: Upgrade to CLDR 36.0 - Aarni Koskela (#679)"
+msgstr ""
+
+#: ../../../CHANGES:65
+msgid ""
+"Messages: Don't even open files with the \"ignore\" extraction method - "
+"@sebleblanc (#678)"
+msgstr ""
+
+#: ../../../CHANGES:70
+msgid ""
+"Numbers: Fix formatting very small decimals when quantization is disabled"
+" - Lev Lybin, @miluChen (#662)"
+msgstr ""
+
+#: ../../../CHANGES:71
+msgid "Messages: Attempt to sort all messages – Mario Frasca (#651, #606)"
+msgstr ""
+
+#: ../../../CHANGES:74
+msgid "Docs"
+msgstr ""
+
+#: ../../../CHANGES:76
+msgid "Add years to changelog - Romuald Brunet"
+msgstr ""
+
+#: ../../../CHANGES:77
+msgid "Note that installation requires pytz - Steve (Gadget) Barnes"
+msgstr ""
+
+#: ../../../CHANGES:80
+msgid "Version 2.7.0"
+msgstr ""
+
+#: ../../../CHANGES:83 ../../../CHANGES:136
+msgid "Possibly incompatible changes"
+msgstr ""
+
+#: ../../../CHANGES:85 ../../../CHANGES:138
+msgid ""
+"These may be backward incompatible in some cases, as some more-or-less "
+"internal APIs have changed. Please feel free to file issues if you bump "
+"into anything strange and we'll try to help!"
+msgstr ""
+
+#: ../../../CHANGES:89
+msgid ""
+"General: Internal uses of ``babel.util.odict`` have been replaced with "
+"``collections.OrderedDict`` from The Python standard library."
+msgstr ""
+
+#: ../../../CHANGES:95
+msgid "CLDR: Upgrade to CLDR 35.1 - Alberto Mardegan, Aarni Koskela (#626, #643)"
+msgstr ""
+
+#: ../../../CHANGES:96
+msgid ""
+"General: allow anchoring path patterns to the start of a string - Brian "
+"Cappello (#600)"
+msgstr ""
+
+#: ../../../CHANGES:97
+msgid "General: Bumped version requirement on pytz - @chrisbrake (#592)"
+msgstr ""
+
+#: ../../../CHANGES:98
+msgid ""
+"Messages: `pybabel compile`: exit with code 1 if errors were encountered "
+"- Aarni Koskela (#647)"
+msgstr ""
+
+#: ../../../CHANGES:99
+msgid "Messages: Add omit-header to update_catalog - Cédric Krier (#633)"
+msgstr ""
+
+#: ../../../CHANGES:100
+msgid ""
+"Messages: Catalog update: keep user comments from destination by default "
+"- Aarni Koskela (#648)"
+msgstr ""
+
+#: ../../../CHANGES:101
+msgid "Messages: Skip empty message when writing mo file - Cédric Krier (#564)"
+msgstr ""
+
+#: ../../../CHANGES:102
+msgid ""
+"Messages: Small fixes to avoid crashes on badly formatted .po files - "
+"Bryn Truscott (#597)"
+msgstr ""
+
+#: ../../../CHANGES:103
+msgid ""
+"Numbers: `parse_decimal()` `strict` argument and `suggestions` - Charly C"
+" (#590)"
+msgstr ""
+
+#: ../../../CHANGES:104
+msgid ""
+"Numbers: don't repeat suggestions in parse_decimal strict - Serban "
+"Constantin (#599)"
+msgstr ""
+
+#: ../../../CHANGES:105
+msgid ""
+"Numbers: implement currency formatting with long display names - Luke "
+"Plant (#585)"
+msgstr ""
+
+#: ../../../CHANGES:106
+msgid ""
+"Numbers: parse_decimal(): assume spaces are equivalent to non-breaking "
+"spaces when not in strict mode - Aarni Koskela (#649)"
+msgstr ""
+
+#: ../../../CHANGES:107
+msgid "Performance: Cache locale_identifiers() - Aarni Koskela (#644)"
+msgstr ""
+
+#: ../../../CHANGES:112
+msgid ""
+"CLDR: Skip alt=... for week data (minDays, firstDay, weekendStart, "
+"weekendEnd) - Aarni Koskela (#634)"
+msgstr ""
+
+#: ../../../CHANGES:113
+msgid "Dates: Fix wrong weeknumber for 31.12.2018 - BT-sschmid (#621)"
+msgstr ""
+
+#: ../../../CHANGES:114
+msgid "Locale: Avoid KeyError trying to get data on WindowsXP - mondeja (#604)"
+msgstr ""
+
+#: ../../../CHANGES:115
+msgid ""
+"Locale: get_display_name(): Don't attempt to concatenate variant "
+"information to None - Aarni Koskela (#645)"
+msgstr ""
+
+#: ../../../CHANGES:116
+msgid ""
+"Messages: pofile: Add comparison operators to _NormalizedString - Aarni "
+"Koskela (#646)"
+msgstr ""
+
+#: ../../../CHANGES:117
+msgid ""
+"Messages: pofile: don't crash when message.locations can't be sorted - "
+"Aarni Koskela (#646)"
+msgstr ""
+
+#: ../../../CHANGES:120 ../../../CHANGES:162
+msgid "Tooling & docs"
+msgstr ""
+
+#: ../../../CHANGES:122
+msgid ""
+"Docs: Remove all references to deprecated easy_install - Jon Dufresne "
+"(#610)"
+msgstr ""
+
+#: ../../../CHANGES:123
+msgid "Docs: Switch print statement in docs to print function - NotAFile"
+msgstr ""
+
+#: ../../../CHANGES:124
+msgid "Docs: Update all pypi.python.org URLs to pypi.org - Jon Dufresne (#587)"
+msgstr ""
+
+#: ../../../CHANGES:125
+msgid ""
+"Docs: Use https URLs throughout project where available - Jon Dufresne "
+"(#588)"
+msgstr ""
+
+#: ../../../CHANGES:126
+msgid ""
+"Support: Add testing and document support for Python 3.7 - Jon Dufresne "
+"(#611)"
+msgstr ""
+
+#: ../../../CHANGES:127
+msgid "Support: Test on Python 3.8-dev - Aarni Koskela (#642)"
+msgstr ""
+
+#: ../../../CHANGES:128
+msgid ""
+"Support: Using ABCs from collections instead of collections.abc is "
+"deprecated. - Julien Palard (#609)"
+msgstr ""
+
+#: ../../../CHANGES:129
+msgid "Tests: Fix conftest.py compatibility with pytest 4.3 - Miro Hrončok (#635)"
+msgstr ""
+
+#: ../../../CHANGES:130
+msgid "Tests: Update pytest and pytest-cov - Miro Hrončok (#635)"
+msgstr ""
+
+#: ../../../CHANGES:133
+msgid "Version 2.6.0"
+msgstr ""
+
+#: ../../../CHANGES:141
+msgid ""
+"Numbers: Refactor decimal handling code and allow bypass of decimal "
+"quantization. (@kdeldycke) (PR #538)"
+msgstr ""
+
+#: ../../../CHANGES:142
+msgid ""
+"Messages: allow processing files that are in locales unknown to Babel "
+"(@akx) (PR #557)"
+msgstr ""
+
+#: ../../../CHANGES:143
+msgid "General: Drop support for EOL Python 2.6 and 3.3 (@hugovk) (PR #546)"
+msgstr ""
+
+#: ../../../CHANGES:146
+msgid "Other changes"
+msgstr ""
+
+#: ../../../CHANGES:148
+msgid "CLDR: Use CLDR 33 (@akx) (PR #581)"
+msgstr ""
+
+#: ../../../CHANGES:149
+msgid ""
+"Lists: Add support for various list styles other than the default (@akx) "
+"(#552)"
+msgstr ""
+
+#: ../../../CHANGES:150
+msgid "Messages: Add new PoFileError exception (@Bedrock02) (PR #532)"
+msgstr ""
+
+#: ../../../CHANGES:151
+msgid ""
+"Times: Simplify Linux distro specific explicit timezone setting search "
+"(@scop) (PR #528)"
+msgstr ""
+
+#: ../../../CHANGES:156
+msgid "CLDR: avoid importing alt=narrow currency symbols (@akx) (PR #558)"
+msgstr ""
+
+#: ../../../CHANGES:157
+msgid "CLDR: ignore non-Latin numbering systems (@akx) (PR #579)"
+msgstr ""
+
+#: ../../../CHANGES:158
+msgid "Docs: Fix improper example for date formatting (@PTrottier) (PR #574)"
+msgstr ""
+
+#: ../../../CHANGES:159
+msgid "Tooling: Fix some deprecation warnings (@akx) (PR #580)"
+msgstr ""
+
+#: ../../../CHANGES:164
+msgid "Add explicit signatures to some date autofunctions (@xmo-odoo) (PR #554)"
+msgstr ""
+
+#: ../../../CHANGES:165
+msgid "Include license file in the generated wheel package (@jdufresne) (PR #539)"
+msgstr ""
+
+#: ../../../CHANGES:166
+msgid "Python 3.6 invalid escape sequence deprecation fixes (@scop) (PR #528)"
+msgstr ""
+
+#: ../../../CHANGES:167
+msgid "Test and document all supported Python versions (@jdufresne) (PR #540)"
+msgstr ""
+
+#: ../../../CHANGES:168
+msgid "Update copyright header years and authors file (@akx) (PR #559)"
+msgstr ""
+
+#: ../../../CHANGES:172
+msgid "Version 2.5.3"
+msgstr ""
+
+#: ../../../CHANGES:174
+msgid ""
+"This is a maintenance release that reverts undesired API-breaking changes"
+" that slipped into 2.5.2 (see https://github.com/python-"
+"babel/babel/issues/550)."
+msgstr ""
+
+#: ../../../CHANGES:177
+msgid ""
+"It is based on v2.5.1 (f29eccd) with commits 7cedb84, 29da2d2 and edfb518"
+" cherry-picked on top."
+msgstr ""
+
+#: ../../../CHANGES:180
+msgid "Version 2.5.2"
+msgstr ""
+
+#: ../../../CHANGES:185
+msgid ""
+"Revert the unnecessary PyInstaller fixes from 2.5.0 and 2.5.1 (#533) "
+"(@yagebu)"
+msgstr ""
+
+#: ../../../CHANGES:188
+msgid "Version 2.5.1"
+msgstr ""
+
+#: ../../../CHANGES:191 ../../../CHANGES:210 ../../../CHANGES:237
+msgid "Minor Improvements and bugfixes"
+msgstr ""
+
+#: ../../../CHANGES:193
+msgid "Use a fixed datetime to avoid test failures (#520) (@narendravardi)"
+msgstr ""
+
+#: ../../../CHANGES:194
+msgid "Parse multi-line __future__ imports better (#519) (@akx)"
+msgstr ""
+
+#: ../../../CHANGES:195
+msgid "Fix validate_currency docstring (#522)"
+msgstr ""
+
+#: ../../../CHANGES:196
+msgid ""
+"Allow normalize_locale and exists to handle various unexpected inputs "
+"(#523) (@suhojm)"
+msgstr ""
+
+#: ../../../CHANGES:197
+msgid "Make PyInstaller support more robust (#525, #526) (@thijstriemstra, @akx)"
+msgstr ""
+
+#: ../../../CHANGES:201
+msgid "Version 2.5.0"
+msgstr ""
+
+#: ../../../CHANGES:204 ../../../CHANGES:228
+msgid "New Features"
+msgstr ""
+
+#: ../../../CHANGES:206
+msgid "Numbers: Add currency utilities and helpers (#491) (@kdeldycke)"
+msgstr ""
+
+#: ../../../CHANGES:207
+msgid "Support PyInstaller (#500, #505) (@wodo)"
+msgstr ""
+
+#: ../../../CHANGES:212
+msgid "Dates: Add __str__ to DateTimePattern (#515) (@sfermigier)"
+msgstr ""
+
+#: ../../../CHANGES:213
+msgid ""
+"Dates: Fix an invalid string to bytes comparison when parsing TZ files on"
+" Py3 (#498) (@rowillia)"
+msgstr ""
+
+#: ../../../CHANGES:214
+msgid "Dates: Formatting zero-padded components of dates is faster (#517) (@akx)"
+msgstr ""
+
+#: ../../../CHANGES:215
+msgid ""
+"Documentation: Fix \"Good Commits\" link in CONTRIBUTING.md (#511) "
+"(@naryanacharya6)"
+msgstr ""
+
+#: ../../../CHANGES:216
+msgid "Documentation: Fix link to Python gettext module (#512) (@Linkid)"
+msgstr ""
+
+#: ../../../CHANGES:217
+msgid ""
+"Messages: Allow both dash and underscore separated locale identifiers in "
+"pofiles (#489, #490) (@akx)"
+msgstr ""
+
+#: ../../../CHANGES:218
+msgid "Messages: Extract Python messages in nested gettext calls (#488) (@sublee)"
+msgstr ""
+
+#: ../../../CHANGES:219
+msgid ""
+"Messages: Fix in-place editing of dir list while iterating (#476, #492) "
+"(@MarcDufresne)"
+msgstr ""
+
+#: ../../../CHANGES:220
+msgid "Messages: Stabilize sort order (#482) (@xavfernandez)"
+msgstr ""
+
+#: ../../../CHANGES:221
+msgid "Time zones: Honor the no-inherit marker for metazone names (#405) (@akx)"
+msgstr ""
+
+#: ../../../CHANGES:225
+msgid "Version 2.4.0"
+msgstr ""
+
+#: ../../../CHANGES:230
+msgid "Some of these changes might break your current code and/or tests."
+msgstr ""
+
+#: ../../../CHANGES:232
+msgid "CLDR: CLDR 29 is now used instead of CLDR 28 (#405) (@akx)"
+msgstr ""
+
+#: ../../../CHANGES:233
+msgid ""
+"Messages: Add option 'add_location' for location line formatting (#438, "
+"#459) (@rrader, @alxpy)"
+msgstr ""
+
+#: ../../../CHANGES:234
+msgid "Numbers: Allow full control of decimal behavior (#410) (@etanol)"
+msgstr ""
+
+#: ../../../CHANGES:239
+msgid "Documentation: Improve Date Fields descriptions (#450) (@ldwoolley)"
+msgstr ""
+
+#: ../../../CHANGES:240
+msgid ""
+"Documentation: Typo fixes and documentation improvements (#406, #412, "
+"#403, #440, #449, #463) (@zyegfryed, @adamchainz, @jwilk, @akx, "
+"@roramirez, @abhishekcs10)"
+msgstr ""
+
+#: ../../../CHANGES:241
+msgid ""
+"Messages: Default to UTF-8 source encoding instead of ISO-8859-1 (#399) "
+"(@asottile)"
+msgstr ""
+
+#: ../../../CHANGES:242
+msgid ""
+"Messages: Ensure messages are extracted in the order they were passed in "
+"(#424) (@ngrilly)"
+msgstr ""
+
+#: ../../../CHANGES:243
+msgid ""
+"Messages: Message extraction for JSX files is improved (#392, #396, #425)"
+" (@karloskar, @georgschoelly)"
+msgstr ""
+
+#: ../../../CHANGES:244
+msgid ""
+"Messages: PO file reading supports multi-line obsolete units (#429) "
+"(@mbirtwell)"
+msgstr ""
+
+#: ../../../CHANGES:245
+msgid ""
+"Messages: Python message extractor respects unicode_literals in "
+"__future__ (#427) (@sublee)"
+msgstr ""
+
+#: ../../../CHANGES:246
+msgid "Messages: Roundtrip Language headers (#420) (@kruton)"
+msgstr ""
+
+#: ../../../CHANGES:247
+msgid ""
+"Messages: units before obsolete units are no longer erroneously marked "
+"obsolete (#452) (@mbirtwell)"
+msgstr ""
+
+#: ../../../CHANGES:248
+msgid ""
+"Numbers: `parse_pattern` now preserves the full original pattern (#414) "
+"(@jtwang)"
+msgstr ""
+
+#: ../../../CHANGES:249
+msgid "Numbers: Fix float conversion in `extract_operands` (#435) (@akx)"
+msgstr ""
+
+#: ../../../CHANGES:250
+msgid ""
+"Plurals: Fix plural forms for Czech and Slovak locales (#373) "
+"(@ykshatroff)"
+msgstr ""
+
+#: ../../../CHANGES:251
+msgid ""
+"Plurals: More plural form fixes based on Mozilla and CLDR references "
+"(#431) (@mshenfield)"
+msgstr ""
+
+#: ../../../CHANGES:255 ../../../CHANGES:305
+msgid "Internal improvements"
+msgstr ""
+
+#: ../../../CHANGES:257
+msgid "Local times are constructed correctly in tests (#411) (@etanol)"
+msgstr ""
+
+#: ../../../CHANGES:258
+msgid "Miscellaneous small improvements (#437) (@scop)"
+msgstr ""
+
+#: ../../../CHANGES:259
+msgid "Regex flags are extracted from the regex strings (#462) (@singingwolfboy)"
+msgstr ""
+
+#: ../../../CHANGES:260
+msgid ""
+"The PO file reader is now a class and has seen some refactoring (#429, "
+"#452) (@mbirtwell)"
+msgstr ""
+
+#: ../../../CHANGES:264
+msgid "Version 2.3.4"
+msgstr ""
+
+#: ../../../CHANGES:266
+msgid "(Bugfix release, released on April 22th 2016)"
+msgstr ""
+
+#: ../../../CHANGES:271
+msgid ""
+"CLDR: The lxml library is no longer used for CLDR importing, so it should"
+" not cause strange failures either. Thanks to @aronbierbaum for the bug "
+"report and @jtwang for the fix. (https://github.com/python-"
+"babel/babel/pull/393)"
+msgstr ""
+
+#: ../../../CHANGES:272
+msgid ""
+"CLI: Every last single CLI usage regression should now be gone, and both "
+"distutils and stand-alone CLIs should work as they have in the past. "
+"Thanks to @paxswill and @ajaeger for bug reports. (https://github.com"
+"/python-babel/babel/pull/389)"
+msgstr ""
+
+#: ../../../CHANGES:275
+msgid "Version 2.3.3"
+msgstr ""
+
+#: ../../../CHANGES:277
+msgid "(Bugfix release, released on April 12th 2016)"
+msgstr ""
+
+#: ../../../CHANGES:282
+msgid ""
+"CLI: Usage regressions that had snuck in between 2.2 and 2.3 should be no"
+" more. (https://github.com/python-babel/babel/pull/386) Thanks to "
+"@ajaeger, @sebdiem and @jcristovao for bug reports and patches."
+msgstr ""
+
+#: ../../../CHANGES:285
+msgid "Version 2.3.2"
+msgstr ""
+
+#: ../../../CHANGES:287
+msgid "(Bugfix release, released on April 9th 2016)"
+msgstr ""
+
+#: ../../../CHANGES:292
+msgid ""
+"Dates: Period (am/pm) formatting was broken in certain locales (namely "
+"zh_TW). Thanks to @jun66j5 for the bug report. (https://github.com"
+"/python-babel/babel/issues/378, https://github.com/python-"
+"babel/babel/issues/379)"
+msgstr ""
+
+#: ../../../CHANGES:295
+msgid "Version 2.3.1"
+msgstr ""
+
+#: ../../../CHANGES:297
+msgid ""
+"(Bugfix release because of deployment problems, released on April 8th "
+"2016)"
+msgstr ""
+
+#: ../../../CHANGES:300
+msgid "Version 2.3"
+msgstr ""
+
+#: ../../../CHANGES:302
+msgid "(Feature release, released on April 8th 2016)"
+msgstr ""
+
+#: ../../../CHANGES:307
+msgid ""
+"The CLI frontend and Distutils commands use a shared implementation "
+"(https://github.com/python-babel/babel/pull/311)"
+msgstr ""
+
+#: ../../../CHANGES:308
+msgid "PyPy3 is supported (https://github.com/python-babel/babel/pull/343)"
+msgstr ""
+
+#: ../../../CHANGES:311 ../../../CHANGES:355
+msgid "Features"
+msgstr ""
+
+#: ../../../CHANGES:313
+msgid ""
+"CLDR: Add an API for territory language data (https://github.com/python-"
+"babel/babel/pull/315)"
+msgstr ""
+
+#: ../../../CHANGES:314
+msgid ""
+"Core: Character order and measurement system data is imported and exposed"
+" (https://github.com/python-babel/babel/pull/368)"
+msgstr ""
+
+#: ../../../CHANGES:315
+msgid ""
+"Dates: Add an API for time interval formatting (https://github.com"
+"/python-babel/babel/pull/316)"
+msgstr ""
+
+#: ../../../CHANGES:316
+msgid ""
+"Dates: More pattern formats and lengths are supported (https://github.com"
+"/python-babel/babel/pull/347)"
+msgstr ""
+
+#: ../../../CHANGES:317
+msgid ""
+"Dates: Period IDs are imported and exposed (https://github.com/python-"
+"babel/babel/pull/349)"
+msgstr ""
+
+#: ../../../CHANGES:318
+msgid ""
+"Dates: Support for date-time skeleton formats has been added "
+"(https://github.com/python-babel/babel/pull/265)"
+msgstr ""
+
+#: ../../../CHANGES:319
+msgid ""
+"Dates: Timezone formatting has been improved (https://github.com/python-"
+"babel/babel/pull/338)"
+msgstr ""
+
+#: ../../../CHANGES:320
+msgid ""
+"Messages: JavaScript extraction now supports dotted names, ES6 template "
+"strings and JSX tags (https://github.com/python-babel/babel/pull/332)"
+msgstr ""
+
+#: ../../../CHANGES:321
+msgid ""
+"Messages: npgettext is recognized by default (https://github.com/python-"
+"babel/babel/pull/341)"
+msgstr ""
+
+#: ../../../CHANGES:322
+msgid ""
+"Messages: The CLI learned to accept multiple domains (https://github.com"
+"/python-babel/babel/pull/335)"
+msgstr ""
+
+#: ../../../CHANGES:323
+msgid ""
+"Messages: The extraction commands now accept filenames in addition to "
+"directories (https://github.com/python-babel/babel/pull/324)"
+msgstr ""
+
+#: ../../../CHANGES:324
+msgid ""
+"Units: A new API for unit formatting is implemented (https://github.com"
+"/python-babel/babel/pull/369)"
+msgstr ""
+
+#: ../../../CHANGES:329
+msgid ""
+"Core: Mixed-case locale IDs work more reliably (https://github.com"
+"/python-babel/babel/pull/361)"
+msgstr ""
+
+#: ../../../CHANGES:330
+msgid ""
+"Dates: S...S formats work correctly now (https://github.com/python-"
+"babel/babel/pull/360)"
+msgstr ""
+
+#: ../../../CHANGES:331
+msgid ""
+"Messages: All messages are now sorted correctly if sorting has been "
+"specified (https://github.com/python-babel/babel/pull/300)"
+msgstr ""
+
+#: ../../../CHANGES:332
+msgid ""
+"Messages: Fix the unexpected behavior caused by catalog header updating "
+"(e0e7ef1) (https://github.com/python-babel/babel/pull/320)"
+msgstr ""
+
+#: ../../../CHANGES:333
+msgid ""
+"Messages: Gettext operands are now generated correctly "
+"(https://github.com/python-babel/babel/pull/295)"
+msgstr ""
+
+#: ../../../CHANGES:334
+msgid ""
+"Messages: Message extraction has been taught to detect encodings better "
+"(https://github.com/python-babel/babel/pull/274)"
+msgstr ""
+
+#: ../../../CHANGES:337
+msgid "Version 2.2"
+msgstr ""
+
+#: ../../../CHANGES:339
+msgid "(Feature release, released on January 2nd 2016)"
+msgstr ""
+
+#: ../../../CHANGES:344
+msgid "General: Add __hash__ to Locale. (#303) (2aa8074)"
+msgstr ""
+
+#: ../../../CHANGES:345
+msgid "General: Allow files with BOM if they're UTF-8 (#189) (da87edd)"
+msgstr ""
+
+#: ../../../CHANGES:346
+msgid "General: localedata directory is now locale-data (#109) (2d1882e)"
+msgstr ""
+
+#: ../../../CHANGES:347
+msgid "General: odict: Fix pop method (0a9e97e)"
+msgstr ""
+
+#: ../../../CHANGES:348
+msgid ""
+"General: Removed uses of datetime.date class from *.dat files (#174) "
+"(94f6830)"
+msgstr ""
+
+#: ../../../CHANGES:349
+msgid "Messages: Fix plural selection for Chinese (531f666)"
+msgstr ""
+
+#: ../../../CHANGES:350
+msgid "Messages: Fix typo and add semicolon in plural_forms (5784501)"
+msgstr ""
+
+#: ../../../CHANGES:351
+msgid "Messages: Flatten NullTranslations.files into a list (ad11101)"
+msgstr ""
+
+#: ../../../CHANGES:352
+msgid "Times: FixedOffsetTimezone: fix display of negative offsets (d816803)"
+msgstr ""
+
+#: ../../../CHANGES:357
+msgid "CLDR: Update to CLDR 28 (#292) (9f7f4d0)"
+msgstr ""
+
+#: ../../../CHANGES:358
+msgid "General: Add __copy__ and __deepcopy__ to LazyProxy. (a1cc3f1)"
+msgstr ""
+
+#: ../../../CHANGES:359
+msgid "General: Add official support for Python 3.4 and 3.5"
+msgstr ""
+
+#: ../../../CHANGES:360
+msgid "General: Improve odict performance by making key search O(1) (6822b7f)"
+msgstr ""
+
+#: ../../../CHANGES:361
+msgid "Locale: Add an ordinal_form property to Locale (#270) (b3f3430)"
+msgstr ""
+
+#: ../../../CHANGES:362
+msgid "Locale: Add support for list formatting (37ce4fa, be6e23d)"
+msgstr ""
+
+#: ../../../CHANGES:363
+msgid "Locale: Check inheritance exceptions first (3ef0d6d)"
+msgstr ""
+
+#: ../../../CHANGES:364
+msgid "Messages: Allow file locations without line numbers (#279) (79bc781)"
+msgstr ""
+
+#: ../../../CHANGES:365
+msgid "Messages: Allow passing a callable to `extract()` (#289) (3f58516)"
+msgstr ""
+
+#: ../../../CHANGES:366
+msgid "Messages: Support 'Language' header field of PO files (#76) (3ce842b)"
+msgstr ""
+
+#: ../../../CHANGES:367
+msgid "Messages: Update catalog headers from templates (e0e7ef1)"
+msgstr ""
+
+#: ../../../CHANGES:368
+msgid "Numbers: Properly load and expose currency format types (#201) (df676ab)"
+msgstr ""
+
+#: ../../../CHANGES:369
+msgid "Numbers: Use cdecimal by default when available (b6169be)"
+msgstr ""
+
+#: ../../../CHANGES:370
+msgid ""
+"Numbers: Use the CLDR's suggested number of decimals for format_currency "
+"(#139) (201ed50)"
+msgstr ""
+
+#: ../../../CHANGES:371
+msgid "Times: Add format_timedelta(format='narrow') support (edc5eb5)"
+msgstr ""
+
+#: ../../../CHANGES:374
+msgid "Version 2.1"
+msgstr ""
+
+#: ../../../CHANGES:376
+msgid "(Bugfix/minor feature release, released on September 25th 2015)"
+msgstr ""
+
+#: ../../../CHANGES:378
+msgid ""
+"Parse and honour the locale inheritance exceptions (https://github.com"
+"/python-babel/babel/issues/97)"
+msgstr ""
+
+#: ../../../CHANGES:380
+msgid ""
+"Fix Locale.parse using ``global.dat`` incompatible types "
+"(https://github.com/python-babel/babel/issues/174)"
+msgstr ""
+
+#: ../../../CHANGES:382
+msgid ""
+"Fix display of negative offsets in ``FixedOffsetTimezone`` "
+"(https://github.com/python-babel/babel/issues/214)"
+msgstr ""
+
+#: ../../../CHANGES:384
+msgid ""
+"Improved odict performance which is used during localization file build, "
+"should improve compilation time for large projects"
+msgstr ""
+
+#: ../../../CHANGES:386
+msgid "Add support for \"narrow\" format for ``format_timedelta``"
+msgstr ""
+
+#: ../../../CHANGES:387
+msgid "Add universal wheel support"
+msgstr ""
+
+#: ../../../CHANGES:388
+msgid ""
+"Support 'Language' header field in .PO files (fixes https://github.com"
+"/python-babel/babel/issues/76)"
+msgstr ""
+
+#: ../../../CHANGES:390
+msgid "Test suite enhancements (coverage, broken tests fixed, etc)"
+msgstr ""
+
+#: ../../../CHANGES:391
+msgid "Documentation updated"
+msgstr ""
+
+#: ../../../CHANGES:394
+msgid "Version 2.0"
+msgstr ""
+
+#: ../../../CHANGES:396
+msgid "(Released on July 27th 2015, codename Second Coming)"
+msgstr ""
+
+#: ../../../CHANGES:398
+msgid ""
+"Added support for looking up currencies that belong to a territory "
+"through the :func:`babel.numbers.get_territory_currencies` function."
+msgstr ""
+
+#: ../../../CHANGES:401
+msgid "Improved Python 3 support."
+msgstr ""
+
+#: ../../../CHANGES:402
+msgid "Fixed some broken tests for timezone behavior."
+msgstr ""
+
+#: ../../../CHANGES:403
+msgid "Improved various smaller things for dealing with dates."
+msgstr ""
+
+#: ../../../CHANGES:406
+msgid "Version 1.4"
+msgstr ""
+
+#: ../../../CHANGES:408
+msgid "(bugfix release, release date to be decided)"
+msgstr ""
+
+#: ../../../CHANGES:410
+msgid ""
+"Fixed a bug that caused deprecated territory codes not being converted "
+"properly by the subtag resolving.  This for instance showed up when "
+"trying to use ``und_UK`` as a language code which now properly resolves "
+"to ``en_GB``."
+msgstr ""
+
+#: ../../../CHANGES:414
+msgid ""
+"Fixed a bug that made it impossible to import the CLDR data from scratch "
+"on windows systems."
+msgstr ""
+
+#: ../../../CHANGES:418
+msgid "Version 1.3"
+msgstr ""
+
+#: ../../../CHANGES:420
+msgid "(bugfix release, released on July 29th 2013)"
+msgstr ""
+
+#: ../../../CHANGES:422
+msgid ""
+"Fixed a bug in likely-subtag resolving for some common locales. This "
+"primarily makes ``zh_CN`` work again which was broken due to how it was "
+"defined in the likely subtags combined with our broken resolving.  This "
+"fixes :gh:`37`."
+msgstr ""
+
+#: ../../../CHANGES:426
+msgid ""
+"Fixed a bug that caused pybabel to break when writing to stdout on Python"
+" 3."
+msgstr ""
+
+#: ../../../CHANGES:428
+msgid ""
+"Removed a stray print that was causing issues when writing to stdout for "
+"message catalogs."
+msgstr ""
+
+#: ../../../CHANGES:432
+msgid "Version 1.2"
+msgstr ""
+
+#: ../../../CHANGES:434 ../../../CHANGES:445
+msgid "(bugfix release, released on July 27th 2013)"
+msgstr ""
+
+#: ../../../CHANGES:436
+msgid ""
+"Included all tests in the tarball.  Previously the include skipped past "
+"recursive folders."
+msgstr ""
+
+#: ../../../CHANGES:438
+msgid ""
+"Changed how tests are invoked and added separate standalone test command."
+"  This simplifies testing of the package for linux distributors."
+msgstr ""
+
+#: ../../../CHANGES:443
+msgid "Version 1.1"
+msgstr ""
+
+#: ../../../CHANGES:447
+msgid "added dummy version requirements for pytz so that it installs on pip 1.4."
+msgstr ""
+
+#: ../../../CHANGES:449
+msgid "Included tests in the tarball."
+msgstr ""
+
+#: ../../../CHANGES:452
+msgid "Version 1.0"
+msgstr ""
+
+#: ../../../CHANGES:454
+msgid "(Released on July 26th 2013, codename Revival)"
+msgstr ""
+
+#: ../../../CHANGES:456
+msgid "support python 2.6, 2.7, 3.3+ and pypy - drop all other versions"
+msgstr ""
+
+#: ../../../CHANGES:457
+msgid "use tox for testing on different pythons"
+msgstr ""
+
+#: ../../../CHANGES:458
+msgid "Added support for the locale plural rules defined by the CLDR."
+msgstr ""
+
+#: ../../../CHANGES:459
+msgid ""
+"Added `format_timedelta` function to support localized formatting of "
+"relative times with strings such as \"2 days\" or \"1 month\" "
+"(:trac:`126`)."
+msgstr ""
+
+#: ../../../CHANGES:461 ../../../CHANGES:551
+msgid "Fixed negative offset handling of Catalog._set_mime_headers (:trac:`165`)."
+msgstr ""
+
+#: ../../../CHANGES:462 ../../../CHANGES:575
+msgid ""
+"Fixed the case where messages containing square brackets would break with"
+" an unpack error."
+msgstr ""
+
+#: ../../../CHANGES:464
+msgid "updated to CLDR 23"
+msgstr ""
+
+#: ../../../CHANGES:465 ../../../CHANGES:540
+msgid "Make the CLDR import script work with Python 2.7."
+msgstr ""
+
+#: ../../../CHANGES:466 ../../../CHANGES:541
+msgid "Fix various typos."
+msgstr ""
+
+#: ../../../CHANGES:467 ../../../CHANGES:543
+msgid "Sort output of list-locales."
+msgstr ""
+
+#: ../../../CHANGES:468 ../../../CHANGES:544
+msgid ""
+"Make the POT-Creation-Date of the catalog being updated equal to POT-"
+"Creation-Date of the template used to update (:trac:`148`)."
+msgstr ""
+
+#: ../../../CHANGES:470 ../../../CHANGES:546
+msgid ""
+"Use a more explicit error message if no option or argument (command) is "
+"passed to pybabel (:trac:`81`)."
+msgstr ""
+
+#: ../../../CHANGES:472 ../../../CHANGES:548
+msgid "Keep the PO-Revision-Date if it is not the default value (:trac:`148`)."
+msgstr ""
+
+#: ../../../CHANGES:473 ../../../CHANGES:549
+msgid ""
+"Make --no-wrap work by reworking --width's default and mimic xgettext's "
+"behaviour of always wrapping comments (:trac:`145`)."
+msgstr ""
+
+#: ../../../CHANGES:475 ../../../CHANGES:552
+msgid "Add --project and --version options for commandline (:trac:`173`)."
+msgstr ""
+
+#: ../../../CHANGES:476 ../../../CHANGES:553
+msgid "Add a __ne__() method to the Local class."
+msgstr ""
+
+#: ../../../CHANGES:477
+msgid ""
+"Explicitly sort instead of using sorted() and don't assume ordering "
+"(Jython compatibility)."
+msgstr ""
+
+#: ../../../CHANGES:479 ../../../CHANGES:556
+msgid ""
+"Removed ValueError raising for string formatting message checkers if the "
+"string does not contain any string formattings (:trac:`150`)."
+msgstr ""
+
+#: ../../../CHANGES:481 ../../../CHANGES:558
+msgid "Fix Serbian plural forms (:trac:`213`)."
+msgstr ""
+
+#: ../../../CHANGES:482 ../../../CHANGES:559
+msgid "Small speed improvement in format_date() (:trac:`216`)."
+msgstr ""
+
+#: ../../../CHANGES:483 ../../../CHANGES:564
+msgid ""
+"Fix so frontend.CommandLineInterface.run does not accumulate logging "
+"handlers (:trac:`227`, reported with initial patch by dfraser)"
+msgstr ""
+
+#: ../../../CHANGES:485 ../../../CHANGES:566
+msgid ""
+"Fix exception if environment contains an invalid locale setting "
+"(:trac:`200`)"
+msgstr ""
+
+#: ../../../CHANGES:487
+msgid "use cPickle instead of pickle for better performance (:trac:`225`)"
+msgstr ""
+
+#: ../../../CHANGES:488
+msgid ""
+"Only use bankers round algorithm as a tie breaker if there are two "
+"nearest numbers, round as usual if there is only one nearest number "
+"(:trac:`267`, patch by Martin)"
+msgstr ""
+
+#: ../../../CHANGES:491
+msgid ""
+"Allow disabling cache behaviour in LazyProxy (:trac:`208`, initial patch "
+"from Pedro Algarvio)"
+msgstr ""
+
+#: ../../../CHANGES:493
+msgid ""
+"Support for context-aware methods during message extraction (:trac:`229`,"
+" patch from David Rios)"
+msgstr ""
+
+#: ../../../CHANGES:495
+msgid ""
+"\"init\" and \"update\" commands support \"--no-wrap\" option "
+"(:trac:`289`)"
+msgstr ""
+
+#: ../../../CHANGES:496
+msgid ""
+"fix formatting of fraction in format_decimal() if the input value is a "
+"float with more than 7 significant digits (:trac:`183`)"
+msgstr ""
+
+#: ../../../CHANGES:498
+msgid ""
+"fix format_date() with datetime parameter (:trac:`282`, patch from Xavier"
+" Morel)"
+msgstr ""
+
+#: ../../../CHANGES:500
+msgid ""
+"fix format_decimal() with small Decimal values (:trac:`214`, patch from "
+"George Lund)"
+msgstr ""
+
+#: ../../../CHANGES:502
+msgid "fix handling of messages containing '\\\\n' (:trac:`198`)"
+msgstr ""
+
+#: ../../../CHANGES:503
+msgid ""
+"handle irregular multi-line msgstr (no \"\" as first line) gracefully "
+"(:trac:`171`)"
+msgstr ""
+
+#: ../../../CHANGES:505
+msgid "parse_decimal() now returns Decimals not floats, API change (:trac:`178`)"
+msgstr ""
+
+#: ../../../CHANGES:506
+msgid ""
+"no warnings when running setup.py without installed setuptools "
+"(:trac:`262`)"
+msgstr ""
+
+#: ../../../CHANGES:507
+msgid ""
+"modified Locale.__eq__ method so Locales are only equal if all of their "
+"attributes (language, territory, script, variant) are equal"
+msgstr ""
+
+#: ../../../CHANGES:509
+msgid ""
+"resort to hard-coded message extractors/checkers if pkg_resources is "
+"installed but no egg-info was found (:trac:`230`)"
+msgstr ""
+
+#: ../../../CHANGES:511
+msgid "format_time() and format_datetime() now accept also floats (:trac:`242`)"
+msgstr ""
+
+#: ../../../CHANGES:512
+msgid ""
+"add babel.support.NullTranslations class similar to "
+"gettext.NullTranslations but with all of Babel's new gettext methods "
+"(:trac:`277`)"
+msgstr ""
+
+#: ../../../CHANGES:514
+msgid "\"init\" and \"update\" commands support \"--width\" option (:trac:`284`)"
+msgstr ""
+
+#: ../../../CHANGES:515
+msgid ""
+"fix 'input_dirs' option for setuptools integration (:trac:`232`, initial "
+"patch by Étienne Bersac)"
+msgstr ""
+
+#: ../../../CHANGES:517
+msgid ""
+"ensure .mo file header contains the same information as the source .po "
+"file (:trac:`199`)"
+msgstr ""
+
+#: ../../../CHANGES:519
+msgid "added support for get_language_name() on the locale objects."
+msgstr ""
+
+#: ../../../CHANGES:520
+msgid "added support for get_territory_name() on the locale objects."
+msgstr ""
+
+#: ../../../CHANGES:521
+msgid "added support for get_script_name() on the locale objects."
+msgstr ""
+
+#: ../../../CHANGES:522
+msgid ""
+"added pluralization support for currency names and added a '¤¤¤' pattern "
+"for currencies that includes the full name."
+msgstr ""
+
+#: ../../../CHANGES:524
+msgid ""
+"depend on pytz now and wrap it nicer.  This gives us improved support for"
+" things like timezone transitions and an overall nicer API."
+msgstr ""
+
+#: ../../../CHANGES:526
+msgid "Added support for explicit charset to PO file reading."
+msgstr ""
+
+#: ../../../CHANGES:527
+msgid "Added experimental Python 3 support."
+msgstr ""
+
+#: ../../../CHANGES:528
+msgid "Added better support for returning timezone names."
+msgstr ""
+
+#: ../../../CHANGES:529
+msgid "Don't throw away a Catalog's obsolete messages when updating it."
+msgstr ""
+
+#: ../../../CHANGES:530
+msgid ""
+"Added basic likelySubtag resolving when doing locale parsing and no match"
+" can be found."
+msgstr ""
+
+#: ../../../CHANGES:535
+msgid "Version 0.9.6"
+msgstr ""
+
+#: ../../../CHANGES:537
+msgid "(released on March 17th 2011)"
+msgstr ""
+
+#: ../../../CHANGES:539
+msgid "Backport r493-494: documentation typo fixes."
+msgstr ""
+
+#: ../../../CHANGES:542
+msgid "Fixed Python 2.3 compatibility (:trac:`146`, :trac:`233`)."
+msgstr ""
+
+#: ../../../CHANGES:554
+msgid ""
+"Explicitly sort instead of using sorted() and don't assume ordering "
+"(Python 2.3 and Jython compatibility)."
+msgstr ""
+
+#: ../../../CHANGES:560
+msgid ""
+"Fix number formatting for locales where CLDR specifies alt or draft items"
+" (:trac:`217`)"
+msgstr ""
+
+#: ../../../CHANGES:562
+msgid ""
+"Fix bad check in format_time (:trac:`257`, reported with patch and tests "
+"by jomae)"
+msgstr ""
+
+#: ../../../CHANGES:571
+msgid "Version 0.9.5"
+msgstr ""
+
+#: ../../../CHANGES:573
+msgid "(released on April 6th 2010)"
+msgstr ""
+
+#: ../../../CHANGES:577
+msgid ""
+"Backport of r467: Fuzzy matching regarding plurals should *NOT* be "
+"checked against len(message.id)  because this is always 2, instead, it's "
+"should be checked against catalog.num_plurals (:trac:`212`)."
+msgstr ""
+
+#: ../../../CHANGES:583
+msgid "Version 0.9.4"
+msgstr ""
+
+#: ../../../CHANGES:585
+msgid "(released on August 25th 2008)"
+msgstr ""
+
+#: ../../../CHANGES:587
+msgid ""
+"Currency symbol definitions that is defined with choice patterns in the "
+"CLDR data are no longer imported, so the symbol code will be used "
+"instead."
+msgstr ""
+
+#: ../../../CHANGES:589
+msgid "Fixed quarter support in date formatting."
+msgstr ""
+
+#: ../../../CHANGES:590
+msgid ""
+"Fixed a serious memory leak that was introduces by the support for CLDR "
+"aliases in 0.9.3 (:trac:`128`)."
+msgstr ""
+
+#: ../../../CHANGES:592
+msgid ""
+"Locale modifiers such as \"@euro\" are now stripped from locale "
+"identifiers when parsing (:trac:`136`)."
+msgstr ""
+
+#: ../../../CHANGES:594
+msgid ""
+"The system locales \"C\" and \"POSIX\" are now treated as aliases for "
+"\"en_US_POSIX\", for which the CLDR provides the appropriate data. Thanks"
+" to Manlio Perillo for the suggestion."
+msgstr ""
+
+#: ../../../CHANGES:597
+msgid ""
+"Fixed JavaScript extraction for regular expression literals (:trac:`138`)"
+" and concatenated strings."
+msgstr ""
+
+#: ../../../CHANGES:599
+msgid ""
+"The `Translation` class in `babel.support` can now manage catalogs with "
+"different message domains, and exposes the family of `d*gettext` "
+"functions (:trac:`137`)."
+msgstr ""
+
+#: ../../../CHANGES:605
+msgid "Version 0.9.3"
+msgstr ""
+
+#: ../../../CHANGES:607
+msgid "(released on July 9th 2008)"
+msgstr ""
+
+#: ../../../CHANGES:609
+msgid "Fixed invalid message extraction methods causing an UnboundLocalError."
+msgstr ""
+
+#: ../../../CHANGES:610
+msgid ""
+"Extraction method specification can now use a dot instead of the colon to"
+" separate module and function name (:trac:`105`)."
+msgstr ""
+
+#: ../../../CHANGES:612
+msgid ""
+"Fixed message catalog compilation for locales with more than two plural "
+"forms (:trac:`95`)."
+msgstr ""
+
+#: ../../../CHANGES:614
+msgid ""
+"Fixed compilation of message catalogs for locales with more than two "
+"plural forms where the translations were empty (:trac:`97`)."
+msgstr ""
+
+#: ../../../CHANGES:616
+msgid ""
+"The stripping of the comment tags in comments is optional now and is done"
+" for each line in a comment."
+msgstr ""
+
+#: ../../../CHANGES:618
+msgid "Added a JavaScript message extractor."
+msgstr ""
+
+#: ../../../CHANGES:619
+msgid "Updated to CLDR 1.6."
+msgstr ""
+
+#: ../../../CHANGES:620
+msgid "Fixed timezone calculations when formatting datetime and time values."
+msgstr ""
+
+#: ../../../CHANGES:621
+msgid ""
+"Added a `get_plural` function into the plurals module that returns the "
+"correct plural forms for a locale as tuple."
+msgstr ""
+
+#: ../../../CHANGES:623
+msgid ""
+"Added support for alias definitions in the CLDR data files, meaning that "
+"the chance for items missing in certain locales should be greatly reduced"
+" (:trac:`68`)."
+msgstr ""
+
+#: ../../../CHANGES:629
+msgid "Version 0.9.2"
+msgstr ""
+
+#: ../../../CHANGES:631
+msgid "(released on February 4th 2008)"
+msgstr ""
+
+#: ../../../CHANGES:633
+msgid "Fixed catalogs' charset values not being recognized (:trac:`66`)."
+msgstr ""
+
+#: ../../../CHANGES:634
+msgid "Numerous improvements to the default plural forms."
+msgstr ""
+
+#: ../../../CHANGES:635
+msgid "Fixed fuzzy matching when updating message catalogs (:trac:`82`)."
+msgstr ""
+
+#: ../../../CHANGES:636
+msgid ""
+"Fixed bug in catalog updating, that in some cases pulled in translations "
+"from different catalogs based on the same template."
+msgstr ""
+
+#: ../../../CHANGES:638
+msgid ""
+"Location lines in PO files do no longer get wrapped at hyphens in file "
+"names (:trac:`79`)."
+msgstr ""
+
+#: ../../../CHANGES:640
+msgid ""
+"Fixed division by zero error in catalog compilation on empty catalogs "
+"(:trac:`60`)."
+msgstr ""
+
+#: ../../../CHANGES:645
+msgid "Version 0.9.1"
+msgstr ""
+
+#: ../../../CHANGES:647
+msgid "(released on September 7th 2007)"
+msgstr ""
+
+#: ../../../CHANGES:649
+msgid ""
+"Fixed catalog updating when a message is merged that was previously "
+"simple but now has a plural form, for example by moving from `gettext` to"
+" `ngettext`, or vice versa."
+msgstr ""
+
+#: ../../../CHANGES:652
+msgid "Fixed time formatting for 12 am and 12 pm."
+msgstr ""
+
+#: ../../../CHANGES:653
+msgid "Fixed output encoding of the `pybabel --list-locales` command."
+msgstr ""
+
+#: ../../../CHANGES:654
+msgid "MO files are now written in binary mode on windows (:trac:`61`)."
+msgstr ""
+
+#: ../../../CHANGES:658
+msgid "Version 0.9"
+msgstr ""
+
+#: ../../../CHANGES:660
+msgid "(released on August 20th 2007)"
+msgstr ""
+
+#: ../../../CHANGES:662
+msgid ""
+"The `new_catalog` distutils command has been renamed to `init_catalog` "
+"for consistency with the command-line frontend."
+msgstr ""
+
+#: ../../../CHANGES:664
+msgid "Added compilation of message catalogs to MO files (:trac:`21`)."
+msgstr ""
+
+#: ../../../CHANGES:665
+msgid "Added updating of message catalogs from POT files (:trac:`22`)."
+msgstr ""
+
+#: ../../../CHANGES:666
+msgid "Support for significant digits in number formatting."
+msgstr ""
+
+#: ../../../CHANGES:667
+msgid ""
+"Apply proper \"banker's rounding\" in number formatting in a cross-"
+"platform manner."
+msgstr ""
+
+#: ../../../CHANGES:669
+msgid ""
+"The number formatting functions now also work with numbers represented by"
+" Python `Decimal` objects (:trac:`53`)."
+msgstr ""
+
+#: ../../../CHANGES:671
+msgid "Added extensible infrastructure for validating translation catalogs."
+msgstr ""
+
+#: ../../../CHANGES:672
+msgid ""
+"Fixed the extractor not filtering out messages that didn't validate "
+"against the keyword's specification (:trac:`39`)."
+msgstr ""
+
+#: ../../../CHANGES:674
+msgid ""
+"Fixed the extractor raising an exception when encountering an empty "
+"string msgid. It now emits a warning to stderr."
+msgstr ""
+
+#: ../../../CHANGES:676
+msgid ""
+"Numerous Python message extractor fixes: it now handles nested function "
+"calls within a gettext function call correctly, uses the correct line "
+"number for multi-line function calls, and other small fixes (tickets "
+":trac:`38` and :trac:`39`)."
+msgstr ""
+
+#: ../../../CHANGES:680
+msgid ""
+"Improved support for detecting Python string formatting fields in message"
+" strings (:trac:`57`)."
+msgstr ""
+
+#: ../../../CHANGES:682
+msgid "CLDR upgraded to the 1.5 release."
+msgstr ""
+
+#: ../../../CHANGES:683
+msgid "Improved timezone formatting."
+msgstr ""
+
+#: ../../../CHANGES:684
+msgid "Implemented scientific number formatting."
+msgstr ""
+
+#: ../../../CHANGES:685
+msgid ""
+"Added mechanism to lookup locales by alias, for cases where browsers "
+"insist on including only the language code in the `Accept-Language` "
+"header, and sometimes even the incorrect language code."
+msgstr ""
+
+#: ../../../CHANGES:691
+msgid "Version 0.8.1"
+msgstr ""
+
+#: ../../../CHANGES:693
+msgid "(released on July 2nd 2007)"
+msgstr ""
+
+#: ../../../CHANGES:695
+msgid ""
+"`default_locale()` would fail when the value of the `LANGUAGE` "
+"environment variable contained multiple language codes separated by "
+"colon, as is explicitly allowed by the GNU gettext tools. As the "
+"`default_locale()` function is called at the module level in some "
+"modules, this bug would completely break importing these modules on "
+"systems where `LANGUAGE` is set that way."
+msgstr ""
+
+#: ../../../CHANGES:701
+msgid ""
+"The character set specified in PO template files is now respected when "
+"creating new catalog files based on that template. This allows the use of"
+" characters outside the ASCII range in POT files (:trac:`17`)."
+msgstr ""
+
+#: ../../../CHANGES:704
+msgid ""
+"The default ordering of messages in generated POT files, which is based "
+"on the order those messages are found when walking the source tree, is no"
+" longer subject to differences between platforms; directory and file "
+"names are now always sorted alphabetically."
+msgstr ""
+
+#: ../../../CHANGES:708
+msgid ""
+"The Python message extractor now respects the special encoding comment to"
+" be able to handle files containing non-ASCII characters (:trac:`23`)."
+msgstr ""
+
+#: ../../../CHANGES:710
+msgid "Added ``N_`` (gettext noop) to the extractor's default keywords."
+msgstr ""
+
+#: ../../../CHANGES:711
+msgid ""
+"Made locale string parsing more robust, and also take the script part "
+"into account (:trac:`27`)."
+msgstr ""
+
+#: ../../../CHANGES:713
+msgid "Added a function to list all locales for which locale data is available."
+msgstr ""
+
+#: ../../../CHANGES:714
+msgid ""
+"Added a command-line option to the `pybabel` command which prints out all"
+" available locales (:trac:`24`)."
+msgstr ""
+
+#: ../../../CHANGES:716
+msgid ""
+"The name of the command-line script has been changed from just `babel` to"
+" `pybabel` to avoid a conflict with the OpenBabel project (:trac:`34`)."
+msgstr ""
+
+#: ../../../CHANGES:721
+msgid "Version 0.8"
+msgstr ""
+
+#: ../../../CHANGES:723
+msgid "(released on June 20th 2007)"
+msgstr ""
+
+#: ../../../CHANGES:725
+msgid "First public release"
+msgstr ""
+

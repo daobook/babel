@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../intro.rst:5
+msgid "Introduction"
+msgstr "概述"
+
+#: ../../intro.rst:7
+msgid ""
+"The functionality Babel provides for internationalization (I18n) and "
+"localization (L10N) can be separated into two different aspects:"
+msgstr ""
+"Babel 为国际化（I18n）和本地化（L10N）提供的功能可以分为两个不同的方面："
+
+#: ../../intro.rst:10
+msgid "tools to build and work with ``gettext`` message catalogs, and"
+msgstr "构建和使用 ``gettext`` 信息目录的工具，以及"
+
+#: ../../intro.rst:11
+msgid ""
+"a Python interface to the CLDR (Common Locale Data Repository), providing"
+" access to various locale display names, localized number and date "
+"formatting, etc."
+msgstr ""
+"CLDR（通用语言数据仓库）的 Python 接口，提供对各种语言显示名称、本地化数字和日期格式等的访问。"
+
+#: ../../intro.rst:17
+msgid "Message Catalogs"
+msgstr "消息目录"
+
+#: ../../intro.rst:19
+msgid ""
+"While the Python standard library includes a :mod:`gettext` module that "
+"enables applications to use message catalogs, it requires developers to "
+"build these catalogs using GNU tools such as ``xgettext``, ``msgmerge``, "
+"and ``msgfmt``.  And while ``xgettext`` does have support for extracting "
+"messages from Python files, it does not know how to deal with other kinds"
+" of files commonly found in Python web-applications, such as templates, "
+"nor does it provide an easy extensibility mechanism to add such support."
+msgstr ""
+"虽然 Python 标准库包括一个 :mod:`gettext` 模块，使应用程序能够使用消息目录，"
+"但它要求开发者使用 GNU 工具，如 ``xgettext``、``msgmerge`` 和 ``msgfmt`` 建立这些目录。"
+"虽然 ``xgettext`` 确实支持从 Python 文件中提取消息，"
+"但它不知道如何处理 Python 网络应用中常见的其他类型的文件，如模板，"
+"也没有提供一个简单的扩展机制来增加这种支持。"
+
+#: ../../intro.rst:27
+msgid ""
+"Babel addresses this by providing a framework where various extraction "
+"methods can be plugged in to a larger message extraction framework, and "
+"also removes the dependency on the GNU ``gettext`` tools for common "
+"tasks, as these aren't necessarily available on all platforms. See "
+":ref:`messages` for details on this aspect of Babel."
+msgstr ""
+"Babel 通过提供一个框架来解决这个问题，在这个框架中，"
+"各种提取方法可以被插入到一个更大的消息提取框架中，"
+"同时也消除了对 GNU ``gettext`` 工具的依赖，"
+"因为这些工具不一定在所有平台上都可用。"
+"关于 Babel 这方面的细节，请看 :ref:`messages`。"
+
+#: ../../intro.rst:35
+msgid "Locale Data"
+msgstr "本地数据"
+
+#: ../../intro.rst:37
+msgid ""
+"Furthermore, while the Python standard library does include support for "
+"basic localization with respect to the formatting of numbers and dates "
+"(the :mod:`locale` module, among others), this support is based on the "
+"assumption that there will be only one specific locale used per process "
+"(at least simultaneously.) Also, it doesn't provide access to other kinds"
+" of locale data, such as the localized names of countries, languages, or "
+"time-zones, which are frequently needed in web-based applications."
+msgstr ""
+"此外，虽然 Python 标准库确实包括了对数字和日期格式化的基本本地化支持（:mod:`locale` 模块，以及其他），"
+"这种支持是基于每个进程只使用一个特定的 locale 的假设（至少是同时）。"
+"而且，它没有提供对其他种类的 locale 数据的访问，例如国家、语言或时区的本地化名称，"
+"这些在基于网络的应用程序中经常需要。"
+
+#: ../../intro.rst:45
+msgid ""
+"For these requirements, Babel includes data extracted from the `Common "
+"Locale Data Repository (CLDR) <https://unicode.org/cldr/>`_, and provides"
+" a number of convenient methods for accessing and using this data. See "
+":ref:`locale-data`, :ref:`date-and-time`, and :ref:`numbers` for more "
+"information on this aspect of Babel."
+msgstr ""
+"对于这些要求，Babel 包括从 `通用地域数据存储库（CLDR） <https://unicode.org/cldr/>`_ "
+"中提取的数据，并提供了一些方便的方法来访问和使用这些数据。"
+"参见 :ref:`locale-data`、:ref:`date-and-time` 和 :ref:`numbers` 以了解更多关于 Babel 这方面的信息。"

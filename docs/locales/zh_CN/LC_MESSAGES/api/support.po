@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/support.rst:2
+msgid "General Support Functionality"
+msgstr ""
+
+#: ../../api/support.rst:6
+msgid ""
+"Babel ships a few general helpers that are not being used by Babel itself"
+" but are useful in combination with functionality provided by it."
+msgstr ""
+
+#: ../../api/support.rst:10
+msgid "Convenience Helpers"
+msgstr ""
+
+#: babel.support.Format:1 of
+msgid ""
+"Wrapper class providing the various date and number formatting functions "
+"bound to a specific locale and time-zone."
+msgstr ""
+
+#: babel.support.Format.currency:1 of
+msgid "Return a number in the given currency formatted for the locale."
+msgstr ""
+
+#: babel.support.Format.date:1 of
+msgid "Return a date formatted according to the given pattern."
+msgstr ""
+
+#: babel.support.Format.datetime:1 of
+msgid "Return a date and time formatted according to the given pattern."
+msgstr ""
+
+#: babel.support.Format.decimal:1 of
+msgid "Return a decimal number formatted for the locale."
+msgstr ""
+
+#: babel.support.Format.number:1 of
+msgid "Return an integer number formatted for the locale."
+msgstr ""
+
+#: babel.support.Format.percent:1 of
+msgid "Return a number formatted as percentage for the locale."
+msgstr ""
+
+#: babel.support.Format.scientific:1 of
+msgid "Return a number formatted using scientific notation for the locale."
+msgstr ""
+
+#: babel.support.Format.time:1 of
+msgid "Return a time formatted according to the given pattern."
+msgstr ""
+
+#: babel.support.Format.timedelta:1 of
+msgid "Return a time delta according to the rules of the given locale."
+msgstr ""
+
+#: babel.support.LazyProxy:1 of
+msgid ""
+"Class for proxy objects that delegate to a specified function to evaluate"
+" the actual object."
+msgstr ""
+
+#: babel.support.LazyProxy:14 of
+msgid ""
+"This can be used, for example, to implement lazy translation functions "
+"that delay the actual translation until the string is actually used. The "
+"rationale for such behavior is that the locale of the user may not always"
+" be available. In web applications, you only know the locale when "
+"processing a request."
+msgstr ""
+
+#: babel.support.LazyProxy:20 of
+msgid ""
+"The proxy implementation attempts to be as complete as possible, so that "
+"the lazy objects should mostly work as expected, for example for sorting:"
+msgstr ""
+
+#: ../../api/support.rst:19
+msgid "Gettext Support"
+msgstr ""
+
+#: babel.support.Translations:1 of
+msgid "An extended translation catalog class."
+msgstr ""
+
+#: babel.support.Translations.add:1 of
+msgid "Add the given translations to the catalog."
+msgstr ""
+
+#: babel.support.Translations.add:3 of
+msgid ""
+"If the domain of the translations is different than that of the current "
+"catalog, they are added as a catalog that is only accessible by the "
+"various ``d*gettext`` functions."
+msgstr ""
+
+#: babel.support.Translations.add babel.support.Translations.load
+#: babel.support.Translations.merge of
+msgid "Parameters"
+msgstr ""
+
+#: babel.support.Translations.add:7 of
+msgid "the `Translations` instance with the messages to add"
+msgstr ""
+
+#: babel.support.Translations.add:9 of
+msgid ""
+"whether translations for message domains that have already been added "
+"should be merged with the existing translations"
+msgstr ""
+
+#: babel.support.Translations.load:1 of
+msgid "Load translations from the given directory."
+msgstr ""
+
+#: babel.support.Translations.load:3 of
+msgid "the directory containing the ``MO`` files"
+msgstr ""
+
+#: babel.support.Translations.load:4 of
+msgid ""
+"the list of locales in order of preference (items in this list can be "
+"either `Locale` objects or locale strings)"
+msgstr ""
+
+#: babel.support.Translations.load:7 of
+msgid "the message domain (default: 'messages')"
+msgstr ""
+
+#: babel.support.Translations.merge:1 of
+msgid "Merge the given translations into the catalog."
+msgstr ""
+
+#: babel.support.Translations.merge:3 of
+msgid ""
+"Message translations in the specified catalog override any messages with "
+"the same identifier in the existing catalog."
+msgstr ""
+
+#: babel.support.Translations.merge:6 of
+msgid "the `Translations` instance with the messages to merge"
+msgstr ""
+

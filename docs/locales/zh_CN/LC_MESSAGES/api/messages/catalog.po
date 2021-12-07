@@ -1,0 +1,298 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/messages/catalog.rst:2
+msgid "Messages and Catalogs"
+msgstr ""
+
+#: ../../api/messages/catalog.rst:6
+msgid ""
+"This module provides a basic interface to hold catalog and message "
+"information.  It's generally used to modify a gettext catalog but it is "
+"not being used to actually use the translations."
+msgstr ""
+
+#: ../../api/messages/catalog.rst:11
+msgid "Catalogs"
+msgstr ""
+
+#: babel.messages.catalog.Catalog:1 of
+msgid "Representation of a message catalog."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.__iter__:1 of
+msgid ""
+"Iterates through all the entries in the catalog, in the order they were "
+"added, yielding a `Message` object for every entry."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.__iter__ babel.messages.catalog.Catalog.check
+#: babel.messages.catalog.Message.check of
+msgid "Return type"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.__iter__:4
+#: babel.messages.catalog.Catalog.check:7
+#: babel.messages.catalog.Message.check:5 of
+msgid "``iterator``"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:1 of
+msgid "Add or update the message with the specified ID."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:9 of
+msgid ""
+"This method simply constructs a `Message` object with the given arguments"
+" and invokes `__setitem__` with that object."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add babel.messages.catalog.Catalog.delete
+#: babel.messages.catalog.Catalog.get babel.messages.catalog.Catalog.update
+#: babel.messages.catalog.Message.check of
+msgid "Parameters"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:12 of
+msgid ""
+"the message ID, or a ``(singular, plural)`` tuple for pluralizable "
+"messages"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:14 of
+msgid ""
+"the translated message string, or a ``(singular, plural)`` tuple for "
+"pluralizable messages"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:16 of
+msgid "a sequence of ``(filename, lineno)`` tuples"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:17 of
+msgid "a set or sequence of flags"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:18 of
+msgid "a sequence of automatic comments"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:19 of
+msgid "a sequence of user comments"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:20 of
+msgid ""
+"the previous message ID, or a ``(singular, plural)`` tuple for "
+"pluralizable messages"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:22 of
+msgid "the line number on which the msgid line was found in the PO file, if any"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.add:24 of
+msgid "the message context"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.check:1 of
+msgid "Run various validation checks on the translations in the catalog."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.check:3 of
+msgid ""
+"For every message which fails validation, this method yield a ``(message,"
+" errors)`` tuple, where ``message`` is the `Message` object and "
+"``errors`` is a sequence of `TranslationError` objects."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.delete:1 of
+msgid "Delete the message with the specified ID and context."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.delete:3 babel.messages.catalog.Catalog.get:3
+#: of
+msgid "the message ID"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.delete:4 babel.messages.catalog.Catalog.get:4
+#: of
+msgid "the message context, or ``None`` for no context"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.get:1 of
+msgid "Return the message with the specified ID and context."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.header_comment:1 of
+msgid "The header comment for the catalog."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.header_comment:12 of
+msgid ""
+"The header can also be set from a string. Any known upper-case variables "
+"will be replaced when the header is retrieved again:"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.header_comment
+#: babel.messages.catalog.Catalog.mime_headers
+#: babel.messages.catalog.Catalog.num_plurals
+#: babel.messages.catalog.Catalog.plural_expr
+#: babel.messages.catalog.Catalog.plural_forms
+#: babel.messages.catalog.Message.fuzzy
+#: babel.messages.catalog.Message.pluralizable
+#: babel.messages.catalog.Message.python_format of
+msgid "type"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.header_comment:30 of
+msgid "`unicode`"
+msgstr ""
+
+#: ../../docstring babel.messages.catalog.Catalog.language_team:1 of
+msgid "Name and email address of the language team."
+msgstr ""
+
+#: ../../docstring babel.messages.catalog.Catalog.last_translator:1 of
+msgid "Name and email address of the last translator."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.mime_headers:1 of
+msgid ""
+"The MIME headers of the catalog, used for the special ``msgid \"\"`` "
+"entry."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.mime_headers:3 of
+msgid ""
+"The behavior of this property changes slightly depending on whether a "
+"locale is set or not, the latter indicating that the catalog is actually "
+"a template for actual translations."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.mime_headers:7 of
+msgid "Here's an example of the output for such a catalog template:"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.mime_headers:26 of
+msgid "And here's an example of the output when the locale is set:"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.mime_headers:48 of
+msgid "`list`"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.num_plurals:1 of
+msgid "The number of plurals used by the catalog or locale."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.num_plurals:8 of
+msgid "`int`"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.plural_expr:1 of
+msgid "The plural expression used by the catalog or locale."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.plural_expr:10 of
+msgid "`string_types`"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.plural_forms:1 of
+msgid "Return the plural forms declaration for the locale."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.plural_forms:8 of
+msgid "`str`"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.update:1 of
+msgid "Update the catalog based on the given template catalog."
+msgstr ""
+
+#: babel.messages.catalog.Catalog.update:41 of
+msgid ""
+"Messages that are in the catalog but not in the template are removed from"
+" the main collection, but can still be accessed via the `obsolete` "
+"member:"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.update:50 of
+msgid "the reference catalog, usually read from a POT file"
+msgstr ""
+
+#: babel.messages.catalog.Catalog.update:51 of
+msgid "whether to use fuzzy matching of message IDs"
+msgstr ""
+
+#: ../../api/messages/catalog.rst:18
+msgid "Messages"
+msgstr ""
+
+#: babel.messages.catalog.Message:1 of
+msgid "Representation of a single message in a catalog."
+msgstr ""
+
+#: babel.messages.catalog.Message.check:1 of
+msgid ""
+"Run various validation checks on the message.  Some validations are only "
+"performed if the catalog is provided.  This method returns a sequence of "
+"`TranslationError` objects."
+msgstr ""
+
+#: babel.messages.catalog.Message.check:6 of
+msgid "A catalog instance that is passed to the checkers"
+msgstr ""
+
+#: babel.messages.catalog.Message.check of
+msgid "see"
+msgstr ""
+
+#: babel.messages.catalog.Message.check:7 of
+msgid "`Catalog.check` for a way to perform checks for all messages in a catalog."
+msgstr ""
+
+#: babel.messages.catalog.Message.fuzzy:1 of
+msgid "Whether the translation is fuzzy."
+msgstr ""
+
+#: babel.messages.catalog.Message.fuzzy:11
+#: babel.messages.catalog.Message.pluralizable:8
+#: babel.messages.catalog.Message.python_format:8 of
+msgid "`bool`"
+msgstr ""
+
+#: babel.messages.catalog.Message.pluralizable:1 of
+msgid "Whether the message is plurizable."
+msgstr ""
+
+#: babel.messages.catalog.Message.python_format:1 of
+msgid "Whether the message contains Python-style parameters."
+msgstr ""
+
+#: ../../api/messages/catalog.rst:24
+msgid "Exceptions"
+msgstr ""
+
+#: babel.messages.catalog.TranslationError:1 of
+msgid ""
+"Exception thrown by translation checkers when invalid message "
+"translations are encountered."
+msgstr ""
+

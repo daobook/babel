@@ -1,0 +1,604 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/dates.rst:2
+msgid "Date and Time"
+msgstr ""
+
+#: ../../api/dates.rst:6
+msgid ""
+"The date and time functionality provided by Babel lets you format "
+"standard Python `datetime`, `date` and `time` objects and work with "
+"timezones."
+msgstr ""
+
+#: ../../api/dates.rst:10
+msgid "Date and Time Formatting"
+msgstr ""
+
+#: babel.dates.format_date:1 babel.dates.format_datetime:1 of
+msgid "Return a date formatted according to the given pattern."
+msgstr ""
+
+#: babel.dates.format_datetime:7 of
+msgid ""
+"For any pattern requiring the display of the time-zone, the third-party "
+"``pytz`` package is needed to explicitly specify the time-zone:"
+msgstr ""
+
+#: babel.dates.format_date babel.dates.format_datetime
+#: babel.dates.format_interval babel.dates.format_skeleton
+#: babel.dates.format_time babel.dates.format_timedelta
+#: babel.dates.get_date_format babel.dates.get_datetime_format
+#: babel.dates.get_day_names babel.dates.get_era_names
+#: babel.dates.get_month_names babel.dates.get_next_timezone_transition
+#: babel.dates.get_period_names babel.dates.get_quarter_names
+#: babel.dates.get_time_format babel.dates.get_timezone
+#: babel.dates.get_timezone_gmt babel.dates.get_timezone_location
+#: babel.dates.get_timezone_name babel.dates.parse_date
+#: babel.dates.parse_pattern babel.dates.parse_time of
+msgid "Parameters"
+msgstr ""
+
+#: babel.dates.format_datetime:17 of
+msgid "the `datetime` object; if `None`, the current date and time is used"
+msgstr ""
+
+#: babel.dates.format_date:17 babel.dates.format_datetime:19
+#: babel.dates.format_time:50 of
+msgid ""
+"one of \"full\", \"long\", \"medium\", or \"short\", or a custom "
+"date/time pattern"
+msgstr ""
+
+#: babel.dates.format_datetime:21 of
+msgid "the timezone to apply to the time for display"
+msgstr ""
+
+#: babel.dates.format_date:19 babel.dates.format_datetime:22
+#: babel.dates.format_skeleton:29 babel.dates.format_time:53
+#: babel.dates.format_timedelta:54 babel.dates.parse_date:12
+#: babel.dates.parse_time:10 of
+msgid "a `Locale` object or a locale identifier"
+msgstr ""
+
+#: babel.dates.format_date:9 of
+msgid ""
+"If you don't want to use the locale default formats, you can specify a "
+"custom date pattern:"
+msgstr ""
+
+#: babel.dates.format_date:15 of
+msgid "the ``date`` or ``datetime`` object; if `None`, the current date is used"
+msgstr ""
+
+#: babel.dates.format_time:1 of
+msgid "Return a time formatted according to the given pattern."
+msgstr ""
+
+#: babel.dates.format_time:9 of
+msgid ""
+"If you don't want to use the locale default formats, you can specify a "
+"custom time pattern:"
+msgstr ""
+
+#: babel.dates.format_time:15 of
+msgid ""
+"For any pattern requiring the display of the time-zone a timezone has to "
+"be specified explicitly:"
+msgstr ""
+
+#: babel.dates.format_time:27 of
+msgid ""
+"As that example shows, when this function gets passed a "
+"``datetime.datetime`` value, the actual time in the formatted string is "
+"adjusted to the timezone specified by the `tzinfo` parameter. If the "
+"``datetime`` is \"naive\" (i.e. it has no associated timezone "
+"information), it is assumed to be in UTC."
+msgstr ""
+
+#: babel.dates.format_time:33 of
+msgid ""
+"These timezone calculations are **not** performed if the value is of type"
+" ``datetime.time``, as without date information there's no way to "
+"determine what a given time would translate to in a different timezone "
+"without information about whether daylight savings time is in effect or "
+"not. This means that time values are left as-is, and the value of the "
+"`tzinfo` parameter is only used to display the timezone name if needed:"
+msgstr ""
+
+#: babel.dates.format_skeleton:24 babel.dates.format_time:48 of
+msgid ""
+"the ``time`` or ``datetime`` object; if `None`, the current time in UTC "
+"is used"
+msgstr ""
+
+#: babel.dates.format_skeleton:26 babel.dates.format_time:52 of
+msgid "the time-zone to apply to the time for display"
+msgstr ""
+
+#: babel.dates.format_timedelta:1 of
+msgid "Return a time delta according to the rules of the given locale."
+msgstr ""
+
+#: babel.dates.format_timedelta:8 of
+msgid ""
+"The granularity parameter can be provided to alter the lowest unit "
+"presented, which defaults to a second."
+msgstr ""
+
+#: babel.dates.format_timedelta:15 of
+msgid ""
+"The threshold parameter can be used to determine at which value the "
+"presentation switches to the next higher unit. A higher threshold factor "
+"means the presentation will switch later. For example:"
+msgstr ""
+
+#: babel.dates.format_timedelta:24 of
+msgid ""
+"In addition directional information can be provided that informs the user"
+" if the date is in the past or in the future:"
+msgstr ""
+
+#: babel.dates.format_timedelta:32 of
+msgid "The format parameter controls how compact or wide the presentation is:"
+msgstr ""
+
+#: babel.dates.format_timedelta:39 of
+msgid ""
+"a ``timedelta`` object representing the time difference to format, or the"
+" delta in seconds as an `int` value"
+msgstr ""
+
+#: babel.dates.format_timedelta:41 of
+msgid ""
+"determines the smallest unit that should be displayed, the value can be "
+"one of \"year\", \"month\", \"week\", \"day\", \"hour\", \"minute\" or "
+"\"second\""
+msgstr ""
+
+#: babel.dates.format_timedelta:44 of
+msgid ""
+"factor that determines at which point the presentation switches to the "
+"next higher unit"
+msgstr ""
+
+#: babel.dates.format_timedelta:46 of
+msgid ""
+"if this flag is set to `True` the return value will include directional "
+"information.  For instance a positive timedelta will include the "
+"information about it being in the future, a negative will be information "
+"about the value being in the past."
+msgstr ""
+
+#: babel.dates.format_timedelta:51 of
+msgid ""
+"the format, can be \"narrow\", \"short\" or \"long\". ( \"medium\" is "
+"deprecated, currently converted to \"long\" to maintain compatibility)"
+msgstr ""
+
+#: babel.dates.format_skeleton:1 of
+msgid "Return a time and/or date formatted according to the given pattern."
+msgstr ""
+
+#: babel.dates.format_skeleton:3 of
+msgid ""
+"The skeletons are defined in the CLDR data and provide more flexibility "
+"than the simple short/long/medium formats, but are a bit harder to use. "
+"The are defined using the date/time symbols without order or punctuation "
+"and map to a suitable format for the given locale."
+msgstr ""
+
+#: babel.dates.format_skeleton:20 of
+msgid ""
+"After the skeleton is resolved to a pattern `format_datetime` is called "
+"so all timezone processing etc is the same as for that."
+msgstr ""
+
+#: babel.dates.format_skeleton:23 of
+msgid "A date time skeleton as defined in the cldr data."
+msgstr ""
+
+#: babel.dates.format_interval:35 babel.dates.format_skeleton:27 of
+msgid ""
+"If the skeleton is not found, allow choosing a skeleton that's close "
+"enough to it."
+msgstr ""
+
+#: babel.dates.format_interval:1 of
+msgid "Format an interval between two instants according to the locale's rules."
+msgstr ""
+
+#: babel.dates.format_interval:15 of
+msgid ""
+"If the start instant equals the end instant, the interval is formatted "
+"like the instant."
+msgstr ""
+
+#: babel.dates.format_interval:20 of
+msgid "Unknown skeletons fall back to \"default\" formatting."
+msgstr ""
+
+#: babel.dates.format_interval:31 of
+msgid "First instant (datetime/date/time)"
+msgstr ""
+
+#: babel.dates.format_interval:32 of
+msgid "Second instant (datetime/date/time)"
+msgstr ""
+
+#: babel.dates.format_interval:33 of
+msgid "The \"skeleton format\" to use for formatting."
+msgstr ""
+
+#: babel.dates.format_interval:34 of
+msgid "tzinfo to use (if none is already attached)"
+msgstr ""
+
+#: babel.dates.format_interval:37 of
+msgid "A locale object or identifier."
+msgstr ""
+
+#: babel.dates.format_interval babel.dates.get_timezone_location
+#: babel.dates.parse_time of
+msgid "Returns"
+msgstr ""
+
+#: babel.dates.format_interval:38 of
+msgid "Formatted interval"
+msgstr ""
+
+#: ../../api/dates.rst:25
+msgid "Timezone Functionality"
+msgstr ""
+
+#: babel.dates.get_timezone:1 of
+msgid ""
+"Looks up a timezone by name and returns it.  The timezone object returned"
+" comes from ``pytz`` and corresponds to the `tzinfo` interface and can be"
+" used with all of the functions of Babel that operate with dates."
+msgstr ""
+
+#: babel.dates.get_timezone:5 of
+msgid ""
+"If a timezone is not known a :exc:`LookupError` is raised.  If `zone` is "
+"``None`` a local zone object is returned."
+msgstr ""
+
+#: babel.dates.get_timezone:8 of
+msgid ""
+"the name of the timezone to look up.  If a timezone object itself is "
+"passed in, mit's returned unchanged."
+msgstr ""
+
+#: babel.dates.get_timezone_gmt:1 of
+msgid ""
+"Return the timezone associated with the given `datetime` object formatted"
+" as string indicating the offset from GMT."
+msgstr ""
+
+#: babel.dates.get_timezone_gmt:20 of
+msgid ""
+"The long format depends on the locale, for example in France the acronym "
+"UTC string is used instead of GMT:"
+msgstr ""
+
+#: babel.dates.get_timezone_gmt:28 of
+msgid ""
+"the ``datetime`` object; if `None`, the current date and time in UTC is "
+"used"
+msgstr ""
+
+#: babel.dates.get_timezone_gmt:30 of
+msgid "either \"long\" or \"short\" or \"iso8601\" or \"iso8601_short\""
+msgstr ""
+
+#: babel.dates.get_date_format:11 babel.dates.get_datetime_format:9
+#: babel.dates.get_day_names:14 babel.dates.get_era_names:9
+#: babel.dates.get_month_names:12 babel.dates.get_period_names:8
+#: babel.dates.get_quarter_names:12 babel.dates.get_time_format:11
+#: babel.dates.get_timezone_gmt:31 babel.dates.get_timezone_location:29
+#: babel.dates.get_timezone_name:66 of
+msgid "the `Locale` object, or a locale string"
+msgstr ""
+
+#: babel.dates.get_timezone_gmt:32 of
+msgid ""
+"True or False; Function returns indicator \"Z\" when local time offset is"
+" 0"
+msgstr ""
+
+#: babel.dates.get_timezone_location:1 of
+msgid "Return a representation of the given timezone using \"location format\"."
+msgstr ""
+
+#: babel.dates.get_timezone_location:3 of
+msgid ""
+"The result depends on both the local display name of the country and the "
+"city associated with the time zone:"
+msgstr ""
+
+#: babel.dates.get_timezone_location:17 of
+msgid ""
+"If the timezone is associated with a country that uses only a single "
+"timezone, just the localized country name is returned:"
+msgstr ""
+
+#: babel.dates.get_timezone_location:26 of
+msgid ""
+"the ``datetime`` or ``tzinfo`` object that determines the timezone; if "
+"`None`, the current date and time in UTC is assumed"
+msgstr ""
+
+#: babel.dates.get_timezone_location:30 of
+msgid ""
+"True or False, if True then return exemplar city (location) for the time "
+"zone"
+msgstr ""
+
+#: babel.dates.get_timezone_location:32 of
+msgid "the localized timezone name using location format"
+msgstr ""
+
+#: babel.dates.get_timezone_name:1 of
+msgid ""
+"Return the localized display name for the given timezone. The timezone "
+"may be specified using a ``datetime`` or `tzinfo` object."
+msgstr ""
+
+#: babel.dates.get_timezone_name:12 of
+msgid ""
+"If this function gets passed only a `tzinfo` object and no concrete "
+"`datetime`,  the returned display name is indenpendent of daylight "
+"savings time. This can be used for example for selecting timezones, or to"
+" set the time of events that recur across DST changes:"
+msgstr ""
+
+#: babel.dates.get_timezone_name:23 of
+msgid ""
+"If no localized display name for the timezone is available, and the "
+"timezone is associated with a country that uses only a single timezone, "
+"the name of that country is returned, formatted according to the locale:"
+msgstr ""
+
+#: babel.dates.get_timezone_name:33 of
+msgid ""
+"On the other hand, if the country uses multiple timezones, the city is "
+"also included in the representation:"
+msgstr ""
+
+#: babel.dates.get_timezone_name:40 of
+msgid ""
+"Note that short format is currently not supported for all timezones and "
+"all locales.  This is partially because not every timezone has a short "
+"code in every locale.  In that case it currently falls back to the long "
+"format."
+msgstr ""
+
+#: babel.dates.get_timezone_name:45 of
+msgid ""
+"For more information see `LDML Appendix J: Time Zone Display Names "
+"<https://www.unicode.org/reports/tr35/#Time_Zone_Fallback>`_"
+msgstr ""
+
+#: babel.dates.get_timezone_name:50 of
+msgid "Added `zone_variant` support."
+msgstr ""
+
+#: babel.dates.get_timezone_name:53 of
+msgid ""
+"the ``datetime`` or ``tzinfo`` object that determines the timezone; if a "
+"``tzinfo`` object is used, the resulting display name will be generic, "
+"i.e. independent of daylight savings time; if `None`, the current date in"
+" UTC is assumed"
+msgstr ""
+
+#: babel.dates.get_timezone_name:58 of
+msgid "either \"long\" or \"short\""
+msgstr ""
+
+#: babel.dates.get_timezone_name:59 of
+msgid "deprecated and ignored"
+msgstr ""
+
+#: babel.dates.get_timezone_name:60 of
+msgid ""
+"defines the zone variation to return.  By default the variation is "
+"defined from the datetime object passed in.  If no datetime object is "
+"passed in, the ``'generic'`` variation is assumed.  The following values "
+"are valid: ``'generic'``, ``'daylight'`` and ``'standard'``."
+msgstr ""
+
+#: babel.dates.get_timezone_name:67 of
+msgid "True or False. If true then function returns long time zone ID"
+msgstr ""
+
+#: babel.dates.get_next_timezone_transition:1 of
+msgid ""
+"Given a timezone it will return a :class:`TimezoneTransition` object that"
+" holds the information about the next timezone transition that's going to"
+" happen.  For instance this can be used to detect when the next DST "
+"change is going to happen and how it looks like."
+msgstr ""
+
+#: babel.dates.get_next_timezone_transition:6 of
+msgid ""
+"The transition is calculated relative to the given datetime object.  The "
+"next transition that follows the date is used.  If a transition cannot be"
+" found the return value will be `None`."
+msgstr ""
+
+#: babel.dates.get_next_timezone_transition:10 of
+msgid ""
+"Transition information can only be provided for timezones returned by the"
+" :func:`get_timezone` function."
+msgstr ""
+
+#: babel.dates.get_next_timezone_transition:13 of
+msgid ""
+"the timezone for which the transition should be looked up. If not "
+"provided the local timezone is used."
+msgstr ""
+
+#: babel.dates.get_next_timezone_transition:15 of
+msgid ""
+"the date after which the next transition should be found. If not given "
+"the current time is assumed."
+msgstr ""
+
+#: ../../api/dates.rst:39
+msgid "A timezone object for UTC."
+msgstr ""
+
+#: ../../api/dates.rst:43
+msgid "A timezone object for the computer's local timezone."
+msgstr ""
+
+#: ../../api/dates.rst:46
+msgid "Data Access"
+msgstr ""
+
+#: babel.dates.get_period_names:1 of
+msgid "Return the names for day periods (AM/PM) used by the locale."
+msgstr ""
+
+#: babel.dates.get_period_names:6 of
+msgid "the width to use, one of \"abbreviated\", \"narrow\", or \"wide\""
+msgstr ""
+
+#: babel.dates.get_day_names:13 babel.dates.get_month_names:11
+#: babel.dates.get_period_names:7 babel.dates.get_quarter_names:11 of
+msgid "the context, either \"format\" or \"stand-alone\""
+msgstr ""
+
+#: babel.dates.get_day_names:1 of
+msgid "Return the day names used by the locale for the specified format."
+msgstr ""
+
+#: babel.dates.get_day_names:12 of
+msgid ""
+"the width to use, one of \"wide\", \"abbreviated\", \"short\" or "
+"\"narrow\""
+msgstr ""
+
+#: babel.dates.get_month_names:1 of
+msgid "Return the month names used by the locale for the specified format."
+msgstr ""
+
+#: babel.dates.get_month_names:10 babel.dates.get_quarter_names:10 of
+msgid "the width to use, one of \"wide\", \"abbreviated\", or \"narrow\""
+msgstr ""
+
+#: babel.dates.get_quarter_names:1 of
+msgid "Return the quarter names used by the locale for the specified format."
+msgstr ""
+
+#: babel.dates.get_era_names:1 of
+msgid "Return the era names used by the locale for the specified format."
+msgstr ""
+
+#: babel.dates.get_era_names:8 of
+msgid "the width to use, either \"wide\", \"abbreviated\", or \"narrow\""
+msgstr ""
+
+#: babel.dates.get_date_format:1 of
+msgid ""
+"Return the date formatting patterns used by the locale for the specified "
+"format."
+msgstr ""
+
+#: babel.dates.get_date_format:9 babel.dates.get_datetime_format:7
+#: babel.dates.get_time_format:9 of
+msgid "the format to use, one of \"full\", \"long\", \"medium\", or \"short\""
+msgstr ""
+
+#: babel.dates.get_datetime_format:1 of
+msgid ""
+"Return the datetime formatting patterns used by the locale for the "
+"specified format."
+msgstr ""
+
+#: babel.dates.get_time_format:1 of
+msgid ""
+"Return the time formatting patterns used by the locale for the specified "
+"format."
+msgstr ""
+
+#: ../../api/dates.rst:65
+msgid "Basic Parsing"
+msgstr ""
+
+#: babel.dates.parse_date:1 of
+msgid "Parse a date from a string."
+msgstr ""
+
+#: babel.dates.parse_date:3 of
+msgid ""
+"This function uses the date format for the locale as a hint to determine "
+"the order in which the date fields appear in the string."
+msgstr ""
+
+#: babel.dates.parse_date:11 of
+msgid "the string containing the date"
+msgstr ""
+
+#: babel.dates.parse_time:1 of
+msgid "Parse a time from a string."
+msgstr ""
+
+#: babel.dates.parse_time:3 of
+msgid ""
+"This function uses the time format for the locale as a hint to determine "
+"the order in which the time fields appear in the string."
+msgstr ""
+
+#: babel.dates.parse_time:9 of
+msgid "the string containing the time"
+msgstr ""
+
+#: babel.dates.parse_time:11 of
+msgid "the parsed time"
+msgstr ""
+
+#: babel.dates.parse_time of
+msgid "Return type"
+msgstr ""
+
+#: babel.dates.parse_time:12 of
+msgid "`time`"
+msgstr ""
+
+#: babel.dates.parse_pattern:1 of
+msgid "Parse date, time, and datetime format patterns."
+msgstr ""
+
+#: babel.dates.parse_pattern:8 of
+msgid "Pattern can contain literal strings in single quotes:"
+msgstr ""
+
+#: babel.dates.parse_pattern:13 of
+msgid ""
+"An actual single quote can be used by using two adjacent single quote "
+"characters:"
+msgstr ""
+
+#: babel.dates.parse_pattern:19 of
+msgid "the formatting pattern to parse"
+msgstr ""
+

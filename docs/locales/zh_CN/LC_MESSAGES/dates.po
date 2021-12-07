@@ -1,0 +1,581 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../dates.rst:7
+msgid "Date and Time"
+msgstr ""
+
+#: ../../dates.rst:10
+msgid ""
+"When working with date and time information in Python, you commonly use "
+"the classes ``date``, ``datetime`` and/or ``time`` from the `datetime` "
+"package. Babel provides functions for locale-specific formatting of those"
+" objects in its ``dates`` module:"
+msgstr ""
+
+#: ../../dates.rst:26
+msgid ""
+"As this example demonstrates, Babel will automatically choose a date "
+"format that is appropriate for the requested locale."
+msgstr ""
+
+#: ../../dates.rst:29
+msgid ""
+"The ``format_*()`` functions also accept an optional ``format`` argument,"
+" which allows you to choose between one of four format variations:"
+msgstr ""
+
+#: ../../dates.rst:32
+msgid "``short``,"
+msgstr ""
+
+#: ../../dates.rst:33
+msgid "``medium`` (the default),"
+msgstr ""
+
+#: ../../dates.rst:34
+msgid "``long``, and"
+msgstr ""
+
+#: ../../dates.rst:35
+msgid "``full``."
+msgstr ""
+
+#: ../../dates.rst:37 ../../dates.rst:102
+msgid "For example:"
+msgstr ""
+
+#: ../../dates.rst:49
+msgid "Core Time Concepts"
+msgstr ""
+
+#: ../../dates.rst:51
+msgid ""
+"Working with dates and time can be a complicated thing.  Babel attempts "
+"to simplify working with them by making some decisions for you.  Python's"
+" datetime module has different ways to deal with times and dates: naive "
+"and timezone-aware datetime objects."
+msgstr ""
+
+#: ../../dates.rst:56
+msgid ""
+"Babel generally recommends you to store all your time in naive datetime "
+"objects and treat them as UTC at all times.  This simplifies dealing with"
+" time a lot because otherwise you can get into the hairy situation where "
+"you are dealing with datetime objects of different timezones.  That is "
+"tricky because there are situations where time can be ambiguous.  This is"
+" usually the case when dealing with dates around timezone transitions.  "
+"The most common case of timezone transition is changes between daylight "
+"saving time and standard time."
+msgstr ""
+
+#: ../../dates.rst:65
+msgid ""
+"As such we recommend to always use UTC internally and only reformat to "
+"local time when returning dates to users.  At that point the timezone the"
+" user has selected can usually be established and Babel can automatically"
+" rebase the time for you."
+msgstr ""
+
+#: ../../dates.rst:70
+msgid ""
+"To get the current time use the :meth:`~datetime.datetime.utcnow` method "
+"of the :class:`~datetime.datetime` object.  It will return a naive "
+":class:`~datetime.datetime` object in UTC."
+msgstr ""
+
+#: ../../dates.rst:74
+msgid "For more information about timezones see :ref:`timezone-support`."
+msgstr ""
+
+#: ../../dates.rst:77
+msgid "Pattern Syntax"
+msgstr ""
+
+#: ../../dates.rst:79
+msgid ""
+"While Babel makes it simple to use the appropriate date/time format for a"
+" given locale, you can also force it to use custom patterns. Note that "
+"Babel uses different patterns for specifying number and date formats "
+"compared to the Python equivalents (such as ``time.strftime()``), which "
+"have mostly been inherited from C and POSIX. The patterns used in Babel "
+"are based on the `Locale Data Markup Language specification`_ (LDML), "
+"which defines them as follows:"
+msgstr ""
+
+#: ../../dates.rst:87
+msgid ""
+"A date/time pattern is a string of characters, where specific strings of "
+"characters are replaced with date and time data from a calendar when "
+"formatting or used to generate data for a calendar when parsing. […]"
+msgstr ""
+
+#: ../../dates.rst:91
+msgid ""
+"Characters may be used multiple times. For example, if ``y`` is used for "
+"the year, ``yy`` might produce \"99\", whereas ``yyyy`` produces "
+"\"1999\". For most numerical fields, the number of characters specifies "
+"the field width. For example, if ``h`` is the hour, ``h`` might produce "
+"\"5\", but ``hh`` produces \"05\". For some characters, the count "
+"specifies whether an abbreviated or full form should be used […]"
+msgstr ""
+
+#: ../../dates.rst:98
+msgid ""
+"Two single quotes represent a literal single quote, either inside or "
+"outside single quotes. Text within single quotes is not interpreted in "
+"any way (except for two adjacent single quotes)."
+msgstr ""
+
+#: ../../dates.rst:122
+msgid ""
+"The syntax for custom datetime format patterns is described in detail in "
+"the the `Locale Data Markup Language specification`_. The following table"
+" is just a relatively brief overview."
+msgstr ""
+
+#: ../../dates.rst:130
+msgid "Date Fields"
+msgstr ""
+
+#: ../../dates.rst:133 ../../dates.rst:193
+msgid "Field"
+msgstr ""
+
+#: ../../dates.rst:133 ../../dates.rst:193
+msgid "Symbol"
+msgstr ""
+
+#: ../../dates.rst:133 ../../dates.rst:193
+msgid "Description"
+msgstr ""
+
+#: ../../dates.rst:135
+msgid "Era"
+msgstr ""
+
+#: ../../dates.rst:135
+msgid "``G``"
+msgstr ""
+
+#: ../../dates.rst:135
+msgid ""
+"Replaced with the era string for the current date. One to three letters "
+"for the abbreviated form, four lettersfor the long form, five for the "
+"narrow form"
+msgstr ""
+
+#: ../../dates.rst:139
+msgid "Year"
+msgstr ""
+
+#: ../../dates.rst:139
+msgid "``y``"
+msgstr ""
+
+#: ../../dates.rst:139
+msgid ""
+"Replaced by the year. Normally the length specifies the padding, but for "
+"two letters it also specifies the maximum length."
+msgstr ""
+
+#: ../../dates.rst:143
+msgid "``Y``"
+msgstr ""
+
+#: ../../dates.rst:143
+msgid ""
+"Same as ``y`` but uses the ISO year-week calendar. ISO year-week "
+"increments after completing the last week of the year. Therefore it may "
+"change a few days before or after ``y``. Recommend use with the ``w`` "
+"Symbol."
+msgstr ""
+
+#: ../../dates.rst:148
+msgid "``u``"
+msgstr ""
+
+#: ../../dates.rst:148 ../../dates.rst:176 ../../dates.rst:186
+msgid "??"
+msgstr ""
+
+#: ../../dates.rst:150
+msgid "Quarter"
+msgstr ""
+
+#: ../../dates.rst:150
+msgid "``Q``"
+msgstr ""
+
+#: ../../dates.rst:150 ../../dates.rst:153
+msgid ""
+"Use one or two for the numerical quarter, three for the abbreviation, or "
+"four for the full name."
+msgstr ""
+
+#: ../../dates.rst:153
+msgid "``q``"
+msgstr ""
+
+#: ../../dates.rst:156
+msgid "Month"
+msgstr ""
+
+#: ../../dates.rst:156
+msgid "``M``"
+msgstr ""
+
+#: ../../dates.rst:156
+msgid ""
+"Use one or two for the numerical month, three for the abbreviation, or "
+"four for the full name, or five for the narrow name."
+msgstr ""
+
+#: ../../dates.rst:160
+msgid "``L``"
+msgstr ""
+
+#: ../../dates.rst:160
+msgid ""
+"Use one or two for the numerical month, three for the abbreviation, or "
+"four for the full name, or 5 for the narrow name."
+msgstr ""
+
+#: ../../dates.rst:164
+msgid "Week"
+msgstr ""
+
+#: ../../dates.rst:164
+msgid "``w``"
+msgstr ""
+
+#: ../../dates.rst:164
+msgid ""
+"Week of year according to the ISO year-week calendar. This may have 52 or"
+" 53 weeks depending on the year. Recommend use with the ``Y`` symbol."
+msgstr ""
+
+#: ../../dates.rst:168
+msgid "``W``"
+msgstr ""
+
+#: ../../dates.rst:168
+msgid "Week of month."
+msgstr ""
+
+#: ../../dates.rst:170
+msgid "Day"
+msgstr ""
+
+#: ../../dates.rst:170
+msgid "``d``"
+msgstr ""
+
+#: ../../dates.rst:170
+msgid "Day of month."
+msgstr ""
+
+#: ../../dates.rst:172
+msgid "``D``"
+msgstr ""
+
+#: ../../dates.rst:172
+msgid "Day of year."
+msgstr ""
+
+#: ../../dates.rst:174
+msgid "``F``"
+msgstr ""
+
+#: ../../dates.rst:174
+msgid "Day of week in month."
+msgstr ""
+
+#: ../../dates.rst:176
+msgid "``g``"
+msgstr ""
+
+#: ../../dates.rst:178
+msgid "Week day"
+msgstr ""
+
+#: ../../dates.rst:178
+msgid "``E``"
+msgstr ""
+
+#: ../../dates.rst:178
+msgid ""
+"Day of week. Use one through three letters for the short day, or four for"
+" the full name, or five for the narrow name."
+msgstr ""
+
+#: ../../dates.rst:182
+msgid "``e``"
+msgstr ""
+
+#: ../../dates.rst:182
+msgid ""
+"Local day of week. Same as E except adds a numeric value that will depend"
+" on the local starting day of the week, using one or two letters."
+msgstr ""
+
+#: ../../dates.rst:186
+msgid "``c``"
+msgstr ""
+
+#: ../../dates.rst:190
+msgid "Time Fields"
+msgstr ""
+
+#: ../../dates.rst:195
+msgid "Period"
+msgstr ""
+
+#: ../../dates.rst:195
+msgid "``a``"
+msgstr ""
+
+#: ../../dates.rst:195
+msgid "AM or PM"
+msgstr ""
+
+#: ../../dates.rst:197
+msgid "Hour"
+msgstr ""
+
+#: ../../dates.rst:197
+msgid "``h``"
+msgstr ""
+
+#: ../../dates.rst:197
+msgid "Hour [1-12]."
+msgstr ""
+
+#: ../../dates.rst:199
+msgid "``H``"
+msgstr ""
+
+#: ../../dates.rst:199
+msgid "Hour [0-23]."
+msgstr ""
+
+#: ../../dates.rst:201
+msgid "``K``"
+msgstr ""
+
+#: ../../dates.rst:201
+msgid "Hour [0-11]."
+msgstr ""
+
+#: ../../dates.rst:203
+msgid "``k``"
+msgstr ""
+
+#: ../../dates.rst:203
+msgid "Hour [1-24]."
+msgstr ""
+
+#: ../../dates.rst:205
+msgid "Minute"
+msgstr ""
+
+#: ../../dates.rst:205
+msgid "``m``"
+msgstr ""
+
+#: ../../dates.rst:205 ../../dates.rst:207
+msgid "Use one or two for zero places padding."
+msgstr ""
+
+#: ../../dates.rst:207
+msgid "Second"
+msgstr ""
+
+#: ../../dates.rst:207
+msgid "``s``"
+msgstr ""
+
+#: ../../dates.rst:209
+msgid "``S``"
+msgstr ""
+
+#: ../../dates.rst:209
+msgid "Fractional second, rounds to the count of letters."
+msgstr ""
+
+#: ../../dates.rst:211
+msgid "``A``"
+msgstr ""
+
+#: ../../dates.rst:211
+msgid "Milliseconds in day."
+msgstr ""
+
+#: ../../dates.rst:213
+msgid "Timezone"
+msgstr ""
+
+#: ../../dates.rst:213
+msgid "``z``"
+msgstr ""
+
+#: ../../dates.rst:213
+msgid "Use one to three letters for the short timezone or four for the full name."
+msgstr ""
+
+#: ../../dates.rst:216
+msgid "``Z``"
+msgstr ""
+
+#: ../../dates.rst:216
+msgid "Use one to three letters for RFC 822, four letters for GMT format."
+msgstr ""
+
+#: ../../dates.rst:219
+msgid "``v``"
+msgstr ""
+
+#: ../../dates.rst:219
+msgid "Use one letter for short wall (generic) time, four for long wall time."
+msgstr ""
+
+#: ../../dates.rst:222
+msgid "``V``"
+msgstr ""
+
+#: ../../dates.rst:222
+msgid ""
+"Same as ``z``, except that timezone abbreviations should be used "
+"regardless of whether they are in common use by the locale."
+msgstr ""
+
+#: ../../dates.rst:229
+msgid "Time Delta Formatting"
+msgstr ""
+
+#: ../../dates.rst:231
+msgid ""
+"In addition to providing functions for formatting localized dates and "
+"times, the ``babel.dates`` module also provides a function to format the "
+"difference between two times, called a ''time delta''. These are usually "
+"represented as ``datetime.timedelta`` objects in Python, and it's also "
+"what you get when you subtract one ``datetime`` object from an other."
+msgstr ""
+
+#: ../../dates.rst:237
+msgid ""
+"The ``format_timedelta`` function takes a ``timedelta`` object and "
+"returns a human-readable representation. This happens at the cost of "
+"precision, as it chooses only the most significant unit (such as year, "
+"week, or hour) of the difference, and displays that:"
+msgstr ""
+
+#: ../../dates.rst:250
+msgid ""
+"The resulting strings are based from the CLDR data, and are properly "
+"pluralized depending on the plural rules of the locale and the calculated"
+" number of units."
+msgstr ""
+
+#: ../../dates.rst:254
+msgid ""
+"The function provides parameters for you to influence how this most "
+"significant unit is chosen: with ``threshold`` you set the value after "
+"which the presentation switches to the next larger unit, and with "
+"``granularity`` you can limit the smallest unit to display:"
+msgstr ""
+
+#: ../../dates.rst:270
+msgid "Time-zone Support"
+msgstr ""
+
+#: ../../dates.rst:272
+msgid ""
+"Many of the verbose time formats include the time-zone, but time-zone "
+"information is not by default available for the Python ``datetime`` and "
+"``time`` objects. The standard library includes only the abstract "
+"``tzinfo`` class, which you need appropriate implementations for to "
+"actually use in your application. Babel includes a ``tzinfo`` "
+"implementation for UTC (Universal Time)."
+msgstr ""
+
+#: ../../dates.rst:279
+msgid ""
+"Babel uses `pytz`_ for real timezone support which includes the "
+"definitions of practically all of the time-zones used on the world, as "
+"well as important functions for reliably converting from UTC to local "
+"time, and vice versa.  The module is generally wrapped for you so you can"
+" directly interface with it from within Babel:"
+msgstr ""
+
+#: ../../dates.rst:294
+msgid ""
+"The recommended approach to deal with different time-zones in a Python "
+"application is to always use UTC internally, and only convert from/to the"
+" users time-zone when accepting user input and displaying date/time data,"
+" respectively. You can use Babel together with ``pytz`` to apply a time-"
+"zone to any ``datetime`` or ``time`` object for display, leaving the "
+"original information unchanged:"
+msgstr ""
+
+#: ../../dates.rst:307
+msgid ""
+"Here, the given UTC time is adjusted to the \"Europe/London\" time-zone, "
+"and daylight savings time is taken into account. Daylight savings time is"
+" also applied to ``format_time``, but because the actual date is unknown "
+"in that case, the current day is assumed to determine whether DST or "
+"standard time should be used."
+msgstr ""
+
+#: ../../dates.rst:313
+msgid ""
+"For many timezones it's also possible to ask for the next timezone "
+"transition.  This for instance is useful to answer the question “when do "
+"I have to move the clock forward next”:"
+msgstr ""
+
+#: ../../dates.rst:331
+msgid ""
+"Lastly Babel also provides support for working with the local timezone of"
+" your operating system.  It's provided through the ``LOCALTZ`` constant:"
+msgstr ""
+
+#: ../../dates.rst:346
+msgid "Localized Time-zone Names"
+msgstr ""
+
+#: ../../dates.rst:348
+msgid ""
+"While the ``Locale`` class provides access to various locale display "
+"names related to time-zones, the process of building a localized name of "
+"a time-zone is actually quite complicated. Babel implements it in "
+"separately usable functions in the ``babel.dates`` module, most "
+"importantly the ``get_timezone_name`` function:"
+msgstr ""
+
+#: ../../dates.rst:363
+msgid ""
+"You can pass the function either a ``datetime.tzinfo`` object, or a "
+"``datetime.date`` or ``datetime.datetime`` object. If you pass an actual "
+"date, the function will be able to take daylight savings time into "
+"account. If you pass just the time-zone, Babel does not know whether "
+"daylight savings time is in effect, so it uses a generic representation, "
+"which is useful for example to display a list of time-zones to the user."
+msgstr ""
+

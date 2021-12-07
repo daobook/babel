@@ -1,0 +1,107 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../cmdline.rst:7
+msgid "Command-Line Interface"
+msgstr ""
+
+#: ../../cmdline.rst:9
+msgid ""
+"Babel includes a command-line interface for working with message "
+"catalogs, similar to the various GNU ``gettext`` tools commonly available"
+" on Linux/Unix systems."
+msgstr ""
+
+#: ../../cmdline.rst:14
+msgid "When properly installed, Babel provides a script called ``pybabel``::"
+msgstr ""
+
+#: ../../cmdline.rst:32
+msgid ""
+"The ``pybabel`` script provides a number of sub-commands that do the "
+"actual work. Those sub-commands are described below."
+msgstr ""
+
+#: ../../cmdline.rst:37
+msgid "compile"
+msgstr ""
+
+#: ../../cmdline.rst:39
+msgid ""
+"The ``compile`` sub-command can be used to compile translation catalogs "
+"into binary MO files::"
+msgstr ""
+
+#: ../../cmdline.rst:63
+msgid ""
+"If ``directory`` is specified, but ``output-file`` is not, the default "
+"filename of the output file will be::"
+msgstr ""
+
+#: ../../cmdline.rst:68
+msgid ""
+"If neither the ``input_file`` nor the ``locale`` option is set, this "
+"command looks for all catalog files in the base directory that match the "
+"given domain, and compiles each of them to MO files in the same "
+"directory."
+msgstr ""
+
+#: ../../cmdline.rst:74
+msgid "extract"
+msgstr ""
+
+#: ../../cmdline.rst:76
+msgid ""
+"The ``extract`` sub-command can be used to extract localizable messages "
+"from a collection of source files::"
+msgstr ""
+
+#: ../../cmdline.rst:116
+msgid "init"
+msgstr ""
+
+#: ../../cmdline.rst:118
+msgid ""
+"The `init` sub-command creates a new translations catalog based on a PO "
+"template file::"
+msgstr ""
+
+#: ../../cmdline.rst:142
+msgid "update"
+msgstr ""
+
+#: ../../cmdline.rst:144
+msgid ""
+"The `update` sub-command updates an existing new translations catalog "
+"based on a PO template file::"
+msgstr ""
+
+#: ../../cmdline.rst:172
+msgid ""
+"If ``output_dir`` is specified, but ``output-file`` is not, the default "
+"filename of the output file will be::"
+msgstr ""
+
+#: ../../cmdline.rst:177
+msgid ""
+"If neither the ``output_file`` nor the ``locale`` option is set, this "
+"command looks for all catalog files in the base directory that match the "
+"given domain, and updates each of them."
+msgstr ""
+

@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/messages/pofile.rst:2
+msgid "PO File Support"
+msgstr ""
+
+#: ../../api/messages/pofile.rst:6
+msgid ""
+"The PO file support can read and write PO and POT files.  It reads them "
+"into :class:`~babel.messages.catalog.Catalog` objects and also writes "
+"catalogs out."
+msgstr ""
+
+#: babel.messages.pofile.read_po:1 of
+msgid ""
+"Read messages from a ``gettext`` PO (portable object) file from the given"
+" file-like object and return a `Catalog`."
+msgstr ""
+
+#: babel.messages.pofile.read_po:35 of
+msgid "Added support for explicit charset argument."
+msgstr ""
+
+#: babel.messages.pofile.read_po babel.messages.pofile.write_po of
+msgid "Parameters"
+msgstr ""
+
+#: babel.messages.pofile.read_po:38 of
+msgid "the file-like object to read the PO file from"
+msgstr ""
+
+#: babel.messages.pofile.read_po:39 of
+msgid ""
+"the locale identifier or `Locale` object, or `None` if the catalog is not"
+" bound to a locale (which basically means it's a template)"
+msgstr ""
+
+#: babel.messages.pofile.read_po:42 of
+msgid "the message domain"
+msgstr ""
+
+#: babel.messages.pofile.read_po:43 of
+msgid "whether to ignore obsolete messages in the input"
+msgstr ""
+
+#: babel.messages.pofile.read_po:44 of
+msgid "the character set of the catalog."
+msgstr ""
+
+#: babel.messages.pofile.read_po:45 of
+msgid "abort read if po file is invalid"
+msgstr ""
+
+#: babel.messages.pofile.write_po:1 of
+msgid ""
+"Write a ``gettext`` PO (portable object) template file for a given "
+"message catalog to the provided file-like object."
+msgstr ""
+
+#: babel.messages.pofile.write_po:27 of
+msgid "the file-like object to write to"
+msgstr ""
+
+#: babel.messages.pofile.write_po:28 of
+msgid "the `Catalog` instance"
+msgstr ""
+
+#: babel.messages.pofile.write_po:29 of
+msgid ""
+"the maximum line width for the generated output; use `None`, 0, or a "
+"negative number to completely disable line wrapping"
+msgstr ""
+
+#: babel.messages.pofile.write_po:31 of
+msgid "do not emit a location comment for every message"
+msgstr ""
+
+#: babel.messages.pofile.write_po:32 of
+msgid "do not include the ``msgid \"\"`` entry at the top of the output"
+msgstr ""
+
+#: babel.messages.pofile.write_po:34 of
+msgid "whether to sort the messages in the output by msgid"
+msgstr ""
+
+#: babel.messages.pofile.write_po:35 of
+msgid "whether to sort the messages in the output by their locations"
+msgstr ""
+
+#: babel.messages.pofile.write_po:37 of
+msgid ""
+"whether to ignore obsolete messages and not include them in the output; "
+"by default they are included as comments"
+msgstr ""
+
+#: babel.messages.pofile.write_po:40 of
+msgid "include the old msgid as a comment when updating the catalog"
+msgstr ""
+
+#: babel.messages.pofile.write_po:42 of
+msgid "include line number in the location comment"
+msgstr ""
+

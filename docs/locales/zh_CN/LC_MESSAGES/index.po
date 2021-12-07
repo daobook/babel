@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../index.rst:4
+msgid "Babel"
+msgstr ""
+
+#: ../../index.rst:6
+msgid ""
+"Babel is an integrated collection of utilities that assist in "
+"internationalizing and localizing Python applications, with an emphasis "
+"on web-based applications."
+msgstr ""
+"Babel 是一个综合的实用程序集合，协助 Python 应用程序的国际化和本地化，重点是基于网络的应用程序。"
+
+#: ../../index.rst:11
+msgid "User Documentation"
+msgstr "用户文档"
+
+#: ../../index.rst:13
+msgid ""
+"The user documentation explains some core concept of the library and "
+"gives some information about how it can be used."
+msgstr ""
+"用户文档解释了库的一些核心概念，并给出了一些关于如何使用它的信息。"
+
+#: ../../index.rst:30
+msgid "API Reference"
+msgstr "API 参考"
+
+#: ../../index.rst:32
+msgid "The API reference lists the full public API that Babel provides."
+msgstr "API 参考中列出了 Babel 提供的全部公共 API。"
+
+#: ../../index.rst:40
+msgid "Additional Notes"
+msgstr "补充说明"
+

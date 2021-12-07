@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/units.rst:2
+msgid "Units"
+msgstr ""
+
+#: ../../api/units.rst:6
+msgid ""
+"The unit module provides functionality to format measurement units for "
+"different locales."
+msgstr ""
+
+#: babel.units.format_unit:1 of
+msgid "Format a value of a given unit."
+msgstr ""
+
+#: babel.units.format_unit:3 of
+msgid ""
+"Values are formatted according to the locale's usual pluralization rules "
+"and number formats."
+msgstr ""
+
+#: babel.units.format_unit:15 of
+msgid "Number formats may be overridden with the ``format`` parameter."
+msgstr ""
+
+#: babel.units.format_unit:21 of
+msgid "The locale's usual pluralization rules are respected."
+msgstr ""
+
+#: babel.units.format_compound_unit babel.units.format_unit
+#: babel.units.get_unit_name of
+msgid "Parameters"
+msgstr ""
+
+#: babel.units.format_unit:39 of
+msgid ""
+"the value to format. If this is a string, no number formatting will be "
+"attempted."
+msgstr ""
+
+#: babel.units.format_unit:40 babel.units.get_unit_name:13 of
+msgid ""
+"the code of a measurement unit. Known units can be found in the CLDR Unit"
+" Validity XML file: "
+"https://unicode.org/repos/cldr/tags/latest/common/validity/unit.xml"
+msgstr ""
+
+#: babel.units.format_unit:43 babel.units.get_unit_name:17 of
+msgid "\"short\", \"long\" or \"narrow\""
+msgstr ""
+
+#: babel.units.format_compound_unit:40 babel.units.format_unit:44 of
+msgid "An optional format, as accepted by `format_decimal`."
+msgstr ""
+
+#: babel.units.format_compound_unit:41 babel.units.format_unit:45
+#: babel.units.get_unit_name:18 of
+msgid "the `Locale` object or locale identifier"
+msgstr ""
+
+#: babel.units.format_compound_unit:1 of
+msgid "Format a compound number value, i.e. \"kilometers per hour\" or similar."
+msgstr ""
+
+#: babel.units.format_compound_unit:3 of
+msgid ""
+"Both unit specifiers are optional to allow for formatting of arbitrary "
+"values still according to the locale's general \"per\" formatting "
+"specifier."
+msgstr ""
+
+#: babel.units.format_compound_unit:31 of
+msgid "See https://www.unicode.org/reports/tr35/tr35-general.html#perUnitPatterns"
+msgstr ""
+
+#: babel.units.format_compound_unit:33 of
+msgid ""
+"The numerator value. This may be a string, in which case it is considered"
+" preformatted and the unit is ignored."
+msgstr ""
+
+#: babel.units.format_compound_unit:35 of
+msgid "The numerator unit. See `format_unit`."
+msgstr ""
+
+#: babel.units.format_compound_unit:36 of
+msgid ""
+"The denominator value. This may be a string, in which case it is "
+"considered preformatted and the unit is ignored."
+msgstr ""
+
+#: babel.units.format_compound_unit:38 of
+msgid "The denominator unit. See `format_unit`."
+msgstr ""
+
+#: babel.units.format_compound_unit:39 of
+msgid "The formatting length. \"short\", \"long\" or \"narrow\""
+msgstr ""
+
+#: babel.units.format_compound_unit babel.units.get_unit_name of
+msgid "Returns"
+msgstr ""
+
+#: babel.units.format_compound_unit:42 of
+msgid "A formatted compound value."
+msgstr ""
+
+#: babel.units.get_unit_name:1 of
+msgid "Get the display name for a measurement unit in the given locale."
+msgstr ""
+
+#: babel.units.get_unit_name:6 of
+msgid "Unknown units will raise exceptions:"
+msgstr ""
+
+#: babel.units.get_unit_name:19 of
+msgid "The unit display name, or None."
+msgstr ""
+

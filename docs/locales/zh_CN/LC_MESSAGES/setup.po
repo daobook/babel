@@ -1,0 +1,413 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../setup.rst:7
+msgid "Distutils/Setuptools Integration"
+msgstr ""
+
+#: ../../setup.rst:9
+msgid ""
+"Babel provides commands for integration into ``setup.py`` scripts, based "
+"on either the ``distutils`` package that is part of the Python standard "
+"library, or the third-party ``setuptools`` package."
+msgstr ""
+
+#: ../../setup.rst:13
+msgid ""
+"These commands are available by default when Babel has been properly "
+"installed, and ``setup.py`` is using ``setuptools``. For projects that "
+"use plain old ``distutils``, the commands need to be registered "
+"explicitly, for example:"
+msgstr ""
+
+#: ../../setup.rst:32
+msgid "compile_catalog"
+msgstr ""
+
+#: ../../setup.rst:34
+msgid ""
+"The ``compile_catalog`` command is similar to the GNU ``msgfmt`` tool, in"
+" that it takes a message catalog from a PO file and compiles it to a "
+"binary MO file."
+msgstr ""
+
+#: ../../setup.rst:37 ../../setup.rst:101 ../../setup.rst:223
+#: ../../setup.rst:280
+msgid ""
+"If the command has been correctly installed or registered, a project's "
+"``setup.py`` script should allow you to use the command::"
+msgstr ""
+
+#: ../../setup.rst:50
+msgid "Running the command will produce a binary MO file::"
+msgstr ""
+
+#: ../../setup.rst:58 ../../setup.rst:152 ../../setup.rst:245
+#: ../../setup.rst:302
+msgid "Options"
+msgstr ""
+
+#: ../../setup.rst:60
+msgid "The ``compile_catalog`` command accepts the following options:"
+msgstr ""
+
+#: ../../setup.rst:63 ../../setup.rst:157 ../../setup.rst:250
+#: ../../setup.rst:307
+msgid "Option"
+msgstr ""
+
+#: ../../setup.rst:63 ../../setup.rst:157 ../../setup.rst:250
+#: ../../setup.rst:307
+msgid "Description"
+msgstr ""
+
+#: ../../setup.rst:65 ../../setup.rst:252 ../../setup.rst:309
+msgid "``--domain``"
+msgstr ""
+
+#: ../../setup.rst:65 ../../setup.rst:252 ../../setup.rst:309
+msgid "domain of the PO file (defaults to lower-cased project name)"
+msgstr ""
+
+#: ../../setup.rst:68
+msgid "``--directory`` (``-d``)"
+msgstr ""
+
+#: ../../setup.rst:68
+msgid "name of the base directory"
+msgstr ""
+
+#: ../../setup.rst:70 ../../setup.rst:255 ../../setup.rst:312
+msgid "``--input-file`` (``-i``)"
+msgstr ""
+
+#: ../../setup.rst:70 ../../setup.rst:255 ../../setup.rst:312
+msgid "name of the input file"
+msgstr ""
+
+#: ../../setup.rst:72 ../../setup.rst:173 ../../setup.rst:259
+#: ../../setup.rst:316
+msgid "``--output-file`` (``-o``)"
+msgstr ""
+
+#: ../../setup.rst:72 ../../setup.rst:173 ../../setup.rst:259
+#: ../../setup.rst:316
+msgid "name of the output file"
+msgstr ""
+
+#: ../../setup.rst:74
+msgid "``--locale`` (``-l``)"
+msgstr ""
+
+#: ../../setup.rst:74 ../../setup.rst:261 ../../setup.rst:318
+msgid "locale for the new localized string"
+msgstr ""
+
+#: ../../setup.rst:76
+msgid "``--use-fuzzy`` (``-f``)"
+msgstr ""
+
+#: ../../setup.rst:76
+msgid "also include \"fuzzy\" translations"
+msgstr ""
+
+#: ../../setup.rst:78
+msgid "``--statistics``"
+msgstr ""
+
+#: ../../setup.rst:78
+msgid "print statistics about translations"
+msgstr ""
+
+#: ../../setup.rst:81
+msgid ""
+"If ``directory`` is specified, but ``output-file`` is not, the default "
+"filename of the output file will be::"
+msgstr ""
+
+#: ../../setup.rst:86
+msgid ""
+"If neither the ``input_file`` nor the ``locale`` option is set, this "
+"command looks for all catalog files in the base directory that match the "
+"given domain, and compiles each of them to MO files in the same "
+"directory."
+msgstr ""
+
+#: ../../setup.rst:90 ../../setup.rst:269 ../../setup.rst:338
+msgid ""
+"These options can either be specified on the command-line, or in the "
+"``setup.cfg`` file."
+msgstr ""
+
+#: ../../setup.rst:95
+msgid "extract_messages"
+msgstr ""
+
+#: ../../setup.rst:97
+msgid ""
+"The ``extract_messages`` command is comparable to the GNU ``xgettext`` "
+"program: it can extract localizable messages from a variety of difference"
+" source files, and generate a PO (portable object) template file from the"
+" collected messages."
+msgstr ""
+
+#: ../../setup.rst:114
+msgid "Running the command will produce a PO template file::"
+msgstr ""
+
+#: ../../setup.rst:125
+msgid "Method Mapping"
+msgstr ""
+
+#: ../../setup.rst:127
+msgid ""
+"The mapping of file patterns to extraction methods (and options) can be "
+"specified using a configuration file that is pointed to using the "
+"``--mapping-file`` option shown above. Alternatively, you can configure "
+"the mapping directly in ``setup.py`` using a keyword argument to the "
+"``setup()`` function:"
+msgstr ""
+
+#: ../../setup.rst:154
+msgid "The ``extract_messages`` command accepts the following options:"
+msgstr ""
+
+#: ../../setup.rst:159
+msgid "``--charset``"
+msgstr ""
+
+#: ../../setup.rst:159
+msgid "charset to use in the output file"
+msgstr ""
+
+#: ../../setup.rst:161
+msgid "``--keywords`` (``-k``)"
+msgstr ""
+
+#: ../../setup.rst:161
+msgid "space-separated list of keywords to look for in addition to the defaults"
+msgstr ""
+
+#: ../../setup.rst:164
+msgid "``--no-default-keywords``"
+msgstr ""
+
+#: ../../setup.rst:164
+msgid "do not include the default keywords"
+msgstr ""
+
+#: ../../setup.rst:166
+msgid "``--mapping-file`` (``-F``)"
+msgstr ""
+
+#: ../../setup.rst:166
+msgid "path to the mapping configuration file"
+msgstr ""
+
+#: ../../setup.rst:168
+msgid "``--no-location``"
+msgstr ""
+
+#: ../../setup.rst:168
+msgid "do not include location comments with filename and line number"
+msgstr ""
+
+#: ../../setup.rst:171
+msgid "``--omit-header``"
+msgstr ""
+
+#: ../../setup.rst:171
+msgid "do not include msgid \"\" entry in header"
+msgstr ""
+
+#: ../../setup.rst:175
+msgid "``--width`` (``-w``)"
+msgstr ""
+
+#: ../../setup.rst:175
+msgid "set output line width (default 76)"
+msgstr ""
+
+#: ../../setup.rst:177
+msgid "``--no-wrap``"
+msgstr ""
+
+#: ../../setup.rst:177
+msgid ""
+"do not break long message lines, longer than the output line width, into "
+"several lines"
+msgstr ""
+
+#: ../../setup.rst:180
+msgid "``--input-dirs``"
+msgstr ""
+
+#: ../../setup.rst:180
+msgid "directories that should be scanned for messages"
+msgstr ""
+
+#: ../../setup.rst:183
+msgid "``--sort-output``"
+msgstr ""
+
+#: ../../setup.rst:183
+msgid "generate sorted output (default False)"
+msgstr ""
+
+#: ../../setup.rst:185
+msgid "``--sort-by-file``"
+msgstr ""
+
+#: ../../setup.rst:185
+msgid "sort output by file location (default False)"
+msgstr ""
+
+#: ../../setup.rst:187
+msgid "``--msgid-bugs-address``"
+msgstr ""
+
+#: ../../setup.rst:187
+msgid "set email address for message bug reports"
+msgstr ""
+
+#: ../../setup.rst:189
+msgid "``--copyright-holder``"
+msgstr ""
+
+#: ../../setup.rst:189
+msgid "set copyright holder in output"
+msgstr ""
+
+#: ../../setup.rst:191
+msgid "``--add-comments (-c)``"
+msgstr ""
+
+#: ../../setup.rst:191
+msgid ""
+"place comment block with TAG (or those preceding keyword lines) in output"
+" file. Separate multiple TAGs with commas(,)"
+msgstr ""
+
+#: ../../setup.rst:196
+msgid ""
+"These options can either be specified on the command-line, or in the "
+"``setup.cfg`` file. In the latter case, the options above become entries "
+"of the section ``[extract_messages]``, and the option names are changed "
+"to use underscore characters instead of dashes, for example:"
+msgstr ""
+
+#: ../../setup.rst:208
+msgid ""
+"This would be equivalent to invoking the command from the command-line as"
+" follows::"
+msgstr ""
+
+#: ../../setup.rst:213
+msgid ""
+"Any path names are interpreted relative to the location of the "
+"``setup.py`` file. For boolean options, use \"true\" or \"false\" values."
+msgstr ""
+
+#: ../../setup.rst:218
+msgid "init_catalog"
+msgstr ""
+
+#: ../../setup.rst:220
+msgid ""
+"The ``init_catalog`` command is basically equivalent to the GNU "
+"``msginit`` program: it creates a new translation catalog based on a PO "
+"template file (POT)."
+msgstr ""
+
+#: ../../setup.rst:236
+msgid "Running the command will produce a PO file::"
+msgstr ""
+
+#: ../../setup.rst:247
+msgid "The ``init_catalog`` command accepts the following options:"
+msgstr ""
+
+#: ../../setup.rst:257 ../../setup.rst:314
+msgid "``--output-dir`` (``-d``)"
+msgstr ""
+
+#: ../../setup.rst:257 ../../setup.rst:314
+msgid "name of the output directory"
+msgstr ""
+
+#: ../../setup.rst:261 ../../setup.rst:318
+msgid "``--locale``"
+msgstr ""
+
+#: ../../setup.rst:264 ../../setup.rst:329
+msgid ""
+"If ``output-dir`` is specified, but ``output-file`` is not, the default "
+"filename of the output file will be::"
+msgstr ""
+
+#: ../../setup.rst:274
+msgid "update_catalog"
+msgstr ""
+
+#: ../../setup.rst:276
+msgid ""
+"The ``update_catalog`` command is basically equivalent to the GNU "
+"``msgmerge`` program: it updates an existing translations catalog based "
+"on a PO template file (POT)."
+msgstr ""
+
+#: ../../setup.rst:293
+msgid "Running the command will update a PO file::"
+msgstr ""
+
+#: ../../setup.rst:304
+msgid "The ``update_catalog`` command accepts the following options:"
+msgstr ""
+
+#: ../../setup.rst:320
+msgid "``--ignore-obsolete``"
+msgstr ""
+
+#: ../../setup.rst:320
+msgid "do not include obsolete messages in the output"
+msgstr ""
+
+#: ../../setup.rst:323
+msgid "``--no-fuzzy-matching`` (``-N``)"
+msgstr ""
+
+#: ../../setup.rst:323
+msgid "do not use fuzzy matching"
+msgstr ""
+
+#: ../../setup.rst:325
+msgid "``--previous``"
+msgstr ""
+
+#: ../../setup.rst:325
+msgid "keep previous msgids of translated messages"
+msgstr ""
+
+#: ../../setup.rst:334
+msgid ""
+"If neither the ``input_file`` nor the ``locale`` option is set, this "
+"command looks for all catalog files in the base directory that match the "
+"given domain, and updates each of them."
+msgstr ""
+

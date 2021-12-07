@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../locale.rst:7
+msgid "Locale Data"
+msgstr ""
+
+#: ../../locale.rst:9
+msgid ""
+"While :ref:`message catalogs <messages>` allow you to localize any "
+"messages in your application, there are a number of strings that are used"
+" in many applications for which translations are readily available."
+msgstr ""
+
+#: ../../locale.rst:13
+msgid ""
+"Imagine for example you have a list of countries that users can choose "
+"from, and you'd like to display the names of those countries in the "
+"language the user prefers. Instead of translating all those country names"
+" yourself in your application, you can make use of the translations "
+"provided by the locale data included with Babel, which is based on the "
+"`Common Locale Data Repository (CLDR) <https://unicode.org/cldr/>`_ "
+"developed and maintained by the `Unicode Consortium "
+"<https://unicode.org/>`_."
+msgstr ""
+
+#: ../../locale.rst:23
+msgid "The ``Locale`` Class"
+msgstr ""
+
+#: ../../locale.rst:25
+msgid ""
+"You normally access such locale data through the "
+":class:`~babel.core.Locale` class provided by Babel:"
+msgstr ""
+
+#: ../../locale.rst:38
+msgid ""
+"In addition to country/territory names, the locale data also provides "
+"access to names of languages, scripts, variants, time zones, and more. "
+"Some of the data is closely related to number and date formatting."
+msgstr ""
+
+#: ../../locale.rst:42
+msgid ""
+"Most of the corresponding ``Locale`` properties return dictionaries, "
+"where the key is a code such as the ISO country and language codes. "
+"Consult the API documentation for references to the relevant "
+"specifications."
+msgstr ""
+
+#: ../../locale.rst:48
+msgid "Likely Subtags"
+msgstr ""
+
+#: ../../locale.rst:50
+msgid ""
+"When dealing with locales you can run into the situation where a locale "
+"tag is not fully descriptive.  For instance people commonly refer to "
+"``zh_TW`` but that identifier does not resolve to a locale that the CLDR "
+"covers.  Babel's locale identifier parser in that case will attempt to "
+"resolve the most likely subtag to end up with the intended locale:"
+msgstr ""
+
+#: ../../locale.rst:62
+msgid ""
+"This can also be used to find the most appropriate locale for a "
+"territory. In that case the territory code needs to be prefixed with "
+"``und`` (unknown language identifier):"
+msgstr ""
+
+#: ../../locale.rst:73
+msgid ""
+"Babel currently cannot deal with fuzzy locales (a locale not fully backed"
+" by data files) so we only accept locales that are fully backed by CLDR "
+"data.  This will change in the future, but for the time being this "
+"restriction is in place."
+msgstr ""
+
+#: ../../locale.rst:80
+msgid "Locale Display Names"
+msgstr ""
+
+#: ../../locale.rst:82
+msgid ""
+"Locales itself can be used to describe the locale itself or other "
+"locales. This mainly means that given a locale object you can ask it for "
+"its canonical display name, the name of the language and other things.  "
+"Since the locales cross-reference each other you can ask for locale names"
+" in any language supported by the CLDR:"
+msgstr ""
+
+#: ../../locale.rst:96
+msgid ""
+"Display names include all the information to uniquely identify a locale "
+"(language, territory, script and variant) which is often not what you "
+"want.  You can also ask for the information in parts:"
+msgstr ""
+
+#: ../../locale.rst:113
+msgid "Calendar Display Names"
+msgstr ""
+
+#: ../../locale.rst:115
+msgid ""
+"The :class:`~babel.core.Locale` class provides access to many locale "
+"display names related to calendar display, such as the names of weekdays "
+"or months."
+msgstr ""
+
+#: ../../locale.rst:119
+msgid ""
+"These display names are of course used for date formatting, but can also "
+"be used, for example, to show a list of months to the user in their "
+"preferred language:"
+msgstr ""
+

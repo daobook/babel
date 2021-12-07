@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/lists.rst:2
+msgid "List Formatting"
+msgstr ""
+
+#: ../../api/lists.rst:6
+msgid "This module lets you format lists of items in a locale-dependent manner."
+msgstr ""
+
+#: babel.lists.format_list:1 of
+msgid "Format the items in `lst` as a list."
+msgstr ""
+
+#: babel.lists.format_list:10 of
+msgid ""
+"These styles are defined, but not all are necessarily available in all "
+"locales. The following text is verbatim from the Unicode TR35-49 spec "
+"[1]."
+msgstr ""
+
+#: babel.lists.format_list:13 of
+msgid ""
+"standard: A typical 'and' list for arbitrary placeholders. eg. \"January,"
+" February, and March\""
+msgstr ""
+
+#: babel.lists.format_list:16 of
+msgid ""
+"standard-short: A short version of a 'and' list, suitable for use with "
+"short or abbreviated placeholder values. eg. \"Jan., Feb., and Mar.\""
+msgstr ""
+
+#: babel.lists.format_list:19 of
+msgid ""
+"or: A typical 'or' list for arbitrary placeholders. eg. \"January, "
+"February, or March\""
+msgstr ""
+
+#: babel.lists.format_list:22 of
+msgid "or-short: A short version of an 'or' list. eg. \"Jan., Feb., or Mar.\""
+msgstr ""
+
+#: babel.lists.format_list:25 of
+msgid "unit: A list suitable for wide units. eg. \"3 feet, 7 inches\""
+msgstr ""
+
+#: babel.lists.format_list:28 of
+msgid "unit-short: A list suitable for short units eg. \"3 ft, 7 in\""
+msgstr ""
+
+#: babel.lists.format_list:31 of
+msgid ""
+"unit-narrow: A list suitable for narrow units, where space on the screen "
+"is very limited. eg. \"3′ 7″\""
+msgstr ""
+
+#: babel.lists.format_list:35 of
+msgid ""
+"[1]: "
+"https://www.unicode.org/reports/tr35/tr35-49/tr35-general.html#ListPatterns"
+msgstr ""
+
+#: babel.lists.format_list of
+msgid "Parameters"
+msgstr ""
+
+#: babel.lists.format_list:37 of
+msgid "a sequence of items to format in to a list"
+msgstr ""
+
+#: babel.lists.format_list:38 of
+msgid "the style to format the list with. See above for description."
+msgstr ""
+
+#: babel.lists.format_list:39 of
+msgid "the locale"
+msgstr ""
+

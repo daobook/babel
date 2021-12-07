@@ -1,0 +1,345 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/numbers.rst:2
+msgid "Numbers and Currencies"
+msgstr ""
+
+#: ../../api/numbers.rst:6
+msgid ""
+"The number module provides functionality to format numbers for different "
+"locales.  This includes arbitrary numbers as well as currency."
+msgstr ""
+
+#: ../../api/numbers.rst:10
+msgid "Number Formatting"
+msgstr ""
+
+#: babel.numbers.format_number:1 of
+msgid "Return the given number formatted for a specific locale."
+msgstr ""
+
+#: babel.numbers.format_number:10 of
+msgid "Use babel.numbers.format_decimal() instead."
+msgstr ""
+
+#: babel.numbers.format_currency babel.numbers.format_decimal
+#: babel.numbers.format_number babel.numbers.format_percent
+#: babel.numbers.format_scientific babel.numbers.get_currency_name
+#: babel.numbers.get_currency_symbol babel.numbers.get_currency_unit_pattern
+#: babel.numbers.get_decimal_symbol babel.numbers.get_minus_sign_symbol
+#: babel.numbers.get_plus_sign_symbol babel.numbers.get_territory_currencies
+#: babel.numbers.parse_decimal babel.numbers.parse_number of
+msgid "Parameters"
+msgstr ""
+
+#: babel.numbers.format_currency:76 babel.numbers.format_decimal:33
+#: babel.numbers.format_number:12 babel.numbers.format_scientific:20 of
+msgid "the number to format"
+msgstr ""
+
+#: babel.numbers.format_currency:79 babel.numbers.format_decimal:35
+#: babel.numbers.format_number:13 babel.numbers.format_percent:32
+#: babel.numbers.format_scientific:22 babel.numbers.get_decimal_symbol:6
+#: babel.numbers.get_minus_sign_symbol:6 babel.numbers.get_plus_sign_symbol:6
+#: babel.numbers.parse_decimal:31 babel.numbers.parse_number:16 of
+msgid "the `Locale` object or locale identifier"
+msgstr ""
+
+#: babel.numbers.format_decimal:1 of
+msgid "Return the given decimal number formatted for a specific locale."
+msgstr ""
+
+#: babel.numbers.format_decimal:14 of
+msgid ""
+"The appropriate thousands grouping and the decimal separator are used for"
+" each locale:"
+msgstr ""
+
+#: babel.numbers.format_currency:67 babel.numbers.format_decimal:20
+#: babel.numbers.format_percent:15 babel.numbers.format_scientific:11 of
+msgid ""
+"By default the locale is allowed to truncate and round a high-precision "
+"number by forcing its format pattern onto the decimal part. You can "
+"bypass this behavior with the `decimal_quantization` parameter:"
+msgstr ""
+
+#: babel.numbers.format_currency:82 babel.numbers.format_decimal:36
+#: babel.numbers.format_percent:33 babel.numbers.format_scientific:23 of
+msgid ""
+"Truncate and round high-precision numbers to the format pattern. Defaults"
+" to `True`."
+msgstr ""
+
+#: babel.numbers.format_currency:84 babel.numbers.format_decimal:38
+#: babel.numbers.format_percent:35 of
+msgid "Boolean to switch group separator on/off in a locale's number format."
+msgstr ""
+
+#: babel.numbers.format_currency:1 of
+msgid "Return formatted currency value."
+msgstr ""
+
+#: babel.numbers.format_currency:10 of
+msgid ""
+"The format can also be specified explicitly.  The currency is placed with"
+" the '¤' sign.  As the sign gets repeated the format expands (¤ being the"
+" symbol, ¤¤ is the currency abbreviation and ¤¤¤ is the full name of the "
+"currency):"
+msgstr ""
+
+#: babel.numbers.format_currency:20 of
+msgid ""
+"Currencies usually have a specific number of decimal digits. This "
+"function favours that information over the given format:"
+msgstr ""
+
+#: babel.numbers.format_currency:28 of
+msgid ""
+"However, the number of decimal digits can be overriden from the currency "
+"information, by setting the last parameter to ``False``:"
+msgstr ""
+
+#: babel.numbers.format_currency:36 of
+msgid ""
+"If a format is not specified the type of currency format to use from the "
+"locale can be specified:"
+msgstr ""
+
+#: babel.numbers.format_currency:42 of
+msgid ""
+"When the given currency format type is not available, an exception is "
+"raised:"
+msgstr ""
+
+#: babel.numbers.format_currency:56 of
+msgid ""
+"You can also pass format_type='name' to use long display names. The order"
+" of the number and currency name, along with the correct localized plural"
+" form of the currency name, is chosen according to locale:"
+msgstr ""
+
+#: babel.numbers.format_currency:77 of
+msgid "the currency code"
+msgstr ""
+
+#: babel.numbers.format_currency:78 of
+msgid "the format string to use"
+msgstr ""
+
+#: babel.numbers.format_currency:80 of
+msgid "use the currency's natural number of decimal digits"
+msgstr ""
+
+#: babel.numbers.format_currency:81 of
+msgid "the currency format type to use"
+msgstr ""
+
+#: babel.numbers.format_percent:1 of
+msgid "Return formatted percent value for a specific locale."
+msgstr ""
+
+#: babel.numbers.format_percent:10 babel.numbers.format_scientific:6 of
+msgid "The format pattern can also be specified explicitly:"
+msgstr ""
+
+#: babel.numbers.format_percent:30 of
+msgid "the percent number to format"
+msgstr ""
+
+#: babel.numbers.format_scientific:1 of
+msgid "Return value formatted in scientific notation for a specific locale."
+msgstr ""
+
+#: ../../api/numbers.rst:23
+msgid "Number Parsing"
+msgstr ""
+
+#: babel.numbers.parse_number:1 of
+msgid "Parse localized number string into an integer."
+msgstr ""
+
+#: babel.numbers.parse_decimal:10 babel.numbers.parse_number:8 of
+msgid "When the given string cannot be parsed, an exception is raised:"
+msgstr ""
+
+#: babel.numbers.parse_decimal:30 babel.numbers.parse_number:15 of
+msgid "the string to parse"
+msgstr ""
+
+#: babel.numbers.parse_number of
+msgid "Returns"
+msgstr ""
+
+#: babel.numbers.parse_number:17 of
+msgid "the parsed number"
+msgstr ""
+
+#: babel.numbers.parse_decimal babel.numbers.parse_number of
+msgid "Raises"
+msgstr ""
+
+#: babel.numbers.parse_number:18 of
+msgid "if the string can not be converted to a number"
+msgstr ""
+
+#: babel.numbers.parse_decimal:1 of
+msgid "Parse localized decimal string into a decimal."
+msgstr ""
+
+#: babel.numbers.parse_decimal:17 of
+msgid ""
+"If `strict` is set to `True` and the given string contains a number "
+"formatted in an irregular way, an exception is raised:"
+msgstr ""
+
+#: babel.numbers.parse_decimal:32 of
+msgid "controls whether numbers formatted in a weird way are accepted or rejected"
+msgstr ""
+
+#: babel.numbers.parse_decimal:34 of
+msgid "if the string can not be converted to a decimal number"
+msgstr ""
+
+#: ../../api/numbers.rst:30
+msgid "Exceptions"
+msgstr ""
+
+#: babel.numbers.NumberFormatError:1 of
+msgid "Exception raised when a string cannot be parsed into a number."
+msgstr ""
+
+#: ../../docstring babel.numbers.NumberFormatError.suggestions:1 of
+msgid "a list of properly formatted numbers derived from the invalid input"
+msgstr ""
+
+#: ../../api/numbers.rst:36
+msgid "Data Access"
+msgstr ""
+
+#: babel.numbers.get_currency_name:1 of
+msgid "Return the name used by the locale for the specified currency."
+msgstr ""
+
+#: babel.numbers.get_currency_name:8 babel.numbers.get_currency_symbol:6
+#: babel.numbers.get_currency_unit_pattern:12 of
+msgid "the currency code."
+msgstr ""
+
+#: babel.numbers.get_currency_name:9 of
+msgid ""
+"the optional count.  If provided the currency name will be pluralized to "
+"that number if possible."
+msgstr ""
+
+#: babel.numbers.get_currency_name:11 babel.numbers.get_currency_symbol:7
+#: babel.numbers.get_currency_unit_pattern:15 of
+msgid "the `Locale` object or locale identifier."
+msgstr ""
+
+#: babel.numbers.get_currency_symbol:1 of
+msgid "Return the symbol used by the locale for the specified currency."
+msgstr ""
+
+#: babel.numbers.get_currency_unit_pattern:1 of
+msgid ""
+"Return the unit pattern used for long display of a currency value for a "
+"given locale. This is a string containing ``{0}`` where the numeric part "
+"should be substituted and ``{1}`` where the currency long display name "
+"should be substituted."
+msgstr ""
+
+#: babel.numbers.get_currency_unit_pattern:13 of
+msgid ""
+"the optional count.  If provided the unit pattern for that number will be"
+" returned."
+msgstr ""
+
+#: babel.numbers.get_decimal_symbol:1 of
+msgid "Return the symbol used by the locale to separate decimal fractions."
+msgstr ""
+
+#: babel.numbers.get_minus_sign_symbol:1 babel.numbers.get_plus_sign_symbol:1
+#: of
+msgid "Return the plus sign symbol used by the current locale."
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:1 of
+msgid ""
+"Returns the list of currencies for the given territory that are valid for"
+" the given date range.  In addition to that the currency database "
+"distinguishes between tender and non-tender currencies.  By default only "
+"tender currencies are returned."
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:6 of
+msgid ""
+"The return value is a list of all currencies roughly ordered by the time "
+"of when the currency became active.  The longer the currency is being in "
+"use the more to the left of the list it will be."
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:10 of
+msgid ""
+"The start date defaults to today.  If no end date is given it will be the"
+" same as the start date.  Otherwise a range can be defined.  For instance"
+" this can be used to find the currencies in use in Austria between 1995 "
+"and 2011:"
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:19 of
+msgid ""
+"Likewise it's also possible to find all the currencies in use on a single"
+" date:"
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:27 of
+msgid ""
+"By default the return value only includes tender currencies.  This "
+"however can be changed:"
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:38 of
+msgid "the name of the territory to find the currency for."
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:39 of
+msgid "the start date.  If not given today is assumed."
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:40 of
+msgid "the end date.  If not given the start date is assumed."
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:41 of
+msgid "controls whether tender currencies should be included."
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:42 of
+msgid "controls whether non-tender currencies should be included."
+msgstr ""
+
+#: babel.numbers.get_territory_currencies:44 of
+msgid ""
+"if set to `True`, instead of returning currency codes the return value "
+"will be dictionaries with detail information.  In that case each "
+"dictionary will have the keys ``'currency'``, ``'from'``, ``'to'``, and "
+"``'tender'``."
+msgstr ""
+

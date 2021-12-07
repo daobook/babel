@@ -1,0 +1,119 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/plural.rst:2
+msgid "Pluralization Support"
+msgstr ""
+
+#: ../../api/plural.rst:6
+msgid ""
+"The pluralization support provides functionality around the CLDR "
+"pluralization rules.  It can parse and evaluate pluralization rules, as "
+"well as convert them to other formats such as gettext."
+msgstr ""
+
+#: ../../api/plural.rst:11
+msgid "Basic Interface"
+msgstr ""
+
+#: babel.plural.PluralRule:1 of
+msgid ""
+"Represents a set of language pluralization rules.  The constructor "
+"accepts a list of (tag, expr) tuples or a dict of `CLDR rules`_. The "
+"resulting object is callable and accepts one parameter with a positive or"
+" negative number (both integer and float) for the number that indicates "
+"the plural form for a string and returns the tag for the format:"
+msgstr ""
+
+#: babel.plural.PluralRule:13 of
+msgid ""
+"Currently the CLDR defines these tags: zero, one, two, few, many and "
+"other where other is an implicit default.  Rules should be mutually "
+"exclusive; for a given numeric value, only one rule should apply (i.e. "
+"the condition should only be true for one of the plural rule elements."
+msgstr ""
+
+#: babel.plural.PluralRule.parse:1 of
+msgid ""
+"Create a `PluralRule` instance for the given rules.  If the rules are a "
+"`PluralRule` object, that object is returned."
+msgstr ""
+
+#: babel.plural.PluralRule.parse babel.plural.to_gettext
+#: babel.plural.to_javascript babel.plural.to_python of
+msgid "Parameters"
+msgstr ""
+
+#: babel.plural.PluralRule.parse:4 babel.plural.to_gettext:7
+#: babel.plural.to_javascript:12 babel.plural.to_python:16 of
+msgid "the rules as list or dict, or a `PluralRule` object"
+msgstr ""
+
+#: babel.plural.PluralRule.parse babel.plural.to_gettext
+#: babel.plural.to_javascript babel.plural.to_python of
+msgid "Raises"
+msgstr ""
+
+#: babel.plural.PluralRule.parse:5 babel.plural.to_gettext:8
+#: babel.plural.to_javascript:13 babel.plural.to_python:17 of
+msgid "if the expression is malformed"
+msgstr ""
+
+#: babel.plural.PluralRule.rules:1 of
+msgid "The `PluralRule` as a dict of unicode plural rules."
+msgstr ""
+
+#: babel.plural.PluralRule.tags:1 of
+msgid ""
+"A set of explicitly defined tags in this rule.  The implicit default "
+"``'other'`` rules is not part of this set unless there is an explicit "
+"rule for it."
+msgstr ""
+
+#: ../../api/plural.rst:17
+msgid "Conversion Functionality"
+msgstr ""
+
+#: babel.plural.to_javascript:1 of
+msgid ""
+"Convert a list/dict of rules or a `PluralRule` object into a JavaScript "
+"function.  This function depends on no external library:"
+msgstr ""
+
+#: babel.plural.to_javascript:7 of
+msgid ""
+"Implementation detail: The function generated will probably evaluate "
+"expressions involved into range operations multiple times.  This has the "
+"advantage that external helper functions are not required and is not a "
+"big performance hit for these simple calculations."
+msgstr ""
+
+#: babel.plural.to_python:1 of
+msgid ""
+"Convert a list/dict of rules or a `PluralRule` object into a regular "
+"Python function.  This is useful in situations where you need a real "
+"function and don't are about the actual rule object:"
+msgstr ""
+
+#: babel.plural.to_gettext:1 of
+msgid ""
+"The plural rule as gettext expression.  The gettext expression is "
+"technically limited to integers and returns indices rather than tags."
+msgstr ""
+

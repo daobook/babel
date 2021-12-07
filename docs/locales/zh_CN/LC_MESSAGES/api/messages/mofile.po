@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, The Babel Team
+# This file is distributed under the same license as the Babel package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Babel 2.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-07 09:14+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../api/messages/mofile.rst:2
+msgid "MO File Support"
+msgstr ""
+
+#: ../../api/messages/mofile.rst:6
+msgid ""
+"The MO file support can read and write MO files.  It reads them into "
+":class:`~babel.messages.catalog.Catalog` objects and also writes catalogs"
+" out."
+msgstr ""
+
+#: babel.messages.mofile.read_mo:1 of
+msgid ""
+"Read a binary MO file from the given file-like object and return a "
+"corresponding `Catalog` object."
+msgstr ""
+
+#: babel.messages.mofile.read_mo babel.messages.mofile.write_mo of
+msgid "Parameters"
+msgstr ""
+
+#: babel.messages.mofile.read_mo:4 of
+msgid "the file-like object to read the MO file from"
+msgstr ""
+
+#: babel.messages.mofile.read_mo of
+msgid "note"
+msgstr ""
+
+#: babel.messages.mofile.read_mo:6 of
+msgid ""
+"The implementation of this function is heavily based on the "
+"``GNUTranslations._parse`` method of the ``gettext`` module in the "
+"standard library."
+msgstr ""
+
+#: babel.messages.mofile.write_mo:1 of
+msgid ""
+"Write a catalog to the specified file-like object using the GNU MO file "
+"format."
+msgstr ""
+
+#: babel.messages.mofile.write_mo:43 of
+msgid "the file-like object to write to"
+msgstr ""
+
+#: babel.messages.mofile.write_mo:44 of
+msgid "the `Catalog` instance"
+msgstr ""
+
+#: babel.messages.mofile.write_mo:45 of
+msgid "whether translations marked as \"fuzzy\" should be included in the output"
+msgstr ""
+
