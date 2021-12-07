@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>PO File Support &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/babel.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Numbers and Currencies" href="../numbers.html" />
+    <link rel="prev" title="MO File Support" href="mofile.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="../numbers.html" title="Numbers and Currencies"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="mofile.html" title="MO File Support"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Babel 2.9.1 文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">Messages and Catalogs</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">PO File Support</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-babel.messages.pofile">
+<span id="po-file-support"></span><h1>PO File Support<a class="headerlink" href="#module-babel.messages.pofile" title="永久链接至标题">¶</a></h1>
+<p>The PO file support can read and write PO and POT files.  It reads them
+into <a class="reference internal" href="catalog.html#babel.messages.catalog.Catalog" title="babel.messages.catalog.Catalog"><code class="xref py py-class docutils literal notranslate"><span class="pre">Catalog</span></code></a> objects and also writes
+catalogs out.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.messages.pofile.read_po">
+<span class="sig-prename descclassname"><span class="pre">babel.messages.pofile.</span></span><span class="sig-name descname"><span class="pre">read_po</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_obsolete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abort_invalid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.messages.pofile.read_po" title="永久链接至目标">¶</a></dt>
+<dd><p>Read messages from a <code class="docutils literal notranslate"><span class="pre">gettext</span></code> PO (portable object) file from the given
+file-like object and return a <cite>Catalog</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel._compat</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">buf</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">#: main.py:1</span>
+<span class="gp">... </span><span class="s1">#, fuzzy, python-format</span>
+<span class="gp">... </span><span class="s1">msgid &quot;foo </span><span class="si">%(name)s</span><span class="s1">&quot;</span>
+<span class="gp">... </span><span class="s1">msgstr &quot;quux </span><span class="si">%(name)s</span><span class="s1">&quot;</span>
+<span class="gp">...</span><span class="s1"></span>
+<span class="gp">... </span><span class="s1"># A user comment</span>
+<span class="gp">... </span><span class="s1">#. An auto comment</span>
+<span class="gp">... </span><span class="s1">#: main.py:3</span>
+<span class="gp">... </span><span class="s1">msgid &quot;bar&quot;</span>
+<span class="gp">... </span><span class="s1">msgid_plural &quot;baz&quot;</span>
+<span class="gp">... </span><span class="s1">msgstr[0] &quot;bar&quot;</span>
+<span class="gp">... </span><span class="s1">msgstr[1] &quot;baaz&quot;</span>
+<span class="gp">... </span><span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">catalog</span> <span class="o">=</span> <span class="n">read_po</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">catalog</span><span class="o">.</span><span class="n">revision_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">catalog</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">((</span><span class="n">message</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">string</span><span class="p">))</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">locations</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">flags</span><span class="p">))))</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">user_comments</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">auto_comments</span><span class="p">))</span>
+<span class="go">(u&#39;foo %(name)s&#39;, u&#39;quux %(name)s&#39;)</span>
+<span class="go">  ([(u&#39;main.py&#39;, 1)], [u&#39;fuzzy&#39;, u&#39;python-format&#39;])</span>
+<span class="go">  ([], [])</span>
+<span class="go">((u&#39;bar&#39;, u&#39;baz&#39;), (u&#39;bar&#39;, u&#39;baaz&#39;))</span>
+<span class="go">  ([(u&#39;main.py&#39;, 3)], [])</span>
+<span class="go">  ([u&#39;A user comment&#39;], [u&#39;An auto comment&#39;])</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">1.0 新版功能: </span>Added support for explicit charset argument.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileobj</strong> – the file-like object to read the PO file from</p></li>
+<li><p><strong>locale</strong> – the locale identifier or <cite>Locale</cite> object, or <cite>None</cite>
+if the catalog is not bound to a locale (which basically
+means it’s a template)</p></li>
+<li><p><strong>domain</strong> – the message domain</p></li>
+<li><p><strong>ignore_obsolete</strong> – whether to ignore obsolete messages in the input</p></li>
+<li><p><strong>charset</strong> – the character set of the catalog.</p></li>
+<li><p><strong>abort_invalid</strong> – abort read if po file is invalid</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.messages.pofile.write_po">
+<span class="sig-prename descclassname"><span class="pre">babel.messages.pofile.</span></span><span class="sig-name descname"><span class="pre">write_po</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalog</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">76</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omit_header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_by_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_obsolete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_previous</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_lineno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.messages.pofile.write_po" title="永久链接至目标">¶</a></dt>
+<dd><p>Write a <code class="docutils literal notranslate"><span class="pre">gettext</span></code> PO (portable object) template file for a given
+message catalog to the provided file-like object.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">catalog</span> <span class="o">=</span> <span class="n">Catalog</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">catalog</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;foo </span><span class="si">%(name)s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">locations</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;main.py&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
+<span class="gp">... </span>            <span class="n">flags</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;fuzzy&#39;</span><span class="p">,))</span>
+<span class="go">&lt;Message...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">catalog</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="sa">u</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;baz&#39;</span><span class="p">),</span> <span class="n">locations</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;main.py&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="go">&lt;Message...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel._compat</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">buf</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">write_po</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">catalog</span><span class="p">,</span> <span class="n">omit_header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">))</span>
+<span class="go">#: main.py:1</span>
+<span class="go">#, fuzzy, python-format</span>
+<span class="go">msgid &quot;foo %(name)s&quot;</span>
+<span class="go">msgstr &quot;&quot;</span>
+
+<span class="go">#: main.py:3</span>
+<span class="go">msgid &quot;bar&quot;</span>
+<span class="go">msgid_plural &quot;baz&quot;</span>
+<span class="go">msgstr[0] &quot;&quot;</span>
+<span class="go">msgstr[1] &quot;&quot;</span>
+
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fileobj</strong> – the file-like object to write to</p></li>
+<li><p><strong>catalog</strong> – the <cite>Catalog</cite> instance</p></li>
+<li><p><strong>width</strong> – the maximum line width for the generated output; use <cite>None</cite>,
+0, or a negative number to completely disable line wrapping</p></li>
+<li><p><strong>no_location</strong> – do not emit a location comment for every message</p></li>
+<li><p><strong>omit_header</strong> – do not include the <code class="docutils literal notranslate"><span class="pre">msgid</span> <span class="pre">&quot;&quot;</span></code> entry at the top of the
+output</p></li>
+<li><p><strong>sort_output</strong> – whether to sort the messages in the output by msgid</p></li>
+<li><p><strong>sort_by_file</strong> – whether to sort the messages in the output by their
+locations</p></li>
+<li><p><strong>ignore_obsolete</strong> – whether to ignore obsolete messages and not include
+them in the output; by default they are included as
+comments</p></li>
+<li><p><strong>include_previous</strong> – include the old msgid as a comment when
+updating the catalog</p></li>
+<li><p><strong>include_lineno</strong> – include line number in the location comment</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="../../index.html">
+  <img class="logo" src="../../_static/logo_small.png" alt="Logo"/>
+</a></p><h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+  <li><a href="index.html">Messages and Catalogs</a><ul>
+      <li>Previous: <a href="mofile.html" title="上一章">MO File Support</a></li>
+      <li>Next: <a href="../numbers.html" title="下一章">Numbers and Currencies</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

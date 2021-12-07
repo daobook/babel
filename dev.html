@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Babel Development &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/babel.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Babel Changelog" href="changelog.html" />
+    <link rel="prev" title="Units" href="api/units.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="changelog.html" title="Babel Changelog"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="api/units.html" title="Units"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Babel 2.9.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Babel Development</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="babel-development">
+<h1>Babel Development<a class="headerlink" href="#babel-development" title="永久链接至标题">¶</a></h1>
+<p>Babel as a library has a long history that goes back to the Trac project.
+Since then it has evolved into an independently developed project that
+implements data access for the CLDR project.</p>
+<p>This document tries to explain as best as possible the general rules of
+the project in case you want to help out developing.</p>
+<section id="tracking-the-cldr">
+<h2>Tracking the CLDR<a class="headerlink" href="#tracking-the-cldr" title="永久链接至标题">¶</a></h2>
+<p>Generally the goal of the project is to work as closely as possible with
+the CLDR data.  This has in the past caused some frustrating problems
+because the data is entirely out of our hand.  To minimize the frustration
+we generally deal with CLDR updates the following way:</p>
+<ul class="simple">
+<li><p>bump the CLDR data only with a major release of Babel.</p></li>
+<li><p>never perform custom bugfixes on the CLDR data.</p></li>
+<li><p>never work around CLDR bugs within Babel.  If you find a problem in
+the data, report it upstream.</p></li>
+<li><p>adjust the parsing of the data as soon as possible, otherwise this
+will spiral out of control later.  This is especially the case for
+bigger updates that change pluralization and more.</p></li>
+<li><p>try not to test against specific CLDR data that is likely to change.</p></li>
+</ul>
+</section>
+<section id="python-versions">
+<h2>Python Versions<a class="headerlink" href="#python-versions" title="永久链接至标题">¶</a></h2>
+<p>At the moment the following Python versions should be supported:</p>
+<ul class="simple">
+<li><p>Python 2.7</p></li>
+<li><p>Python 3.4 and up</p></li>
+<li><p>PyPy tracking 2.7 and 3.2 and up</p></li>
+</ul>
+<p>While PyPy does not currently support 3.3, it does support traditional
+unicode literals which simplifies the entire situation tremendously.</p>
+<p>Documentation must build on Python 2, Python 3 support for the
+documentation is an optional goal.  Code examples in the docs preferably
+are written in a style that makes them work on both 2.x and 3.x with
+preference to the former.</p>
+</section>
+<section id="unicode">
+<h2>Unicode<a class="headerlink" href="#unicode" title="永久链接至标题">¶</a></h2>
+<p>Unicode is a big deal in Babel.  Here is how the rules are set up:</p>
+<ul class="simple">
+<li><p>internally everything is unicode that makes sense to have as unicode.
+The exception to this rule are things which on Python 2 traditionally
+have been bytes.  For example file names on Python 2 should be treated
+as bytes wherever possible.</p></li>
+<li><p>Encode / decode at boundaries explicitly.  Never assume an encoding in
+a way it cannot be overridden.  utf-8 should be generally considered
+the default encoding.</p></li>
+<li><p>Dot not use <code class="docutils literal notranslate"><span class="pre">unicode_literals</span></code>, instead use the <code class="docutils literal notranslate"><span class="pre">u''</span></code> string
+syntax.  The reason for this is that the former introduces countless
+of unicode problems by accidentally upgrading strings to unicode which
+should not be.  (docstrings for instance).</p></li>
+</ul>
+</section>
+<section id="dates-and-timezones">
+<h2>Dates and Timezones<a class="headerlink" href="#dates-and-timezones" title="永久链接至标题">¶</a></h2>
+<p>Generally all timezone support in Babel is based on pytz which it just
+depends on.  Babel should assume that timezone objects are pytz based
+because those are the only ones with an API that actually work correctly
+(due to the API problems with non UTC based timezones).</p>
+<p>Assumptions to make:</p>
+<ul class="simple">
+<li><p>use UTC where possible.</p></li>
+<li><p>be super careful with local time.  Do not use local time without
+knowing the exact timezone.</p></li>
+<li><p><cite>time</cite> without date is a very useless construct.  Do not try to
+support timezones for it.  If you do, assume that the current local
+date is assumed and not utc date.</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Babel Development</a><ul>
+<li><a class="reference internal" href="#tracking-the-cldr">Tracking the CLDR</a></li>
+<li><a class="reference internal" href="#python-versions">Python Versions</a></li>
+<li><a class="reference internal" href="#unicode">Unicode</a></li>
+<li><a class="reference internal" href="#dates-and-timezones">Dates and Timezones</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="api/units.html" title="上一章">Units</a></li>
+      <li>Next: <a href="changelog.html" title="下一章">Babel Changelog</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

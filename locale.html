@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Locale Data &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/babel.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Date and Time" href="dates.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="dates.html" title="Date and Time"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Babel 2.9.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Locale Data</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="locale-data">
+<span id="id1"></span><h1>Locale Data<a class="headerlink" href="#locale-data" title="永久链接至标题">¶</a></h1>
+<p>While <a class="reference internal" href="messages.html#messages"><span class="std std-ref">message catalogs</span></a> allow you to localize any
+messages in your application, there are a number of strings that are used
+in many applications for which translations are readily available.</p>
+<p>Imagine for example you have a list of countries that users can choose from,
+and you’d like to display the names of those countries in the language the
+user prefers. Instead of translating all those country names yourself in your
+application, you can make use of the translations provided by the locale data
+included with Babel, which is based on the <a class="reference external" href="https://unicode.org/cldr/">Common Locale Data Repository
+(CLDR)</a> developed and maintained by the <a class="reference external" href="https://unicode.org/">Unicode
+Consortium</a>.</p>
+<section id="the-locale-class">
+<h2>The <code class="docutils literal notranslate"><span class="pre">Locale</span></code> Class<a class="headerlink" href="#the-locale-class" title="永久链接至标题">¶</a></h2>
+<p>You normally access such locale data through the
+<a class="reference internal" href="api/core.html#babel.core.Locale" title="babel.core.Locale"><code class="xref py py-class docutils literal notranslate"><span class="pre">Locale</span></code></a> class provided by Babel:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel</span> <span class="kn">import</span> <span class="n">Locale</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span> <span class="o">=</span> <span class="n">Locale</span><span class="p">(</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="s1">&#39;US&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span><span class="o">.</span><span class="n">territories</span><span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">]</span>
+<span class="go">u&#39;United States&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span> <span class="o">=</span> <span class="n">Locale</span><span class="p">(</span><span class="s1">&#39;es&#39;</span><span class="p">,</span> <span class="s1">&#39;MX&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span><span class="o">.</span><span class="n">territories</span><span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">]</span>
+<span class="go">u&#39;Estados Unidos&#39;</span>
+</pre></div>
+</div>
+<p>In addition to country/territory names, the locale data also provides access to
+names of languages, scripts, variants, time zones, and more. Some of the data
+is closely related to number and date formatting.</p>
+<p>Most of the corresponding <code class="docutils literal notranslate"><span class="pre">Locale</span></code> properties return dictionaries, where the
+key is a code such as the ISO country and language codes. Consult the API
+documentation for references to the relevant specifications.</p>
+</section>
+<section id="likely-subtags">
+<h2>Likely Subtags<a class="headerlink" href="#likely-subtags" title="永久链接至标题">¶</a></h2>
+<p>When dealing with locales you can run into the situation where a locale
+tag is not fully descriptive.  For instance people commonly refer to
+<code class="docutils literal notranslate"><span class="pre">zh_TW</span></code> but that identifier does not resolve to a locale that the CLDR
+covers.  Babel’s locale identifier parser in that case will attempt to
+resolve the most likely subtag to end up with the intended locale:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel</span> <span class="kn">import</span> <span class="n">Locale</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Locale</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;zh_TW&#39;</span><span class="p">)</span>
+<span class="go">Locale(&#39;zh&#39;, territory=&#39;TW&#39;, script=&#39;Hant&#39;)</span>
+</pre></div>
+</div>
+<p>This can also be used to find the most appropriate locale for a territory.
+In that case the territory code needs to be prefixed with <code class="docutils literal notranslate"><span class="pre">und</span></code> (unknown
+language identifier):</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Locale</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;und_AZ&#39;</span><span class="p">)</span>
+<span class="go">Locale(&#39;az&#39;, territory=&#39;AZ&#39;, script=&#39;Latn&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Locale</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;und_DE&#39;</span><span class="p">)</span>
+<span class="go">Locale(&#39;de&#39;, territory=&#39;DE&#39;)</span>
+</pre></div>
+</div>
+<p>Babel currently cannot deal with fuzzy locales (a locale not fully backed
+by data files) so we only accept locales that are fully backed by CLDR
+data.  This will change in the future, but for the time being this
+restriction is in place.</p>
+</section>
+<section id="locale-display-names">
+<h2>Locale Display Names<a class="headerlink" href="#locale-display-names" title="永久链接至标题">¶</a></h2>
+<p>Locales itself can be used to describe the locale itself or other locales.
+This mainly means that given a locale object you can ask it for its
+canonical display name, the name of the language and other things.  Since
+the locales cross-reference each other you can ask for locale names in any
+language supported by the CLDR:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">Locale</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;de_DE&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">get_display_name</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;German (Germany)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">get_display_name</span><span class="p">(</span><span class="s1">&#39;fr_FR&#39;</span><span class="p">)</span>
+<span class="go">u&#39;allemand (Allemagne)&#39;</span>
+</pre></div>
+</div>
+<p>Display names include all the information to uniquely identify a locale
+(language, territory, script and variant) which is often not what you
+want.  You can also ask for the information in parts:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">get_language_name</span><span class="p">(</span><span class="s1">&#39;de_DE&#39;</span><span class="p">)</span>
+<span class="go">u&#39;Deutsch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">get_language_name</span><span class="p">(</span><span class="s1">&#39;it_IT&#39;</span><span class="p">)</span>
+<span class="go">u&#39;tedesco&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">get_territory_name</span><span class="p">(</span><span class="s1">&#39;it_IT&#39;</span><span class="p">)</span>
+<span class="go">u&#39;Germania&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">get_territory_name</span><span class="p">(</span><span class="s1">&#39;pt_PT&#39;</span><span class="p">)</span>
+<span class="go">u&#39;Alemanha&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="calendar-display-names">
+<h2>Calendar Display Names<a class="headerlink" href="#calendar-display-names" title="永久链接至标题">¶</a></h2>
+<p>The <a class="reference internal" href="api/core.html#babel.core.Locale" title="babel.core.Locale"><code class="xref py py-class docutils literal notranslate"><span class="pre">Locale</span></code></a> class provides access to many locale
+display names related to calendar display, such as the names of weekdays
+or months.</p>
+<p>These display names are of course used for date formatting, but can also be
+used, for example, to show a list of months to the user in their preferred
+language:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">locale</span> <span class="o">=</span> <span class="n">Locale</span><span class="p">(</span><span class="s1">&#39;es&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">month_names</span> <span class="o">=</span> <span class="n">locale</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">][</span><span class="s1">&#39;wide&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">month_names</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span> <span class="n">name</span>
+<span class="go">enero</span>
+<span class="go">febrero</span>
+<span class="go">marzo</span>
+<span class="go">abril</span>
+<span class="go">mayo</span>
+<span class="go">junio</span>
+<span class="go">julio</span>
+<span class="go">agosto</span>
+<span class="go">septiembre</span>
+<span class="go">octubre</span>
+<span class="go">noviembre</span>
+<span class="go">diciembre</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Locale Data</a><ul>
+<li><a class="reference internal" href="#the-locale-class">The <code class="docutils literal notranslate"><span class="pre">Locale</span></code> Class</a></li>
+<li><a class="reference internal" href="#likely-subtags">Likely Subtags</a></li>
+<li><a class="reference internal" href="#locale-display-names">Locale Display Names</a></li>
+<li><a class="reference internal" href="#calendar-display-names">Calendar Display Names</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="上一章">Installation</a></li>
+      <li>Next: <a href="dates.html" title="下一章">Date and Time</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

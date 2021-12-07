@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Pluralization Support &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/babel.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="General Support Functionality" href="support.html" />
+    <link rel="prev" title="Numbers and Currencies" href="numbers.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="support.html" title="General Support Functionality"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="numbers.html" title="Numbers and Currencies"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Babel 2.9.1 文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Pluralization Support</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-babel.plural">
+<span id="pluralization-support"></span><h1>Pluralization Support<a class="headerlink" href="#module-babel.plural" title="永久链接至标题">¶</a></h1>
+<p>The pluralization support provides functionality around the CLDR
+pluralization rules.  It can parse and evaluate pluralization rules, as
+well as convert them to other formats such as gettext.</p>
+<section id="basic-interface">
+<h2>Basic Interface<a class="headerlink" href="#basic-interface" title="永久链接至标题">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="babel.plural.PluralRule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">babel.plural.</span></span><span class="sig-name descname"><span class="pre">PluralRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rules</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.plural.PluralRule" title="永久链接至目标">¶</a></dt>
+<dd><p>Represents a set of language pluralization rules.  The constructor
+accepts a list of (tag, expr) tuples or a dict of <a class="reference external" href="https://www.unicode.org/reports/tr35/tr35-33/tr35-numbers.html#Language_Plural_Rules">CLDR rules</a>. The
+resulting object is callable and accepts one parameter with a positive or
+negative number (both integer and float) for the number that indicates the
+plural form for a string and returns the tag for the format:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rule</span> <span class="o">=</span> <span class="n">PluralRule</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;n is 1&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rule</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;one&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rule</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&#39;other&#39;</span>
+</pre></div>
+</div>
+<p>Currently the CLDR defines these tags: zero, one, two, few, many and
+other where other is an implicit default.  Rules should be mutually
+exclusive; for a given numeric value, only one rule should apply (i.e.
+the condition should only be true for one of the plural rule elements.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.plural.PluralRule.parse">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rules</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.plural.PluralRule.parse" title="永久链接至目标">¶</a></dt>
+<dd><p>Create a <cite>PluralRule</cite> instance for the given rules.  If the rules
+are a <cite>PluralRule</cite> object, that object is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>rules</strong> – the rules as list or dict, or a <cite>PluralRule</cite> object</p>
+</dd>
+<dt class="field-even">引发</dt>
+<dd class="field-even"><p><strong>RuleError</strong> – if the expression is malformed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="babel.plural.PluralRule.rules">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rules</span></span><a class="headerlink" href="#babel.plural.PluralRule.rules" title="永久链接至目标">¶</a></dt>
+<dd><p>The <cite>PluralRule</cite> as a dict of unicode plural rules.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rule</span> <span class="o">=</span> <span class="n">PluralRule</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;n is 1&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rule</span><span class="o">.</span><span class="n">rules</span>
+<span class="go">{&#39;one&#39;: &#39;n is 1&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="babel.plural.PluralRule.tags">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tags</span></span><a class="headerlink" href="#babel.plural.PluralRule.tags" title="永久链接至目标">¶</a></dt>
+<dd><p>A set of explicitly defined tags in this rule.  The implicit default
+<code class="docutils literal notranslate"><span class="pre">'other'</span></code> rules is not part of this set unless there is an explicit
+rule for it.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="conversion-functionality">
+<h2>Conversion Functionality<a class="headerlink" href="#conversion-functionality" title="永久链接至标题">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.plural.to_javascript">
+<span class="sig-prename descclassname"><span class="pre">babel.plural.</span></span><span class="sig-name descname"><span class="pre">to_javascript</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.plural.to_javascript" title="永久链接至目标">¶</a></dt>
+<dd><p>Convert a list/dict of rules or a <cite>PluralRule</cite> object into a JavaScript
+function.  This function depends on no external library:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">to_javascript</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;n is 1&#39;</span><span class="p">})</span>
+<span class="go">&quot;(function(n) { return (n == 1) ? &#39;one&#39; : &#39;other&#39;; })&quot;</span>
+</pre></div>
+</div>
+<p>Implementation detail: The function generated will probably evaluate
+expressions involved into range operations multiple times.  This has the
+advantage that external helper functions are not required and is not a
+big performance hit for these simple calculations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>rule</strong> – the rules as list or dict, or a <cite>PluralRule</cite> object</p>
+</dd>
+<dt class="field-even">引发</dt>
+<dd class="field-even"><p><strong>RuleError</strong> – if the expression is malformed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.plural.to_python">
+<span class="sig-prename descclassname"><span class="pre">babel.plural.</span></span><span class="sig-name descname"><span class="pre">to_python</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.plural.to_python" title="永久链接至目标">¶</a></dt>
+<dd><p>Convert a list/dict of rules or a <cite>PluralRule</cite> object into a regular
+Python function.  This is useful in situations where you need a real
+function and don’t are about the actual rule object:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">func</span> <span class="o">=</span> <span class="n">to_python</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;n is 1&#39;</span><span class="p">,</span> <span class="s1">&#39;few&#39;</span><span class="p">:</span> <span class="s1">&#39;n in 2..4&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;one&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&#39;few&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span> <span class="o">=</span> <span class="n">to_python</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;n in 1,11&#39;</span><span class="p">,</span> <span class="s1">&#39;few&#39;</span><span class="p">:</span> <span class="s1">&#39;n in 3..10,13..19&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<span class="go">&#39;one&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="go">&#39;few&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>rule</strong> – the rules as list or dict, or a <cite>PluralRule</cite> object</p>
+</dd>
+<dt class="field-even">引发</dt>
+<dd class="field-even"><p><strong>RuleError</strong> – if the expression is malformed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.plural.to_gettext">
+<span class="sig-prename descclassname"><span class="pre">babel.plural.</span></span><span class="sig-name descname"><span class="pre">to_gettext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rule</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.plural.to_gettext" title="永久链接至目标">¶</a></dt>
+<dd><p>The plural rule as gettext expression.  The gettext expression is
+technically limited to integers and returns indices rather than tags.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">to_gettext</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;n is 1&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="s1">&#39;n is 2&#39;</span><span class="p">})</span>
+<span class="go">&#39;nplurals=3; plural=((n == 1) ? 0 : (n == 2) ? 1 : 2)&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>rule</strong> – the rules as list or dict, or a <cite>PluralRule</cite> object</p>
+</dd>
+<dt class="field-even">引发</dt>
+<dd class="field-even"><p><strong>RuleError</strong> – if the expression is malformed</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="../index.html">
+  <img class="logo" src="../_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="../index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Pluralization Support</a><ul>
+<li><a class="reference internal" href="#basic-interface">Basic Interface</a></li>
+<li><a class="reference internal" href="#conversion-functionality">Conversion Functionality</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Reference</a><ul>
+      <li>Previous: <a href="numbers.html" title="上一章">Numbers and Currencies</a></li>
+      <li>Next: <a href="support.html" title="下一章">General Support Functionality</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

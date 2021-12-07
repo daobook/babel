@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Numbers and Currencies &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/babel.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Pluralization Support" href="plural.html" />
+    <link rel="prev" title="PO File Support" href="messages/pofile.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="plural.html" title="Pluralization Support"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="messages/pofile.html" title="PO File Support"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Babel 2.9.1 文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Numbers and Currencies</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-babel.numbers">
+<span id="numbers-and-currencies"></span><h1>Numbers and Currencies<a class="headerlink" href="#module-babel.numbers" title="永久链接至标题">¶</a></h1>
+<p>The number module provides functionality to format numbers for different
+locales.  This includes arbitrary numbers as well as currency.</p>
+<section id="number-formatting">
+<h2>Number Formatting<a class="headerlink" href="#number-formatting" title="永久链接至标题">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.format_number">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">format_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.format_number" title="永久链接至目标">¶</a></dt>
+<dd><p>Return the given number formatted for a specific locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_number</span><span class="p">(</span><span class="mi">1099</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1,099&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_number</span><span class="p">(</span><span class="mi">1099</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de_DE&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.099&#39;</span>
+</pre></div>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">2.6.0 版后已移除: </span>Use babel.numbers.format_decimal() instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> – the number to format</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.format_decimal">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">format_decimal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.format_decimal" title="永久链接至目标">¶</a></dt>
+<dd><p>Return the given decimal number formatted for a specific locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">1.2345</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.234&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">1.2346</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.235&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2346</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;-1.235&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">1.2345</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;sv_SE&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1,234&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">1.2345</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1,234&#39;</span>
+</pre></div>
+</div>
+<p>The appropriate thousands grouping and the decimal separator are used for
+each locale:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">12345.5</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;12,345.5&#39;</span>
+</pre></div>
+</div>
+<p>By default the locale is allowed to truncate and round a high-precision
+number by forcing its format pattern onto the decimal part. You can bypass
+this behavior with the <cite>decimal_quantization</cite> parameter:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">1.2346</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.235&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">1.2346</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">decimal_quantization</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;1.2346&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">12345.67</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;fr_CA&#39;</span><span class="p">,</span> <span class="n">group_separator</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;12345,67&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">12345.67</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">group_separator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">u&#39;12,345.67&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> – the number to format</p></li>
+<li><p><strong>format</strong> – </p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+<li><p><strong>decimal_quantization</strong> – Truncate and round high-precision numbers to
+the format pattern. Defaults to <cite>True</cite>.</p></li>
+<li><p><strong>group_separator</strong> – Boolean to switch group separator on/off in a locale’s
+number format.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.format_currency">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">format_currency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'standard'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.format_currency" title="永久链接至目标">¶</a></dt>
+<dd><p>Return formatted currency value.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;$1,099.98&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;es_CO&#39;</span><span class="p">)</span>
+<span class="go">u&#39;US$\xa01.099,98&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de_DE&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.099,98\xa0\u20ac&#39;</span>
+</pre></div>
+</div>
+<p>The format can also be specified explicitly.  The currency is
+placed with the ‘¤’ sign.  As the sign gets repeated the format
+expands (¤ being the symbol, ¤¤ is the currency abbreviation and
+¤¤¤ is the full name of the currency):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;¤¤ #,##0.00&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;EUR 1,099.98&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#,##0.00 ¤¤¤&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1,099.98 euros&#39;</span>
+</pre></div>
+</div>
+<p>Currencies usually have a specific number of decimal digits. This function
+favours that information over the given format:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;JPY&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;\xa51,100&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;COP&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#,##0.00&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;es_ES&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.099,98&#39;</span>
+</pre></div>
+</div>
+<p>However, the number of decimal digits can be overriden from the currency
+information, by setting the last parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;JPY&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">currency_digits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;\xa51,099.98&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;COP&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#,##0.00&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;es_ES&#39;</span><span class="p">,</span> <span class="n">currency_digits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;1.099,98&#39;</span>
+</pre></div>
+</div>
+<p>If a format is not specified the type of currency format to use
+from the locale can be specified:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">format_type</span><span class="o">=</span><span class="s1">&#39;standard&#39;</span><span class="p">)</span>
+<span class="go">u&#39;\u20ac1,099.98&#39;</span>
+</pre></div>
+</div>
+<p>When the given currency format type is not available, an exception is
+raised:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="s1">&#39;1099.98&#39;</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">format_type</span><span class="o">=</span><span class="s1">&#39;unknown&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">UnknownCurrencyFormatError</span>: <span class="n">&quot;&#39;unknown&#39; is not a known currency format type&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">101299.98</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">group_separator</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;$101299.98&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">101299.98</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">group_separator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">u&#39;$101,299.98&#39;</span>
+</pre></div>
+</div>
+<p>You can also pass format_type=’name’ to use long display names. The order of
+the number and currency name, along with the correct localized plural form
+of the currency name, is chosen according to locale:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">format_type</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.00 US dollar&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">format_type</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1,099.98 US dollars&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.98</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;ee&#39;</span><span class="p">,</span> <span class="n">format_type</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+<span class="go">u&#39;us ga dollar 1,099.98&#39;</span>
+</pre></div>
+</div>
+<p>By default the locale is allowed to truncate and round a high-precision
+number by forcing its format pattern onto the decimal part. You can bypass
+this behavior with the <cite>decimal_quantization</cite> parameter:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.9876</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;$1,099.99&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_currency</span><span class="p">(</span><span class="mf">1099.9876</span><span class="p">,</span> <span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">decimal_quantization</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;$1,099.9876&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> – the number to format</p></li>
+<li><p><strong>currency</strong> – the currency code</p></li>
+<li><p><strong>format</strong> – the format string to use</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+<li><p><strong>currency_digits</strong> – use the currency’s natural number of decimal digits</p></li>
+<li><p><strong>format_type</strong> – the currency format type to use</p></li>
+<li><p><strong>decimal_quantization</strong> – Truncate and round high-precision numbers to
+the format pattern. Defaults to <cite>True</cite>.</p></li>
+<li><p><strong>group_separator</strong> – Boolean to switch group separator on/off in a locale’s
+number format.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.format_percent">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">format_percent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.format_percent" title="永久链接至目标">¶</a></dt>
+<dd><p>Return formatted percent value for a specific locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_percent</span><span class="p">(</span><span class="mf">0.34</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;34%&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_percent</span><span class="p">(</span><span class="mf">25.1234</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;2,512%&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_percent</span><span class="p">(</span><span class="mf">25.1234</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;sv_SE&#39;</span><span class="p">)</span>
+<span class="go">u&#39;2\xa0512\xa0%&#39;</span>
+</pre></div>
+</div>
+<p>The format pattern can also be specified explicitly:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_percent</span><span class="p">(</span><span class="mf">25.1234</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#,##0‰&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;25,123‰&#39;</span>
+</pre></div>
+</div>
+<p>By default the locale is allowed to truncate and round a high-precision
+number by forcing its format pattern onto the decimal part. You can bypass
+this behavior with the <cite>decimal_quantization</cite> parameter:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_percent</span><span class="p">(</span><span class="mf">23.9876</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;2,399%&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_percent</span><span class="p">(</span><span class="mf">23.9876</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">decimal_quantization</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;2,398.76%&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_percent</span><span class="p">(</span><span class="mf">229291.1234</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;pt_BR&#39;</span><span class="p">,</span> <span class="n">group_separator</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;22929112%&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_percent</span><span class="p">(</span><span class="mf">229291.1234</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;pt_BR&#39;</span><span class="p">,</span> <span class="n">group_separator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">u&#39;22.929.112%&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> – the percent number to format</p></li>
+<li><p><strong>format</strong> – </p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+<li><p><strong>decimal_quantization</strong> – Truncate and round high-precision numbers to
+the format pattern. Defaults to <cite>True</cite>.</p></li>
+<li><p><strong>group_separator</strong> – Boolean to switch group separator on/off in a locale’s
+number format.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.format_scientific">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">format_scientific</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.format_scientific" title="永久链接至目标">¶</a></dt>
+<dd><p>Return value formatted in scientific notation for a specific locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_scientific</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1E4&#39;</span>
+</pre></div>
+</div>
+<p>The format pattern can also be specified explicitly:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_scientific</span><span class="p">(</span><span class="mi">1234567</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;##0.##E00&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.23E06&#39;</span>
+</pre></div>
+</div>
+<p>By default the locale is allowed to truncate and round a high-precision
+number by forcing its format pattern onto the decimal part. You can bypass
+this behavior with the <cite>decimal_quantization</cite> parameter:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_scientific</span><span class="p">(</span><span class="mf">1234.9876</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#.##E0&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.23E3&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_scientific</span><span class="p">(</span><span class="mf">1234.9876</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;#.##E0&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">decimal_quantization</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">u&#39;1.2349876E3&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> – the number to format</p></li>
+<li><p><strong>format</strong> – </p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+<li><p><strong>decimal_quantization</strong> – Truncate and round high-precision numbers to
+the format pattern. Defaults to <cite>True</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="number-parsing">
+<h2>Number Parsing<a class="headerlink" href="#number-parsing" title="永久链接至标题">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.parse_number">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">parse_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.parse_number" title="永久链接至目标">¶</a></dt>
+<dd><p>Parse localized number string into an integer.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_number</span><span class="p">(</span><span class="s1">&#39;1,099&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">1099</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_number</span><span class="p">(</span><span class="s1">&#39;1.099&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de_DE&#39;</span><span class="p">)</span>
+<span class="go">1099</span>
+</pre></div>
+</div>
+<p>When the given string cannot be parsed, an exception is raised:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_number</span><span class="p">(</span><span class="s1">&#39;1.099,98&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">NumberFormatError</span>: <span class="n">&#39;1.099,98&#39; is not a valid number</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – the string to parse</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>the parsed number</p>
+</dd>
+<dt class="field-odd">引发</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#babel.numbers.NumberFormatError" title="babel.numbers.NumberFormatError"><strong>NumberFormatError</strong></a> – if the string can not be converted to a number</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.parse_decimal">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">parse_decimal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.parse_decimal" title="永久链接至目标">¶</a></dt>
+<dd><p>Parse localized decimal string into a decimal.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;1,099.98&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">Decimal(&#39;1099.98&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;1.099,98&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">)</span>
+<span class="go">Decimal(&#39;1099.98&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;12 345,123&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;ru&#39;</span><span class="p">)</span>
+<span class="go">Decimal(&#39;12345.123&#39;)</span>
+</pre></div>
+</div>
+<p>When the given string cannot be parsed, an exception is raised:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;2,109,998&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">NumberFormatError</span>: <span class="n">&#39;2,109,998&#39; is not a valid decimal number</span>
+</pre></div>
+</div>
+<p>If <cite>strict</cite> is set to <cite>True</cite> and the given string contains a number
+formatted in an irregular way, an exception is raised:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;30.00&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">NumberFormatError</span>: <span class="n">&#39;30.00&#39; is not a properly formatted decimal number. Did you mean &#39;3.000&#39;? Or maybe &#39;30,00&#39;?</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;0.00&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">NumberFormatError</span>: <span class="n">&#39;0.00&#39; is not a properly formatted decimal number. Did you mean &#39;0&#39;?</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> – the string to parse</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+<li><p><strong>strict</strong> – controls whether numbers formatted in a weird way are
+accepted or rejected</p></li>
+</ul>
+</dd>
+<dt class="field-even">引发</dt>
+<dd class="field-even"><p><a class="reference internal" href="#babel.numbers.NumberFormatError" title="babel.numbers.NumberFormatError"><strong>NumberFormatError</strong></a> – if the string can not be converted to a
+decimal number</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="永久链接至标题">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="babel.numbers.NumberFormatError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">NumberFormatError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suggestions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.NumberFormatError" title="永久链接至目标">¶</a></dt>
+<dd><p>Exception raised when a string cannot be parsed into a number.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="babel.numbers.NumberFormatError.suggestions">
+<span class="sig-name descname"><span class="pre">suggestions</span></span><a class="headerlink" href="#babel.numbers.NumberFormatError.suggestions" title="永久链接至目标">¶</a></dt>
+<dd><p>a list of properly formatted numbers derived from the invalid input</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="data-access">
+<h2>Data Access<a class="headerlink" href="#data-access" title="永久链接至标题">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.get_currency_name">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">get_currency_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.get_currency_name" title="永久链接至目标">¶</a></dt>
+<dd><p>Return the name used by the locale for the specified currency.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_currency_name</span><span class="p">(</span><span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;US Dollar&#39;</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">0.9.4 新版功能.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>currency</strong> – the currency code.</p></li>
+<li><p><strong>count</strong> – the optional count.  If provided the currency name
+will be pluralized to that number if possible.</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.get_currency_symbol">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">get_currency_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.get_currency_symbol" title="永久链接至目标">¶</a></dt>
+<dd><p>Return the symbol used by the locale for the specified currency.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_currency_symbol</span><span class="p">(</span><span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;$&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>currency</strong> – the currency code.</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.get_currency_unit_pattern">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">get_currency_unit_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.get_currency_unit_pattern" title="永久链接至目标">¶</a></dt>
+<dd><p>Return the unit pattern used for long display of a currency value
+for a given locale.
+This is a string containing <code class="docutils literal notranslate"><span class="pre">{0}</span></code> where the numeric part
+should be substituted and <code class="docutils literal notranslate"><span class="pre">{1}</span></code> where the currency long display
+name should be substituted.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_currency_unit_pattern</span><span class="p">(</span><span class="s1">&#39;USD&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">u&#39;{0} {1}&#39;</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">2.7.0 新版功能.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>currency</strong> – the currency code.</p></li>
+<li><p><strong>count</strong> – the optional count.  If provided the unit
+pattern for that number will be returned.</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.get_decimal_symbol">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">get_decimal_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.get_decimal_symbol" title="永久链接至目标">¶</a></dt>
+<dd><p>Return the symbol used by the locale to separate decimal fractions.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_decimal_symbol</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;.&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.get_plus_sign_symbol">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">get_plus_sign_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.get_plus_sign_symbol" title="永久链接至目标">¶</a></dt>
+<dd><p>Return the plus sign symbol used by the current locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_plus_sign_symbol</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;+&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.get_minus_sign_symbol">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">get_minus_sign_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.get_minus_sign_symbol" title="永久链接至目标">¶</a></dt>
+<dd><p>Return the plus sign symbol used by the current locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_minus_sign_symbol</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;-&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.numbers.get_territory_currencies">
+<span class="sig-prename descclassname"><span class="pre">babel.numbers.</span></span><span class="sig-name descname"><span class="pre">get_territory_currencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">territory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tender</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_tender</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_details</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.numbers.get_territory_currencies" title="永久链接至目标">¶</a></dt>
+<dd><p>Returns the list of currencies for the given territory that are valid for
+the given date range.  In addition to that the currency database
+distinguishes between tender and non-tender currencies.  By default only
+tender currencies are returned.</p>
+<p>The return value is a list of all currencies roughly ordered by the time
+of when the currency became active.  The longer the currency is being in
+use the more to the left of the list it will be.</p>
+<p>The start date defaults to today.  If no end date is given it will be the
+same as the start date.  Otherwise a range can be defined.  For instance
+this can be used to find the currencies in use in Austria between 1995 and
+2011:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_territory_currencies</span><span class="p">(</span><span class="s1">&#39;AT&#39;</span><span class="p">,</span> <span class="n">date</span><span class="p">(</span><span class="mi">1995</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">date</span><span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">[&#39;ATS&#39;, &#39;EUR&#39;]</span>
+</pre></div>
+</div>
+<p>Likewise it’s also possible to find all the currencies in use on a
+single date:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_territory_currencies</span><span class="p">(</span><span class="s1">&#39;AT&#39;</span><span class="p">,</span> <span class="n">date</span><span class="p">(</span><span class="mi">1995</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">[&#39;ATS&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_territory_currencies</span><span class="p">(</span><span class="s1">&#39;AT&#39;</span><span class="p">,</span> <span class="n">date</span><span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">[&#39;EUR&#39;]</span>
+</pre></div>
+</div>
+<p>By default the return value only includes tender currencies.  This
+however can be changed:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_territory_currencies</span><span class="p">(</span><span class="s1">&#39;US&#39;</span><span class="p">)</span>
+<span class="go">[&#39;USD&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_territory_currencies</span><span class="p">(</span><span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="n">tender</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">non_tender</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>                         <span class="n">start_date</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">[&#39;USN&#39;, &#39;USS&#39;]</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">2.0 新版功能.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>territory</strong> – the name of the territory to find the currency for.</p></li>
+<li><p><strong>start_date</strong> – the start date.  If not given today is assumed.</p></li>
+<li><p><strong>end_date</strong> – the end date.  If not given the start date is assumed.</p></li>
+<li><p><strong>tender</strong> – controls whether tender currencies should be included.</p></li>
+<li><p><strong>non_tender</strong> – controls whether non-tender currencies should be
+included.</p></li>
+<li><p><strong>include_details</strong> – if set to <cite>True</cite>, instead of returning currency
+codes the return value will be dictionaries
+with detail information.  In that case each
+dictionary will have the keys <code class="docutils literal notranslate"><span class="pre">'currency'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'from'</span></code>, <code class="docutils literal notranslate"><span class="pre">'to'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'tender'</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="../index.html">
+  <img class="logo" src="../_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="../index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Numbers and Currencies</a><ul>
+<li><a class="reference internal" href="#number-formatting">Number Formatting</a></li>
+<li><a class="reference internal" href="#number-parsing">Number Parsing</a></li>
+<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li><a class="reference internal" href="#data-access">Data Access</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Reference</a><ul>
+      <li>Previous: <a href="messages/pofile.html" title="上一章">PO File Support</a></li>
+      <li>Next: <a href="plural.html" title="下一章">Pluralization Support</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

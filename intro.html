@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>概述 &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/babel.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Babel" href="index.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Babel"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Babel 2.9.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">概述</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="introduction">
+<h1>概述<a class="headerlink" href="#introduction" title="永久链接至标题">¶</a></h1>
+<p>Babel 为国际化（I18n）和本地化（L10N）提供的功能可以分为两个不同的方面：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>构建和使用 <code class="docutils literal notranslate"><span class="pre">gettext</span></code> 信息目录的工具，以及</p></li>
+<li><p>CLDR（通用语言数据仓库）的 Python 接口，提供对各种语言显示名称、本地化数字和日期格式等的访问。</p></li>
+</ul>
+</div></blockquote>
+<section id="message-catalogs">
+<h2>消息目录<a class="headerlink" href="#message-catalogs" title="永久链接至标题">¶</a></h2>
+<p>虽然 Python 标准库包括一个 <a class="reference external" href="https://docs.python.org/3/library/gettext.html#module-gettext" title="(在 Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gettext</span></code></a> 模块，使应用程序能够使用消息目录，但它要求开发者使用 GNU 工具，如 <code class="docutils literal notranslate"><span class="pre">xgettext</span></code>、<code class="docutils literal notranslate"><span class="pre">msgmerge</span></code> 和 <code class="docutils literal notranslate"><span class="pre">msgfmt</span></code> 建立这些目录。虽然 <code class="docutils literal notranslate"><span class="pre">xgettext</span></code> 确实支持从 Python 文件中提取消息，但它不知道如何处理 Python 网络应用中常见的其他类型的文件，如模板，也没有提供一个简单的扩展机制来增加这种支持。</p>
+<p>Babel 通过提供一个框架来解决这个问题，在这个框架中，各种提取方法可以被插入到一个更大的消息提取框架中，同时也消除了对 GNU <code class="docutils literal notranslate"><span class="pre">gettext</span></code> 工具的依赖，因为这些工具不一定在所有平台上都可用。关于 Babel 这方面的细节，请看 <a class="reference internal" href="messages.html#messages"><span class="std std-ref">Working with Message Catalogs</span></a>。</p>
+</section>
+<section id="locale-data">
+<h2>本地数据<a class="headerlink" href="#locale-data" title="永久链接至标题">¶</a></h2>
+<p>此外，虽然 Python 标准库确实包括了对数字和日期格式化的基本本地化支持（<a class="reference external" href="https://docs.python.org/3/library/locale.html#module-locale" title="(在 Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">locale</span></code></a> 模块，以及其他），这种支持是基于每个进程只使用一个特定的 locale 的假设（至少是同时）。而且，它没有提供对其他种类的 locale 数据的访问，例如国家、语言或时区的本地化名称，这些在基于网络的应用程序中经常需要。</p>
+<p>对于这些要求，Babel 包括从 <a class="reference external" href="https://unicode.org/cldr/">通用地域数据存储库（CLDR）</a> 中提取的数据，并提供了一些方便的方法来访问和使用这些数据。参见 <a class="reference internal" href="locale.html#locale-data"><span class="std std-ref">Locale Data</span></a>、<a class="reference internal" href="dates.html#date-and-time"><span class="std std-ref">Date and Time</span></a> 和 <a class="reference internal" href="numbers.html#numbers"><span class="std std-ref">Number Formatting</span></a> 以了解更多关于 Babel 这方面的信息。</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">概述</a><ul>
+<li><a class="reference internal" href="#message-catalogs">消息目录</a></li>
+<li><a class="reference internal" href="#locale-data">本地数据</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="上一章">Babel</a></li>
+      <li>Next: <a href="installation.html" title="下一章">Installation</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

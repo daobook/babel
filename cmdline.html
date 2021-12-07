@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Command-Line Interface &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/babel.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Distutils/Setuptools Integration" href="setup.html" />
+    <link rel="prev" title="Working with Message Catalogs" href="messages.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="setup.html" title="Distutils/Setuptools Integration"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="messages.html" title="Working with Message Catalogs"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Babel 2.9.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Command-Line Interface</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="command-line-interface">
+<span id="cmdline"></span><h1>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="永久链接至标题">¶</a></h1>
+<p>Babel includes a command-line interface for working with message catalogs,
+similar to the various GNU <code class="docutils literal notranslate"><span class="pre">gettext</span></code> tools commonly available on Linux/Unix
+systems.</p>
+<p>When properly installed, Babel provides a script called <code class="docutils literal notranslate"><span class="pre">pybabel</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pybabel --help
+usage: pybabel command [options] [args]
+
+options:
+  --version       show program&#39;s version number and exit
+  -h, --help      show this help message and exit
+  --list-locales  print all known locales and exit
+  -v, --verbose   print as much as possible
+  -q, --quiet     print as little as possible
+
+commands:
+  compile  compile message catalogs to MO files
+  extract  extract messages from source files and generate a POT file
+  init     create new message catalogs from a POT file
+  update   update existing message catalogs from a POT file
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">pybabel</span></code> script provides a number of sub-commands that do the actual
+work. Those sub-commands are described below.</p>
+<section id="compile">
+<h2>compile<a class="headerlink" href="#compile" title="永久链接至标题">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">compile</span></code> sub-command can be used to compile translation catalogs into
+binary MO files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pybabel compile --help
+usage: pybabel compile [options]
+
+compile message catalogs to MO files
+
+options:
+  -h, --help            show this help message and exit
+  -D DOMAIN, --domain=DOMAIN
+                        domain of MO and PO files (default &#39;messages&#39;)
+  -d DIR, --directory=DIR
+                        base directory of catalog files
+  -l LOCALE, --locale=LOCALE
+                        locale of the catalog
+  -i FILE, --input-file=FILE
+                        name of the input file
+  -o FILE, --output-file=FILE
+                        name of the output file (default
+                        &#39;&lt;output_dir&gt;/&lt;locale&gt;/LC_MESSAGES/&lt;domain&gt;.mo&#39;)
+  -f, --use-fuzzy       also include fuzzy translations (default False)
+  --statistics          print statistics about translations
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">directory</span></code> is specified, but <code class="docutils literal notranslate"><span class="pre">output-file</span></code> is not, the default filename
+of the output file will be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">directory</span><span class="o">&gt;/&lt;</span><span class="n">locale</span><span class="o">&gt;/</span><span class="n">LC_MESSAGES</span><span class="o">/&lt;</span><span class="n">domain</span><span class="o">&gt;.</span><span class="n">mo</span>
+</pre></div>
+</div>
+<p>If neither the <code class="docutils literal notranslate"><span class="pre">input_file</span></code> nor the <code class="docutils literal notranslate"><span class="pre">locale</span></code> option is set, this command
+looks for all catalog files in the base directory that match the given domain,
+and compiles each of them to MO files in the same directory.</p>
+</section>
+<section id="extract">
+<h2>extract<a class="headerlink" href="#extract" title="永久链接至标题">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">extract</span></code> sub-command can be used to extract localizable messages from
+a collection of source files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pybabel extract --help
+usage: pybabel extract [options] dir1 &lt;dir2&gt; ...
+
+extract messages from source files and generate a POT file
+
+options:
+  -h, --help            show this help message and exit
+  --charset=CHARSET     charset to use in the output (default &quot;utf-8&quot;)
+  -k KEYWORDS, --keyword=KEYWORDS
+                        keywords to look for in addition to the defaults. You
+                        can specify multiple -k flags on the command line.
+  --no-default-keywords
+                        do not include the default keywords
+  -F MAPPING_FILE, --mapping=MAPPING_FILE
+                        path to the extraction mapping file
+  --no-location         do not include location comments with filename and
+                        line number
+  --omit-header         do not include msgid &quot;&quot; entry in header
+  -o OUTPUT, --output=OUTPUT
+                        path to the output POT file
+  -w WIDTH, --width=WIDTH
+                        set output line width (default 76)
+  --no-wrap             do not break long message lines, longer than the
+                        output line width, into several lines
+  --sort-output         generate sorted output (default False)
+  --sort-by-file        sort output by file location (default False)
+  --msgid-bugs-address=EMAIL@ADDRESS
+                        set report address for msgid
+  --copyright-holder=COPYRIGHT_HOLDER
+                        set copyright holder in output
+  -c TAG, --add-comments=TAG
+                        place comment block with TAG (or those preceding
+                        keyword lines) in output file. One TAG per argument
+                        call
+</pre></div>
+</div>
+</section>
+<section id="init">
+<h2>init<a class="headerlink" href="#init" title="永久链接至标题">¶</a></h2>
+<p>The <cite>init</cite> sub-command creates a new translations catalog based on a PO
+template file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pybabel init --help
+usage: pybabel init [options]
+
+create new message catalogs from a POT file
+
+options:
+  -h, --help            show this help message and exit
+  -D DOMAIN, --domain=DOMAIN
+                        domain of PO file (default &#39;messages&#39;)
+  -i FILE, --input-file=FILE
+                        name of the input file
+  -d DIR, --output-dir=DIR
+                        path to output directory
+  -o FILE, --output-file=FILE
+                        name of the output file (default
+                        &#39;&lt;output_dir&gt;/&lt;locale&gt;/LC_MESSAGES/&lt;domain&gt;.po&#39;)
+  -l LOCALE, --locale=LOCALE
+                        locale for the new localized catalog
+</pre></div>
+</div>
+</section>
+<section id="update">
+<h2>update<a class="headerlink" href="#update" title="永久链接至标题">¶</a></h2>
+<p>The <cite>update</cite> sub-command updates an existing new translations catalog based on
+a PO template file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pybabel update --help
+usage: pybabel update [options]
+
+update existing message catalogs from a POT file
+
+options:
+  -h, --help            show this help message and exit
+  -D DOMAIN, --domain=DOMAIN
+                        domain of PO file (default &#39;messages&#39;)
+  -i FILE, --input-file=FILE
+                        name of the input file
+  -d DIR, --output-dir=DIR
+                        path to output directory
+  -o FILE, --output-file=FILE
+                        name of the output file (default
+                        &#39;&lt;output_dir&gt;/&lt;locale&gt;/LC_MESSAGES/&lt;domain&gt;.po&#39;)
+  -l LOCALE, --locale=LOCALE
+                        locale of the translations catalog
+  --ignore-obsolete     do not include obsolete messages in the output
+                        (default False)
+  -N, --no-fuzzy-matching
+                        do not use fuzzy matching (default False)
+  --previous            keep previous msgids of translated messages (default
+                        False)
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">output_dir</span></code> is specified, but <code class="docutils literal notranslate"><span class="pre">output-file</span></code> is not, the default
+filename of the output file will be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">directory</span><span class="o">&gt;/&lt;</span><span class="n">locale</span><span class="o">&gt;/</span><span class="n">LC_MESSAGES</span><span class="o">/&lt;</span><span class="n">domain</span><span class="o">&gt;.</span><span class="n">mo</span>
+</pre></div>
+</div>
+<p>If neither the <code class="docutils literal notranslate"><span class="pre">output_file</span></code> nor the <code class="docutils literal notranslate"><span class="pre">locale</span></code> option is set, this command
+looks for all catalog files in the base directory that match the given domain,
+and updates each of them.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Command-Line Interface</a><ul>
+<li><a class="reference internal" href="#compile">compile</a></li>
+<li><a class="reference internal" href="#extract">extract</a></li>
+<li><a class="reference internal" href="#init">init</a></li>
+<li><a class="reference internal" href="#update">update</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="messages.html" title="上一章">Working with Message Catalogs</a></li>
+      <li>Next: <a href="setup.html" title="下一章">Distutils/Setuptools Integration</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

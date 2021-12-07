@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Support Classes and Functions &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/babel.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="API Reference" href="api/index.html" />
+    <link rel="prev" title="Distutils/Setuptools Integration" href="setup.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="api/index.html" title="API Reference"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="setup.html" title="Distutils/Setuptools Integration"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Babel 2.9.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Support Classes and Functions</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="support-classes-and-functions">
+<h1>Support Classes and Functions<a class="headerlink" href="#support-classes-and-functions" title="永久链接至标题">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">babel.support</span></code> modules contains a number of classes and functions that
+can help with integrating Babel, and internationalization in general, into your
+application or framework. The code in this module is not used by Babel itself,
+but instead is provided to address common requirements of applications that
+should handle internationalization.</p>
+<section id="lazy-evaluation">
+<h2>Lazy Evaluation<a class="headerlink" href="#lazy-evaluation" title="永久链接至标题">¶</a></h2>
+<p>One such requirement is lazy evaluation of translations. Many web-based
+applications define some localizable message at the module level, or in general
+at some level where the locale of the remote user is not yet known. For such
+cases, web frameworks generally provide a “lazy” variant of the <code class="docutils literal notranslate"><span class="pre">gettext</span></code>
+functions, which basically translates the message not when the <code class="docutils literal notranslate"><span class="pre">gettext</span></code>
+function is invoked, but when the string is accessed in some manner.</p>
+</section>
+<section id="extended-translations-class">
+<h2>Extended Translations Class<a class="headerlink" href="#extended-translations-class" title="永久链接至标题">¶</a></h2>
+<p>Many web-based applications are composed of a variety of different components
+(possibly using some kind of plugin system), and some of those components may
+provide their own message catalogs that need to be integrated into the larger
+system.</p>
+<p>To support this usage pattern, Babel provides a <code class="docutils literal notranslate"><span class="pre">Translations</span></code> class that is
+derived from the <code class="docutils literal notranslate"><span class="pre">GNUTranslations</span></code> class in the <code class="docutils literal notranslate"><span class="pre">gettext</span></code> module. This
+class adds a <code class="docutils literal notranslate"><span class="pre">merge()</span></code> method that takes another <code class="docutils literal notranslate"><span class="pre">Translations</span></code> instance,
+and merges the content of the latter into the main catalog:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">translations</span> <span class="o">=</span> <span class="n">Translations</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">)</span>
+<span class="n">translations</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">Translations</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;plugin1&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Support Classes and Functions</a><ul>
+<li><a class="reference internal" href="#lazy-evaluation">Lazy Evaluation</a></li>
+<li><a class="reference internal" href="#extended-translations-class">Extended Translations Class</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="setup.html" title="上一章">Distutils/Setuptools Integration</a></li>
+      <li>Next: <a href="api/index.html" title="下一章">API Reference</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

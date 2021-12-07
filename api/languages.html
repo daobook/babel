@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Languages &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/babel.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="List Formatting" href="lists.html" />
+    <link rel="prev" title="Date and Time" href="dates.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="lists.html" title="List Formatting"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="dates.html" title="Date and Time"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Babel 2.9.1 文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Languages</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-babel.languages">
+<span id="languages"></span><h1>Languages<a class="headerlink" href="#module-babel.languages" title="永久链接至标题">¶</a></h1>
+<p>The languages module provides functionality to access data about
+languages that is not bound to a given locale.</p>
+<section id="official-languages">
+<h2>Official Languages<a class="headerlink" href="#official-languages" title="永久链接至标题">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.languages.get_official_languages">
+<span class="sig-prename descclassname"><span class="pre">babel.languages.</span></span><span class="sig-name descname"><span class="pre">get_official_languages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">territory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regional</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">de_facto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.languages.get_official_languages" title="永久链接至目标">¶</a></dt>
+<dd><p>Get the official language(s) for the given territory.</p>
+<p>The language codes, if any are known, are returned in order of descending popularity.</p>
+<p>If the <cite>regional</cite> flag is set, then languages which are regionally official are also returned.</p>
+<p>If the <cite>de_facto</cite> flag is set, then languages which are “de facto” official are also returned.</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Note that the data is as up to date as the current version of the CLDR used
+by Babel.  If you need scientifically accurate information, use another source!</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>territory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><em>str</em></a>) – Territory code</p></li>
+<li><p><strong>regional</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><em>bool</em></a>) – Whether to return regionally official languages too</p></li>
+<li><p><strong>de_facto</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><em>bool</em></a>) – Whether to return de-facto official languages too</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>Tuple of language codes</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(在 Python v3.10)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.languages.get_territory_language_info">
+<span class="sig-prename descclassname"><span class="pre">babel.languages.</span></span><span class="sig-name descname"><span class="pre">get_territory_language_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">territory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.languages.get_territory_language_info" title="永久链接至目标">¶</a></dt>
+<dd><p>Get a dictionary of language information for a territory.</p>
+<p>The dictionary is keyed by language code; the values are dicts with more information.</p>
+<p>The following keys are currently known for the values:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>population_percent</cite>: The percentage of the territory’s population speaking the</dt><dd><p>language.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>official_status</cite>: An optional string describing the officiality status of the language.</dt><dd><p>Known values are “official”, “official_regional” and “de_facto_official”.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Note that the data is as up to date as the current version of the CLDR used
+by Babel.  If you need scientifically accurate information, use another source!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Note that the format of the dict returned may change between Babel versions.</p>
+</div>
+<p>See <a class="reference external" href="https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html">https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>territory</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><em>str</em></a>) – Territory code</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>Language information dictionary</p>
+</dd>
+<dt class="field-odd">返回类型</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(在 Python v3.10)">dict</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="../index.html">
+  <img class="logo" src="../_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="../index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Languages</a><ul>
+<li><a class="reference internal" href="#official-languages">Official Languages</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Reference</a><ul>
+      <li>Previous: <a href="dates.html" title="上一章">Date and Time</a></li>
+      <li>Next: <a href="lists.html" title="下一章">List Formatting</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

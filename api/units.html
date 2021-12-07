@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Units &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/babel.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Babel Development" href="../dev.html" />
+    <link rel="prev" title="General Support Functionality" href="support.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="../dev.html" title="Babel Development"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="support.html" title="General Support Functionality"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Babel 2.9.1 文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Units</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-babel.units">
+<span id="units"></span><h1>Units<a class="headerlink" href="#module-babel.units" title="永久链接至标题">¶</a></h1>
+<p>The unit module provides functionality to format measurement units for different
+locales.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.units.format_unit">
+<span class="sig-prename descclassname"><span class="pre">babel.units.</span></span><span class="sig-name descname"><span class="pre">format_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measurement_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'long'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.units.format_unit" title="永久链接至目标">¶</a></dt>
+<dd><p>Format a value of a given unit.</p>
+<p>Values are formatted according to the locale’s usual pluralization rules
+and number formats.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;length-meter&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;ro_RO&#39;</span><span class="p">)</span>
+<span class="go">u&#39;12 metri&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mf">15.5</span><span class="p">,</span> <span class="s1">&#39;length-mile&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;fi_FI&#39;</span><span class="p">)</span>
+<span class="go">u&#39;15,5 mailia&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="s1">&#39;pressure-millimeter-ofhg&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;nb&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1\xa0200 millimeter kvikks\xf8lv&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mi">270</span><span class="p">,</span> <span class="s1">&#39;ton&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
+<span class="go">u&#39;270 tons&#39;</span>
+</pre></div>
+</div>
+<p>Number formats may be overridden with the <code class="docutils literal notranslate"><span class="pre">format</span></code> parameter.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel._compat</span> <span class="kn">import</span> <span class="n">decimal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="s2">&quot;-42.774&quot;</span><span class="p">),</span> <span class="s1">&#39;temperature-celsius&#39;</span><span class="p">,</span> <span class="s1">&#39;short&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;#.0&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;fr&#39;</span><span class="p">)</span>
+<span class="go">u&#39;-42,8\u202f\xb0C&#39;</span>
+</pre></div>
+</div>
+<p>The locale’s usual pluralization rules are respected.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;length-meter&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;ro_RO&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1 metru&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;length-mile&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;cy&#39;</span><span class="p">)</span>
+<span class="go">u&#39;0 mi&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;length-mile&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;cy&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1 filltir&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;length-mile&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;cy&#39;</span><span class="p">)</span>
+<span class="go">u&#39;3 milltir&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_unit</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;length-horse&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;fi&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">UnknownUnitError</span>: <span class="n">length-horse is not a known unit in fi</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">2.2.0 新版功能.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – the value to format. If this is a string, no number formatting will be attempted.</p></li>
+<li><p><strong>measurement_unit</strong> – the code of a measurement unit.
+Known units can be found in the CLDR Unit Validity XML file:
+<a class="reference external" href="https://unicode.org/repos/cldr/tags/latest/common/validity/unit.xml">https://unicode.org/repos/cldr/tags/latest/common/validity/unit.xml</a></p></li>
+<li><p><strong>length</strong> – “short”, “long” or “narrow”</p></li>
+<li><p><strong>format</strong> – An optional format, as accepted by <cite>format_decimal</cite>.</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.units.format_compound_unit">
+<span class="sig-prename descclassname"><span class="pre">babel.units.</span></span><span class="sig-name descname"><span class="pre">format_compound_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numerator_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerator_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'long'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.units.format_compound_unit" title="永久链接至目标">¶</a></dt>
+<dd><p>Format a compound number value, i.e. “kilometers per hour” or similar.</p>
+<p>Both unit specifiers are optional to allow for formatting of arbitrary values still according
+to the locale’s general “per” formatting specifier.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_compound_unit</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">denominator_value</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="s2">&quot;short&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+<span class="go">&#39;7/11&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_compound_unit</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="s2">&quot;kilometer&quot;</span><span class="p">,</span> <span class="n">denominator_unit</span><span class="o">=</span><span class="s2">&quot;hour&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;sv&quot;</span><span class="p">)</span>
+<span class="go">&#39;150 kilometer per timme&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_compound_unit</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="s2">&quot;kilowatt&quot;</span><span class="p">,</span> <span class="n">denominator_unit</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;fi&quot;</span><span class="p">)</span>
+<span class="go">&#39;150 kilowattia / vuosi&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_compound_unit</span><span class="p">(</span><span class="mf">32.5</span><span class="p">,</span> <span class="s2">&quot;ton&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">denominator_unit</span><span class="o">=</span><span class="s2">&quot;hour&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="go">&#39;32.5 tons per 15 hours&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_compound_unit</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="n">denominator_unit</span><span class="o">=</span><span class="s2">&quot;square-meter&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;fr&quot;</span><span class="p">)</span>
+<span class="go">&#39;160 par m\xe8tre carr\xe9&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_compound_unit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;meter&quot;</span><span class="p">,</span> <span class="s2">&quot;ratakisko&quot;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="s2">&quot;short&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;fi&quot;</span><span class="p">)</span>
+<span class="go">&#39;4 m/ratakisko&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_compound_unit</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="s2">&quot;minute&quot;</span><span class="p">,</span> <span class="n">denominator_unit</span><span class="o">=</span><span class="s2">&quot;fathom&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;sv&quot;</span><span class="p">)</span>
+<span class="go">&#39;35 minuter per famn&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel.numbers</span> <span class="kn">import</span> <span class="n">format_currency</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_compound_unit</span><span class="p">(</span><span class="n">format_currency</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="s2">&quot;JPY&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;de&quot;</span><span class="p">),</span> <span class="n">denominator_unit</span><span class="o">=</span><span class="s2">&quot;liter&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;de&quot;</span><span class="p">)</span>
+<span class="go">&#39;35\xa0\xa5 pro Liter&#39;</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://www.unicode.org/reports/tr35/tr35-general.html#perUnitPatterns">https://www.unicode.org/reports/tr35/tr35-general.html#perUnitPatterns</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>numerator_value</strong> – The numerator value. This may be a string,
+in which case it is considered preformatted and the unit is ignored.</p></li>
+<li><p><strong>numerator_unit</strong> – The numerator unit. See <cite>format_unit</cite>.</p></li>
+<li><p><strong>denominator_value</strong> – The denominator value. This may be a string,
+in which case it is considered preformatted and the unit is ignored.</p></li>
+<li><p><strong>denominator_unit</strong> – The denominator unit. See <cite>format_unit</cite>.</p></li>
+<li><p><strong>length</strong> – The formatting length. “short”, “long” or “narrow”</p></li>
+<li><p><strong>format</strong> – An optional format, as accepted by <cite>format_decimal</cite>.</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>A formatted compound value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.units.get_unit_name">
+<span class="sig-prename descclassname"><span class="pre">babel.units.</span></span><span class="sig-name descname"><span class="pre">get_unit_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurement_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'long'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.units.get_unit_name" title="永久链接至目标">¶</a></dt>
+<dd><p>Get the display name for a measurement unit in the given locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_unit_name</span><span class="p">(</span><span class="s2">&quot;radian&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="go">&#39;radians&#39;</span>
+</pre></div>
+</div>
+<p>Unknown units will raise exceptions:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_unit_name</span><span class="p">(</span><span class="s2">&quot;battery&quot;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s2">&quot;fi&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">UnknownUnitError</span>: <span class="n">battery/long is not a known unit/length in fi</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measurement_unit</strong> – the code of a measurement unit.
+Known units can be found in the CLDR Unit Validity XML file:
+<a class="reference external" href="https://unicode.org/repos/cldr/tags/latest/common/validity/unit.xml">https://unicode.org/repos/cldr/tags/latest/common/validity/unit.xml</a></p></li>
+<li><p><strong>length</strong> – “short”, “long” or “narrow”</p></li>
+<li><p><strong>locale</strong> – the <cite>Locale</cite> object or locale identifier</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>The unit display name, or None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="../index.html">
+  <img class="logo" src="../_static/logo_small.png" alt="Logo"/>
+</a></p><h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Reference</a><ul>
+      <li>Previous: <a href="support.html" title="上一章">General Support Functionality</a></li>
+      <li>Next: <a href="../dev.html" title="下一章">Babel Development</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

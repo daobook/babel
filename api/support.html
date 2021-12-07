@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>General Support Functionality &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/babel.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Units" href="units.html" />
+    <link rel="prev" title="Pluralization Support" href="plural.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="units.html" title="Units"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="plural.html" title="Pluralization Support"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Babel 2.9.1 文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">General Support Functionality</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-babel.support">
+<span id="general-support-functionality"></span><h1>General Support Functionality<a class="headerlink" href="#module-babel.support" title="永久链接至标题">¶</a></h1>
+<p>Babel ships a few general helpers that are not being used by Babel itself
+but are useful in combination with functionality provided by it.</p>
+<section id="convenience-helpers">
+<h2>Convenience Helpers<a class="headerlink" href="#convenience-helpers" title="永久链接至标题">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="babel.support.Format">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">babel.support.</span></span><span class="sig-name descname"><span class="pre">Format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tzinfo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format" title="永久链接至目标">¶</a></dt>
+<dd><p>Wrapper class providing the various date and number formatting functions
+bound to a specific locale and time-zone.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel.util</span> <span class="kn">import</span> <span class="n">UTC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">UTC</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">u&#39;Apr 1, 2007&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">decimal</span><span class="p">(</span><span class="mf">1.2345</span><span class="p">)</span>
+<span class="go">u&#39;1.234&#39;</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.currency">
+<span class="sig-name descname"><span class="pre">currency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">currency</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.currency" title="永久链接至目标">¶</a></dt>
+<dd><p>Return a number in the given currency formatted for the locale.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.date">
+<span class="sig-name descname"><span class="pre">date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.date" title="永久链接至目标">¶</a></dt>
+<dd><p>Return a date formatted according to the given pattern.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">date</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">u&#39;Apr 1, 2007&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.datetime">
+<span class="sig-name descname"><span class="pre">datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.datetime" title="永久链接至目标">¶</a></dt>
+<dd><p>Return a date and time formatted according to the given pattern.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pytz</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="p">(</span><span class="s1">&#39;US/Eastern&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="go">u&#39;Apr 1, 2007, 11:30:00 AM&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.decimal">
+<span class="sig-name descname"><span class="pre">decimal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.decimal" title="永久链接至目标">¶</a></dt>
+<dd><p>Return a decimal number formatted for the locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">decimal</span><span class="p">(</span><span class="mf">1.2345</span><span class="p">)</span>
+<span class="go">u&#39;1.234&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.number">
+<span class="sig-name descname"><span class="pre">number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.number" title="永久链接至目标">¶</a></dt>
+<dd><p>Return an integer number formatted for the locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">number</span><span class="p">(</span><span class="mi">1099</span><span class="p">)</span>
+<span class="go">u&#39;1,099&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.percent">
+<span class="sig-name descname"><span class="pre">percent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.percent" title="永久链接至目标">¶</a></dt>
+<dd><p>Return a number formatted as percentage for the locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">percent</span><span class="p">(</span><span class="mf">0.34</span><span class="p">)</span>
+<span class="go">u&#39;34%&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.scientific">
+<span class="sig-name descname"><span class="pre">scientific</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.scientific" title="永久链接至目标">¶</a></dt>
+<dd><p>Return a number formatted using scientific notation for the locale.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.time">
+<span class="sig-name descname"><span class="pre">time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medium'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.time" title="永久链接至目标">¶</a></dt>
+<dd><p>Return a time formatted according to the given pattern.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pytz</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="p">(</span><span class="s1">&#39;US/Eastern&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="go">u&#39;11:30:00 AM&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Format.timedelta">
+<span class="sig-name descname"><span class="pre">timedelta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'second'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.85</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'long'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Format.timedelta" title="永久链接至目标">¶</a></dt>
+<dd><p>Return a time delta according to the rules of the given locale.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span> <span class="o">=</span> <span class="n">Format</span><span class="p">(</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fmt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">11</span><span class="p">))</span>
+<span class="go">u&#39;3 months&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="babel.support.LazyProxy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">babel.support.</span></span><span class="sig-name descname"><span class="pre">LazyProxy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.LazyProxy" title="永久链接至目标">¶</a></dt>
+<dd><p>Class for proxy objects that delegate to a specified function to evaluate
+the actual object.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;world&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="s1">&#39;Hello, </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lazy_greeting</span> <span class="o">=</span> <span class="n">LazyProxy</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Joe&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lazy_greeting</span><span class="p">)</span>
+<span class="go">Hello, Joe!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">u</span><span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="n">lazy_greeting</span>
+<span class="go">u&#39;  Hello, Joe!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">u</span><span class="s1">&#39;(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">lazy_greeting</span>
+<span class="go">u&#39;(Hello, Joe!)&#39;</span>
+</pre></div>
+</div>
+<p>This can be used, for example, to implement lazy translation functions that
+delay the actual translation until the string is actually used. The
+rationale for such behavior is that the locale of the user may not always
+be available. In web applications, you only know the locale when processing
+a request.</p>
+<p>The proxy implementation attempts to be as complete as possible, so that
+the lazy objects should mostly work as expected, for example for sorting:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greetings</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="n">LazyProxy</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">LazyProxy</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="s1">&#39;Joe&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">LazyProxy</span><span class="p">(</span><span class="n">greeting</span><span class="p">,</span> <span class="s1">&#39;universe&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">greetings</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">greeting</span> <span class="ow">in</span> <span class="n">greetings</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">)</span>
+<span class="go">Hello, Joe!</span>
+<span class="go">Hello, universe!</span>
+<span class="go">Hello, world!</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="gettext-support">
+<h2>Gettext Support<a class="headerlink" href="#gettext-support" title="永久链接至标题">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="babel.support.Translations">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">babel.support.</span></span><span class="sig-name descname"><span class="pre">Translations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Translations" title="永久链接至目标">¶</a></dt>
+<dd><p>An extended translation catalog class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Translations.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Translations.add" title="永久链接至目标">¶</a></dt>
+<dd><p>Add the given translations to the catalog.</p>
+<p>If the domain of the translations is different than that of the
+current catalog, they are added as a catalog that is only accessible
+by the various <code class="docutils literal notranslate"><span class="pre">d*gettext</span></code> functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>translations</strong> – the <cite>Translations</cite> instance with the messages to
+add</p></li>
+<li><p><strong>merge</strong> – whether translations for message domains that have
+already been added should be merged with the existing
+translations</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Translations.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locales</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Translations.load" title="永久链接至目标">¶</a></dt>
+<dd><p>Load translations from the given directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dirname</strong> – the directory containing the <code class="docutils literal notranslate"><span class="pre">MO</span></code> files</p></li>
+<li><p><strong>locales</strong> – the list of locales in order of preference (items in
+this list can be either <cite>Locale</cite> objects or locale
+strings)</p></li>
+<li><p><strong>domain</strong> – the message domain (default: ‘messages’)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="babel.support.Translations.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.support.Translations.merge" title="永久链接至目标">¶</a></dt>
+<dd><p>Merge the given translations into the catalog.</p>
+<p>Message translations in the specified catalog override any messages
+with the same identifier in the existing catalog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>translations</strong> – the <cite>Translations</cite> instance with the messages to
+merge</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="../index.html">
+  <img class="logo" src="../_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="../index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">General Support Functionality</a><ul>
+<li><a class="reference internal" href="#convenience-helpers">Convenience Helpers</a></li>
+<li><a class="reference internal" href="#gettext-support">Gettext Support</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Reference</a><ul>
+      <li>Previous: <a href="plural.html" title="上一章">Pluralization Support</a></li>
+      <li>Next: <a href="units.html" title="下一章">Units</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

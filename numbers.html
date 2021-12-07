@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Number Formatting &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/babel.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Working with Message Catalogs" href="messages.html" />
+    <link rel="prev" title="Date and Time" href="dates.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="messages.html" title="Working with Message Catalogs"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="dates.html" title="Date and Time"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Babel 2.9.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Number Formatting</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="number-formatting">
+<span id="numbers"></span><h1>Number Formatting<a class="headerlink" href="#number-formatting" title="永久链接至标题">¶</a></h1>
+<p>Support for locale-specific formatting and parsing of numbers is provided by
+the <code class="docutils literal notranslate"><span class="pre">babel.numbers</span></code> module:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel.numbers</span> <span class="kn">import</span> <span class="n">format_number</span><span class="p">,</span> <span class="n">format_decimal</span><span class="p">,</span> <span class="n">format_percent</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">1.2345</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1.234&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mf">1.2345</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;sv_SE&#39;</span><span class="p">)</span>
+<span class="go">u&#39;1,234&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="mi">12345</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de_DE&#39;</span><span class="p">)</span>
+<span class="go">u&#39;12.345&#39;</span>
+</pre></div>
+</div>
+<section id="pattern-syntax">
+<h2>Pattern Syntax<a class="headerlink" href="#pattern-syntax" title="永久链接至标题">¶</a></h2>
+<p>While Babel makes it simple to use the appropriate number format for a given
+locale, you can also force it to use custom patterns. As with date/time
+formatting patterns, the patterns Babel supports for number formatting are
+based on the <a class="reference external" href="https://unicode.org/reports/tr35/#Number_Format_Patterns">Locale Data Markup Language specification</a> (LDML).</p>
+<p>Examples:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2345</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;#,##0.##;-#&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
+<span class="go">u&#39;-1.23&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_decimal</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2345</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;#,##0.##;(#)&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
+<span class="go">u&#39;(1.23)&#39;</span>
+</pre></div>
+</div>
+<p>The syntax for custom number format patterns is described in detail in the
+the specification. The following table is just a relatively brief overview.</p>
+<blockquote>
+<div><blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Digit</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1-9</span></code></p></td>
+<td><p>‘1’ through ‘9’ indicate rounding.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code></p></td>
+<td><p>Significant digit</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#</span></code></p></td>
+<td><p>Digit, zero shows as absent</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p>Decimal separator or monetary decimal separator</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p>Minus sign</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">,</span></code></p></td>
+<td><p>Grouping separator</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">E</span></code></p></td>
+<td><p>Separates mantissa and exponent in scientific notation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p>Prefix positive exponents with localized plus sign</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">;</span></code></p></td>
+<td><p>Separates positive and negative subpatterns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p>Multiply by 100 and show as percentage</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">‰</span></code></p></td>
+<td><p>Multiply by 1000 and show as per mille</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">¤</span></code></p></td>
+<td><p>Currency sign, replaced by currency symbol. If doubled,
+replaced by international currency symbol. If tripled, uses the
+long form of the decimal symbol.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'</span></code></p></td>
+<td><p>Used to quote special characters in a prefix or suffix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Pad escape, precedes pad character</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="rounding-modes">
+<h2>Rounding Modes<a class="headerlink" href="#rounding-modes" title="永久链接至标题">¶</a></h2>
+<p>Since Babel makes full use of Python’s <a class="reference external" href="https://docs.python.org/3/library/decimal.html#decimal-objects">Decimal</a> type to perform number
+rounding before formatting, users have the chance to control the rounding mode
+and other configurable parameters through the active <a class="reference external" href="https://docs.python.org/3/library/decimal.html#context-objects">Context</a> instance.</p>
+<p>By default, Python rounding mode is <code class="docutils literal notranslate"><span class="pre">ROUND_HALF_EVEN</span></code> which complies with
+<a class="reference external" href="https://www.unicode.org/reports/tr35/tr35-numbers.html#Formatting">UTS #35 section 3.3</a>.  Yet, the caller has the opportunity to tweak the
+current context before formatting a number or currency:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel.numbers</span> <span class="kn">import</span> <span class="n">decimal</span><span class="p">,</span> <span class="n">format_decimal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">decimal</span><span class="o">.</span><span class="n">localcontext</span><span class="p">(</span><span class="n">decimal</span><span class="o">.</span><span class="n">Context</span><span class="p">(</span><span class="n">rounding</span><span class="o">=</span><span class="n">decimal</span><span class="o">.</span><span class="n">ROUND_DOWN</span><span class="p">)):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">txt</span> <span class="o">=</span> <span class="n">format_decimal</span><span class="p">(</span><span class="mf">123.99</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">txt</span>
+<span class="go">u&#39;123&#39;</span>
+</pre></div>
+</div>
+<p>It is also possible to use <code class="docutils literal notranslate"><span class="pre">decimal.setcontext</span></code> or directly modifying the
+instance returned by <code class="docutils literal notranslate"><span class="pre">decimal.getcontext</span></code>.  However, using a context manager
+is always more convenient due to the automatic restoration and the ability to
+nest them.</p>
+<p>Whatever mechanism is chosen, always make use of the <code class="docutils literal notranslate"><span class="pre">decimal</span></code> module imported
+from <code class="docutils literal notranslate"><span class="pre">babel.numbers</span></code>.  For efficiency reasons, Babel uses the fastest decimal
+implementation available, such as <a class="reference external" href="https://pypi.org/project/cdecimal/">cdecimal</a>.  These various implementation
+offer an identical API, but their types and instances do <strong>not</strong> interoperate
+with each other.</p>
+<p>For example, the previous example can be slightly modified to generate
+unexpected results on Python 2.7, with the <a class="reference external" href="https://pypi.org/project/cdecimal/">cdecimal</a> module installed:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">localcontext</span><span class="p">,</span> <span class="n">Context</span><span class="p">,</span> <span class="n">ROUND_DOWN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel.numbers</span> <span class="kn">import</span> <span class="n">format_decimal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">localcontext</span><span class="p">(</span><span class="n">Context</span><span class="p">(</span><span class="n">rounding</span><span class="o">=</span><span class="n">ROUND_DOWN</span><span class="p">)):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">txt</span> <span class="o">=</span> <span class="n">format_decimal</span><span class="p">(</span><span class="mf">123.99</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">txt</span>
+<span class="go">u&#39;124&#39;</span>
+</pre></div>
+</div>
+<p>Changing other parameters such as the precision may also alter the results of
+the number formatting functions.  Remember to test your code to make sure it
+behaves as desired.</p>
+</section>
+<section id="parsing-numbers">
+<h2>Parsing Numbers<a class="headerlink" href="#parsing-numbers" title="永久链接至标题">¶</a></h2>
+<p>Babel can also parse numeric data in a locale-sensitive manner:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">babel.numbers</span> <span class="kn">import</span> <span class="n">parse_decimal</span><span class="p">,</span> <span class="n">parse_number</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;1,099.98&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">1099.98</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;1.099,98&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">)</span>
+<span class="go">1099.98</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_decimal</span><span class="p">(</span><span class="s1">&#39;2,109,998&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="gr">NumberFormatError</span>: <span class="n">&#39;2,109,998&#39; is not a valid decimal number</span>
+</pre></div>
+</div>
+<p>Note: as of version 2.8.0, the <code class="docutils literal notranslate"><span class="pre">parse_number</span></code> function has limited
+functionality. It can remove group symbols of certain locales from numeric
+strings, but may behave unexpectedly until its logic handles more encoding
+issues and other special cases.</p>
+<p>Examples:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_number</span><span class="p">(</span><span class="s1">&#39;1,099&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en_US&#39;</span><span class="p">)</span>
+<span class="go">1099</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_number</span><span class="p">(</span><span class="s1">&#39;1.099.024&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;de&#39;</span><span class="p">)</span>
+<span class="go">1099024</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_number</span><span class="p">(</span><span class="s1">&#39;123&#39;</span> <span class="o">+</span> <span class="sa">u</span><span class="s1">&#39;</span><span class="se">\xa0</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;4567&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;ru&#39;</span><span class="p">)</span>
+<span class="go">1234567</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_number</span><span class="p">(</span><span class="s1">&#39;123 4567&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;ru&#39;</span><span class="p">)</span>
+<span class="go">  ...</span>
+<span class="go">NumberFormatError: &#39;123 4567&#39; is not a valid number</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Number Formatting</a><ul>
+<li><a class="reference internal" href="#pattern-syntax">Pattern Syntax</a></li>
+<li><a class="reference internal" href="#rounding-modes">Rounding Modes</a></li>
+<li><a class="reference internal" href="#parsing-numbers">Parsing Numbers</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="dates.html" title="上一章">Date and Time</a></li>
+      <li>Next: <a href="messages.html" title="下一章">Working with Message Catalogs</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

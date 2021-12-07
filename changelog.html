@@ -1,0 +1,926 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Babel Changelog &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/babel.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Babel Development" href="dev.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="License"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="dev.html" title="Babel Development"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Babel 2.9.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Babel Changelog</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="babel-changelog">
+<h1>Babel Changelog<a class="headerlink" href="#babel-changelog" title="永久链接至标题">¶</a></h1>
+<section id="version-2-9-1">
+<h2>Version 2.9.1<a class="headerlink" href="#version-2-9-1" title="永久链接至标题">¶</a></h2>
+<section id="bugfixes">
+<h3>Bugfixes<a class="headerlink" href="#bugfixes" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>The internal locale-data loading functions now validate the name of the locale file to be loaded and only
+allow files within Babel’s data directory.  Thank you to Chris Lyne of Tenable, Inc. for discovering the issue!</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-9-0">
+<h2>Version 2.9.0<a class="headerlink" href="#version-2-9-0" title="永久链接至标题">¶</a></h2>
+<section id="upcoming-version-support-changes">
+<h3>Upcoming version support changes<a class="headerlink" href="#upcoming-version-support-changes" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>This version, Babel 2.9, is the last version of Babel to support Python 2.7, Python 3.4, and Python 3.5.</p></li>
+</ul>
+</section>
+<section id="improvements">
+<h3>Improvements<a class="headerlink" href="#improvements" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: Use CLDR 37 – Aarni Koskela (#734)</p></li>
+<li><p>Dates: Handle ZoneInfo objects in get_timezone_location, get_timezone_name - Alessio Bogon (#741)</p></li>
+<li><p>Numbers: Add group_separator feature in number formatting - Abdullah Javed Nesar (#726)</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Bugfixes<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Dates: Correct default Format().timedelta format to ‘long’ to mute deprecation warnings – Aarni Koskela</p></li>
+<li><p>Import: Simplify iteration code in “import_cldr.py” – Felix Schwarz</p></li>
+<li><p>Import: Stop using deprecated ElementTree methods “getchildren()” and “getiterator()” – Felix Schwarz</p></li>
+<li><p>Messages: Fix unicode printing error on Python 2 without TTY. – Niklas Hambüchen</p></li>
+<li><p>Messages: Introduce invariant that _invalid_pofile() takes unicode line. – Niklas Hambüchen</p></li>
+<li><p>Tests: fix tests when using Python 3.9 – Felix Schwarz</p></li>
+<li><p>Tests: Remove deprecated ‘sudo: false’ from Travis configuration – Jon Dufresne</p></li>
+<li><p>Tests: Support Py.test 6.x – Aarni Koskela</p></li>
+<li><p>Utilities: LazyProxy: Handle AttributeError in specified func – Nikiforov Konstantin (#724)</p></li>
+<li><p>Utilities: Replace usage of parser.suite with ast.parse – Miro Hrončok</p></li>
+</ul>
+</section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Update parse_number comments – Brad Martin (#708)</p></li>
+<li><p>Add __iter__ to Catalog documentation – &#64;CyanNani123</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-8-1">
+<h2>Version 2.8.1<a class="headerlink" href="#version-2-8-1" title="永久链接至标题">¶</a></h2>
+<p>This is solely a patch release to make running tests on Py.test 6+ possible.</p>
+<section id="id2">
+<h3>Bugfixes<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Support Py.test 6 - Aarni Koskela (#747, #750, #752)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-8-0">
+<h2>Version 2.8.0<a class="headerlink" href="#version-2-8-0" title="永久链接至标题">¶</a></h2>
+<section id="id3">
+<h3>Improvements<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: Upgrade to CLDR 36.0 - Aarni Koskela (#679)</p></li>
+<li><p>Messages: Don’t even open files with the “ignore” extraction method - &#64;sebleblanc (#678)</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Bugfixes<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Numbers: Fix formatting very small decimals when quantization is disabled - Lev Lybin, &#64;miluChen (#662)</p></li>
+<li><p>Messages: Attempt to sort all messages – Mario Frasca (#651, #606)</p></li>
+</ul>
+</section>
+<section id="docs">
+<h3>Docs<a class="headerlink" href="#docs" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Add years to changelog - Romuald Brunet</p></li>
+<li><p>Note that installation requires pytz - Steve (Gadget) Barnes</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-7-0">
+<h2>Version 2.7.0<a class="headerlink" href="#version-2-7-0" title="永久链接至标题">¶</a></h2>
+<section id="possibly-incompatible-changes">
+<h3>Possibly incompatible changes<a class="headerlink" href="#possibly-incompatible-changes" title="永久链接至标题">¶</a></h3>
+<p>These may be backward incompatible in some cases, as some more-or-less internal
+APIs have changed. Please feel free to file issues if you bump into anything
+strange and we’ll try to help!</p>
+<ul class="simple">
+<li><p>General: Internal uses of <code class="docutils literal notranslate"><span class="pre">babel.util.odict</span></code> have been replaced with
+<code class="docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code> from The Python standard library.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Improvements<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: Upgrade to CLDR 35.1 - Alberto Mardegan, Aarni Koskela (#626, #643)</p></li>
+<li><p>General: allow anchoring path patterns to the start of a string - Brian Cappello (#600)</p></li>
+<li><p>General: Bumped version requirement on pytz - &#64;chrisbrake (#592)</p></li>
+<li><p>Messages: <cite>pybabel compile</cite>: exit with code 1 if errors were encountered - Aarni Koskela (#647)</p></li>
+<li><p>Messages: Add omit-header to update_catalog - Cédric Krier (#633)</p></li>
+<li><p>Messages: Catalog update: keep user comments from destination by default - Aarni Koskela (#648)</p></li>
+<li><p>Messages: Skip empty message when writing mo file - Cédric Krier (#564)</p></li>
+<li><p>Messages: Small fixes to avoid crashes on badly formatted .po files - Bryn Truscott (#597)</p></li>
+<li><p>Numbers: <cite>parse_decimal()</cite> <cite>strict</cite> argument and <cite>suggestions</cite> - Charly C (#590)</p></li>
+<li><p>Numbers: don’t repeat suggestions in parse_decimal strict - Serban Constantin (#599)</p></li>
+<li><p>Numbers: implement currency formatting with long display names - Luke Plant (#585)</p></li>
+<li><p>Numbers: parse_decimal(): assume spaces are equivalent to non-breaking spaces when not in strict mode - Aarni Koskela (#649)</p></li>
+<li><p>Performance: Cache locale_identifiers() - Aarni Koskela (#644)</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Bugfixes<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: Skip alt=… for week data (minDays, firstDay, weekendStart, weekendEnd) - Aarni Koskela (#634)</p></li>
+<li><p>Dates: Fix wrong weeknumber for 31.12.2018 - BT-sschmid (#621)</p></li>
+<li><p>Locale: Avoid KeyError trying to get data on WindowsXP - mondeja (#604)</p></li>
+<li><p>Locale: get_display_name(): Don’t attempt to concatenate variant information to None - Aarni Koskela (#645)</p></li>
+<li><p>Messages: pofile: Add comparison operators to _NormalizedString - Aarni Koskela (#646)</p></li>
+<li><p>Messages: pofile: don’t crash when message.locations can’t be sorted - Aarni Koskela (#646)</p></li>
+</ul>
+</section>
+<section id="tooling-docs">
+<h3>Tooling &amp; docs<a class="headerlink" href="#tooling-docs" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Docs: Remove all references to deprecated easy_install - Jon Dufresne (#610)</p></li>
+<li><p>Docs: Switch print statement in docs to print function - NotAFile</p></li>
+<li><p>Docs: Update all pypi.python.org URLs to pypi.org - Jon Dufresne (#587)</p></li>
+<li><p>Docs: Use https URLs throughout project where available - Jon Dufresne (#588)</p></li>
+<li><p>Support: Add testing and document support for Python 3.7 - Jon Dufresne (#611)</p></li>
+<li><p>Support: Test on Python 3.8-dev - Aarni Koskela (#642)</p></li>
+<li><p>Support: Using ABCs from collections instead of collections.abc is deprecated. - Julien Palard (#609)</p></li>
+<li><p>Tests: Fix conftest.py compatibility with pytest 4.3 - Miro Hrončok (#635)</p></li>
+<li><p>Tests: Update pytest and pytest-cov - Miro Hrončok (#635)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-6-0">
+<h2>Version 2.6.0<a class="headerlink" href="#version-2-6-0" title="永久链接至标题">¶</a></h2>
+<section id="id7">
+<h3>Possibly incompatible changes<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>These may be backward incompatible in some cases, as some more-or-less internal APIs have changed.
+Please feel free to file issues if you bump into anything strange and we’ll try to help!</p>
+<ul class="simple">
+<li><p>Numbers: Refactor decimal handling code and allow bypass of decimal quantization. (&#64;kdeldycke) (PR #538)</p></li>
+<li><p>Messages: allow processing files that are in locales unknown to Babel (&#64;akx) (PR #557)</p></li>
+<li><p>General: Drop support for EOL Python 2.6 and 3.3 (&#64;hugovk) (PR #546)</p></li>
+</ul>
+</section>
+<section id="other-changes">
+<h3>Other changes<a class="headerlink" href="#other-changes" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: Use CLDR 33 (&#64;akx) (PR #581)</p></li>
+<li><p>Lists: Add support for various list styles other than the default (&#64;akx) (#552)</p></li>
+<li><p>Messages: Add new PoFileError exception (&#64;Bedrock02) (PR #532)</p></li>
+<li><p>Times: Simplify Linux distro specific explicit timezone setting search (&#64;scop) (PR #528)</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Bugfixes<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: avoid importing alt=narrow currency symbols (&#64;akx) (PR #558)</p></li>
+<li><p>CLDR: ignore non-Latin numbering systems (&#64;akx) (PR #579)</p></li>
+<li><p>Docs: Fix improper example for date formatting (&#64;PTrottier) (PR #574)</p></li>
+<li><p>Tooling: Fix some deprecation warnings (&#64;akx) (PR #580)</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>Tooling &amp; docs<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Add explicit signatures to some date autofunctions (&#64;xmo-odoo) (PR #554)</p></li>
+<li><p>Include license file in the generated wheel package (&#64;jdufresne) (PR #539)</p></li>
+<li><p>Python 3.6 invalid escape sequence deprecation fixes (&#64;scop) (PR #528)</p></li>
+<li><p>Test and document all supported Python versions (&#64;jdufresne) (PR #540)</p></li>
+<li><p>Update copyright header years and authors file (&#64;akx) (PR #559)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-5-3">
+<h2>Version 2.5.3<a class="headerlink" href="#version-2-5-3" title="永久链接至标题">¶</a></h2>
+<p>This is a maintenance release that reverts undesired API-breaking changes that slipped into 2.5.2
+(see <a class="reference external" href="https://github.com/python-babel/babel/issues/550">https://github.com/python-babel/babel/issues/550</a>).</p>
+<p>It is based on v2.5.1 (f29eccd) with commits 7cedb84, 29da2d2 and edfb518 cherry-picked on top.</p>
+</section>
+<section id="version-2-5-2">
+<h2>Version 2.5.2<a class="headerlink" href="#version-2-5-2" title="永久链接至标题">¶</a></h2>
+<section id="id10">
+<h3>Bugfixes<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Revert the unnecessary PyInstaller fixes from 2.5.0 and 2.5.1 (#533) (&#64;yagebu)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-5-1">
+<h2>Version 2.5.1<a class="headerlink" href="#version-2-5-1" title="永久链接至标题">¶</a></h2>
+<section id="minor-improvements-and-bugfixes">
+<h3>Minor Improvements and bugfixes<a class="headerlink" href="#minor-improvements-and-bugfixes" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Use a fixed datetime to avoid test failures (#520) (&#64;narendravardi)</p></li>
+<li><p>Parse multi-line __future__ imports better (#519) (&#64;akx)</p></li>
+<li><p>Fix validate_currency docstring (#522)</p></li>
+<li><p>Allow normalize_locale and exists to handle various unexpected inputs (#523) (&#64;suhojm)</p></li>
+<li><p>Make PyInstaller support more robust (#525, #526) (&#64;thijstriemstra, &#64;akx)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-5-0">
+<h2>Version 2.5.0<a class="headerlink" href="#version-2-5-0" title="永久链接至标题">¶</a></h2>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Numbers: Add currency utilities and helpers (#491) (&#64;kdeldycke)</p></li>
+<li><p>Support PyInstaller (#500, #505) (&#64;wodo)</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>Minor Improvements and bugfixes<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Dates: Add __str__ to DateTimePattern (#515) (&#64;sfermigier)</p></li>
+<li><p>Dates: Fix an invalid string to bytes comparison when parsing TZ files on Py3 (#498) (&#64;rowillia)</p></li>
+<li><p>Dates: Formatting zero-padded components of dates is faster (#517) (&#64;akx)</p></li>
+<li><p>Documentation: Fix “Good Commits” link in CONTRIBUTING.md (#511) (&#64;naryanacharya6)</p></li>
+<li><p>Documentation: Fix link to Python gettext module (#512) (&#64;Linkid)</p></li>
+<li><p>Messages: Allow both dash and underscore separated locale identifiers in pofiles (#489, #490) (&#64;akx)</p></li>
+<li><p>Messages: Extract Python messages in nested gettext calls (#488) (&#64;sublee)</p></li>
+<li><p>Messages: Fix in-place editing of dir list while iterating (#476, #492) (&#64;MarcDufresne)</p></li>
+<li><p>Messages: Stabilize sort order (#482) (&#64;xavfernandez)</p></li>
+<li><p>Time zones: Honor the no-inherit marker for metazone names (#405) (&#64;akx)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-4-0">
+<h2>Version 2.4.0<a class="headerlink" href="#version-2-4-0" title="永久链接至标题">¶</a></h2>
+<section id="id12">
+<h3>New Features<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>Some of these changes might break your current code and/or tests.</p>
+<ul class="simple">
+<li><p>CLDR: CLDR 29 is now used instead of CLDR 28 (#405) (&#64;akx)</p></li>
+<li><p>Messages: Add option ‘add_location’ for location line formatting (#438, #459) (&#64;rrader, &#64;alxpy)</p></li>
+<li><p>Numbers: Allow full control of decimal behavior (#410) (&#64;etanol)</p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>Minor Improvements and bugfixes<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Documentation: Improve Date Fields descriptions (#450) (&#64;ldwoolley)</p></li>
+<li><p>Documentation: Typo fixes and documentation improvements (#406, #412, #403, #440, #449, #463) (&#64;zyegfryed, &#64;adamchainz, &#64;jwilk, &#64;akx, &#64;roramirez, &#64;abhishekcs10)</p></li>
+<li><p>Messages: Default to UTF-8 source encoding instead of ISO-8859-1 (#399) (&#64;asottile)</p></li>
+<li><p>Messages: Ensure messages are extracted in the order they were passed in (#424) (&#64;ngrilly)</p></li>
+<li><p>Messages: Message extraction for JSX files is improved (#392, #396, #425) (&#64;karloskar, &#64;georgschoelly)</p></li>
+<li><p>Messages: PO file reading supports multi-line obsolete units (#429) (&#64;mbirtwell)</p></li>
+<li><p>Messages: Python message extractor respects unicode_literals in __future__ (#427) (&#64;sublee)</p></li>
+<li><p>Messages: Roundtrip Language headers (#420) (&#64;kruton)</p></li>
+<li><p>Messages: units before obsolete units are no longer erroneously marked obsolete (#452) (&#64;mbirtwell)</p></li>
+<li><p>Numbers: <cite>parse_pattern</cite> now preserves the full original pattern (#414) (&#64;jtwang)</p></li>
+<li><p>Numbers: Fix float conversion in <cite>extract_operands</cite> (#435) (&#64;akx)</p></li>
+<li><p>Plurals: Fix plural forms for Czech and Slovak locales (#373) (&#64;ykshatroff)</p></li>
+<li><p>Plurals: More plural form fixes based on Mozilla and CLDR references (#431) (&#64;mshenfield)</p></li>
+</ul>
+</section>
+<section id="internal-improvements">
+<h3>Internal improvements<a class="headerlink" href="#internal-improvements" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Local times are constructed correctly in tests (#411) (&#64;etanol)</p></li>
+<li><p>Miscellaneous small improvements (#437) (&#64;scop)</p></li>
+<li><p>Regex flags are extracted from the regex strings (#462) (&#64;singingwolfboy)</p></li>
+<li><p>The PO file reader is now a class and has seen some refactoring (#429, #452) (&#64;mbirtwell)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-3-4">
+<h2>Version 2.3.4<a class="headerlink" href="#version-2-3-4" title="永久链接至标题">¶</a></h2>
+<p>(Bugfix release, released on April 22th 2016)</p>
+<section id="id14">
+<h3>Bugfixes<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: The lxml library is no longer used for CLDR importing, so it should not cause strange failures either. Thanks to &#64;aronbierbaum for the bug report and &#64;jtwang for the fix. (<a class="reference external" href="https://github.com/python-babel/babel/pull/393">https://github.com/python-babel/babel/pull/393</a>)</p></li>
+<li><p>CLI: Every last single CLI usage regression should now be gone, and both distutils and stand-alone CLIs should work as they have in the past. Thanks to &#64;paxswill and &#64;ajaeger for bug reports. (<a class="reference external" href="https://github.com/python-babel/babel/pull/389">https://github.com/python-babel/babel/pull/389</a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-3-3">
+<h2>Version 2.3.3<a class="headerlink" href="#version-2-3-3" title="永久链接至标题">¶</a></h2>
+<p>(Bugfix release, released on April 12th 2016)</p>
+<section id="id15">
+<h3>Bugfixes<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLI: Usage regressions that had snuck in between 2.2 and 2.3 should be no more. (<a class="reference external" href="https://github.com/python-babel/babel/pull/386">https://github.com/python-babel/babel/pull/386</a>) Thanks to &#64;ajaeger, &#64;sebdiem and &#64;jcristovao for bug reports and patches.</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-3-2">
+<h2>Version 2.3.2<a class="headerlink" href="#version-2-3-2" title="永久链接至标题">¶</a></h2>
+<p>(Bugfix release, released on April 9th 2016)</p>
+<section id="id16">
+<h3>Bugfixes<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Dates: Period (am/pm) formatting was broken in certain locales (namely zh_TW). Thanks to &#64;jun66j5 for the bug report. (<a class="reference external" href="https://github.com/python-babel/babel/issues/378">https://github.com/python-babel/babel/issues/378</a>, <a class="reference external" href="https://github.com/python-babel/babel/issues/379">https://github.com/python-babel/babel/issues/379</a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-3-1">
+<h2>Version 2.3.1<a class="headerlink" href="#version-2-3-1" title="永久链接至标题">¶</a></h2>
+<p>(Bugfix release because of deployment problems, released on April 8th 2016)</p>
+</section>
+<section id="version-2-3">
+<h2>Version 2.3<a class="headerlink" href="#version-2-3" title="永久链接至标题">¶</a></h2>
+<p>(Feature release, released on April 8th 2016)</p>
+<section id="id17">
+<h3>Internal improvements<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>The CLI frontend and Distutils commands use a shared implementation (<a class="reference external" href="https://github.com/python-babel/babel/pull/311">https://github.com/python-babel/babel/pull/311</a>)</p></li>
+<li><p>PyPy3 is supported (<a class="reference external" href="https://github.com/python-babel/babel/pull/343">https://github.com/python-babel/babel/pull/343</a>)</p></li>
+</ul>
+</section>
+<section id="features">
+<h3>Features<a class="headerlink" href="#features" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: Add an API for territory language data (<a class="reference external" href="https://github.com/python-babel/babel/pull/315">https://github.com/python-babel/babel/pull/315</a>)</p></li>
+<li><p>Core: Character order and measurement system data is imported and exposed (<a class="reference external" href="https://github.com/python-babel/babel/pull/368">https://github.com/python-babel/babel/pull/368</a>)</p></li>
+<li><p>Dates: Add an API for time interval formatting (<a class="reference external" href="https://github.com/python-babel/babel/pull/316">https://github.com/python-babel/babel/pull/316</a>)</p></li>
+<li><p>Dates: More pattern formats and lengths are supported (<a class="reference external" href="https://github.com/python-babel/babel/pull/347">https://github.com/python-babel/babel/pull/347</a>)</p></li>
+<li><p>Dates: Period IDs are imported and exposed (<a class="reference external" href="https://github.com/python-babel/babel/pull/349">https://github.com/python-babel/babel/pull/349</a>)</p></li>
+<li><p>Dates: Support for date-time skeleton formats has been added (<a class="reference external" href="https://github.com/python-babel/babel/pull/265">https://github.com/python-babel/babel/pull/265</a>)</p></li>
+<li><p>Dates: Timezone formatting has been improved (<a class="reference external" href="https://github.com/python-babel/babel/pull/338">https://github.com/python-babel/babel/pull/338</a>)</p></li>
+<li><p>Messages: JavaScript extraction now supports dotted names, ES6 template strings and JSX tags (<a class="reference external" href="https://github.com/python-babel/babel/pull/332">https://github.com/python-babel/babel/pull/332</a>)</p></li>
+<li><p>Messages: npgettext is recognized by default (<a class="reference external" href="https://github.com/python-babel/babel/pull/341">https://github.com/python-babel/babel/pull/341</a>)</p></li>
+<li><p>Messages: The CLI learned to accept multiple domains (<a class="reference external" href="https://github.com/python-babel/babel/pull/335">https://github.com/python-babel/babel/pull/335</a>)</p></li>
+<li><p>Messages: The extraction commands now accept filenames in addition to directories (<a class="reference external" href="https://github.com/python-babel/babel/pull/324">https://github.com/python-babel/babel/pull/324</a>)</p></li>
+<li><p>Units: A new API for unit formatting is implemented (<a class="reference external" href="https://github.com/python-babel/babel/pull/369">https://github.com/python-babel/babel/pull/369</a>)</p></li>
+</ul>
+</section>
+<section id="id18">
+<h3>Bugfixes<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>Core: Mixed-case locale IDs work more reliably (<a class="reference external" href="https://github.com/python-babel/babel/pull/361">https://github.com/python-babel/babel/pull/361</a>)</p></li>
+<li><p>Dates: S…S formats work correctly now (<a class="reference external" href="https://github.com/python-babel/babel/pull/360">https://github.com/python-babel/babel/pull/360</a>)</p></li>
+<li><p>Messages: All messages are now sorted correctly if sorting has been specified (<a class="reference external" href="https://github.com/python-babel/babel/pull/300">https://github.com/python-babel/babel/pull/300</a>)</p></li>
+<li><p>Messages: Fix the unexpected behavior caused by catalog header updating (e0e7ef1) (<a class="reference external" href="https://github.com/python-babel/babel/pull/320">https://github.com/python-babel/babel/pull/320</a>)</p></li>
+<li><p>Messages: Gettext operands are now generated correctly (<a class="reference external" href="https://github.com/python-babel/babel/pull/295">https://github.com/python-babel/babel/pull/295</a>)</p></li>
+<li><p>Messages: Message extraction has been taught to detect encodings better (<a class="reference external" href="https://github.com/python-babel/babel/pull/274">https://github.com/python-babel/babel/pull/274</a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-2">
+<h2>Version 2.2<a class="headerlink" href="#version-2-2" title="永久链接至标题">¶</a></h2>
+<p>(Feature release, released on January 2nd 2016)</p>
+<section id="id19">
+<h3>Bugfixes<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>General: Add __hash__ to Locale. (#303) (2aa8074)</p></li>
+<li><p>General: Allow files with BOM if they’re UTF-8 (#189) (da87edd)</p></li>
+<li><p>General: localedata directory is now locale-data (#109) (2d1882e)</p></li>
+<li><p>General: odict: Fix pop method (0a9e97e)</p></li>
+<li><p>General: Removed uses of datetime.date class from <a href="#id20"><span class="problematic" id="id21">*</span></a>.dat files (#174) (94f6830)</p></li>
+<li><p>Messages: Fix plural selection for Chinese (531f666)</p></li>
+<li><p>Messages: Fix typo and add semicolon in plural_forms (5784501)</p></li>
+<li><p>Messages: Flatten NullTranslations.files into a list (ad11101)</p></li>
+<li><p>Times: FixedOffsetTimezone: fix display of negative offsets (d816803)</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>Features<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><p>CLDR: Update to CLDR 28 (#292) (9f7f4d0)</p></li>
+<li><p>General: Add __copy__ and __deepcopy__ to LazyProxy. (a1cc3f1)</p></li>
+<li><p>General: Add official support for Python 3.4 and 3.5</p></li>
+<li><p>General: Improve odict performance by making key search O(1) (6822b7f)</p></li>
+<li><p>Locale: Add an ordinal_form property to Locale (#270) (b3f3430)</p></li>
+<li><p>Locale: Add support for list formatting (37ce4fa, be6e23d)</p></li>
+<li><p>Locale: Check inheritance exceptions first (3ef0d6d)</p></li>
+<li><p>Messages: Allow file locations without line numbers (#279) (79bc781)</p></li>
+<li><p>Messages: Allow passing a callable to <cite>extract()</cite> (#289) (3f58516)</p></li>
+<li><p>Messages: Support ‘Language’ header field of PO files (#76) (3ce842b)</p></li>
+<li><p>Messages: Update catalog headers from templates (e0e7ef1)</p></li>
+<li><p>Numbers: Properly load and expose currency format types (#201) (df676ab)</p></li>
+<li><p>Numbers: Use cdecimal by default when available (b6169be)</p></li>
+<li><p>Numbers: Use the CLDR’s suggested number of decimals for format_currency (#139) (201ed50)</p></li>
+<li><p>Times: Add format_timedelta(format=’narrow’) support (edc5eb5)</p></li>
+</ul>
+</section>
+</section>
+<section id="version-2-1">
+<h2>Version 2.1<a class="headerlink" href="#version-2-1" title="永久链接至标题">¶</a></h2>
+<p>(Bugfix/minor feature release, released on September 25th 2015)</p>
+<ul class="simple">
+<li><p>Parse and honour the locale inheritance exceptions
+(<a class="reference external" href="https://github.com/python-babel/babel/issues/97">https://github.com/python-babel/babel/issues/97</a>)</p></li>
+<li><p>Fix Locale.parse using <code class="docutils literal notranslate"><span class="pre">global.dat</span></code> incompatible types
+(<a class="reference external" href="https://github.com/python-babel/babel/issues/174">https://github.com/python-babel/babel/issues/174</a>)</p></li>
+<li><p>Fix display of negative offsets in <code class="docutils literal notranslate"><span class="pre">FixedOffsetTimezone</span></code>
+(<a class="reference external" href="https://github.com/python-babel/babel/issues/214">https://github.com/python-babel/babel/issues/214</a>)</p></li>
+<li><p>Improved odict performance which is used during localization file
+build, should improve compilation time for large projects</p></li>
+<li><p>Add support for “narrow” format for <code class="docutils literal notranslate"><span class="pre">format_timedelta</span></code></p></li>
+<li><p>Add universal wheel support</p></li>
+<li><p>Support ‘Language’ header field in .PO files
+(fixes <a class="reference external" href="https://github.com/python-babel/babel/issues/76">https://github.com/python-babel/babel/issues/76</a>)</p></li>
+<li><p>Test suite enhancements (coverage, broken tests fixed, etc)</p></li>
+<li><p>Documentation updated</p></li>
+</ul>
+</section>
+<section id="version-2-0">
+<h2>Version 2.0<a class="headerlink" href="#version-2-0" title="永久链接至标题">¶</a></h2>
+<p>(Released on July 27th 2015, codename Second Coming)</p>
+<ul class="simple">
+<li><p>Added support for looking up currencies that belong to a territory
+through the <a class="reference internal" href="api/numbers.html#babel.numbers.get_territory_currencies" title="babel.numbers.get_territory_currencies"><code class="xref py py-func docutils literal notranslate"><span class="pre">babel.numbers.get_territory_currencies()</span></code></a>
+function.</p></li>
+<li><p>Improved Python 3 support.</p></li>
+<li><p>Fixed some broken tests for timezone behavior.</p></li>
+<li><p>Improved various smaller things for dealing with dates.</p></li>
+</ul>
+</section>
+<section id="version-1-4">
+<h2>Version 1.4<a class="headerlink" href="#version-1-4" title="永久链接至标题">¶</a></h2>
+<p>(bugfix release, release date to be decided)</p>
+<ul class="simple">
+<li><p>Fixed a bug that caused deprecated territory codes not being
+converted properly by the subtag resolving.  This for instance
+showed up when trying to use <code class="docutils literal notranslate"><span class="pre">und_UK</span></code> as a language code
+which now properly resolves to <code class="docutils literal notranslate"><span class="pre">en_GB</span></code>.</p></li>
+<li><p>Fixed a bug that made it impossible to import the CLDR data
+from scratch on windows systems.</p></li>
+</ul>
+</section>
+<section id="version-1-3">
+<h2>Version 1.3<a class="headerlink" href="#version-1-3" title="永久链接至标题">¶</a></h2>
+<p>(bugfix release, released on July 29th 2013)</p>
+<ul class="simple">
+<li><p>Fixed a bug in likely-subtag resolving for some common locales.
+This primarily makes <code class="docutils literal notranslate"><span class="pre">zh_CN</span></code> work again which was broken
+due to how it was defined in the likely subtags combined with
+our broken resolving.  This fixes <a class="reference external" href="https://github.com/python-babel/babel/issues/37">#37</a>.</p></li>
+<li><p>Fixed a bug that caused pybabel to break when writing to stdout
+on Python 3.</p></li>
+<li><p>Removed a stray print that was causing issues when writing to
+stdout for message catalogs.</p></li>
+</ul>
+</section>
+<section id="version-1-2">
+<h2>Version 1.2<a class="headerlink" href="#version-1-2" title="永久链接至标题">¶</a></h2>
+<p>(bugfix release, released on July 27th 2013)</p>
+<ul class="simple">
+<li><p>Included all tests in the tarball.  Previously the include
+skipped past recursive folders.</p></li>
+<li><p>Changed how tests are invoked and added separate standalone
+test command.  This simplifies testing of the package for
+linux distributors.</p></li>
+</ul>
+</section>
+<section id="version-1-1">
+<h2>Version 1.1<a class="headerlink" href="#version-1-1" title="永久链接至标题">¶</a></h2>
+<p>(bugfix release, released on July 27th 2013)</p>
+<ul class="simple">
+<li><p>added dummy version requirements for pytz so that it installs
+on pip 1.4.</p></li>
+<li><p>Included tests in the tarball.</p></li>
+</ul>
+</section>
+<section id="version-1-0">
+<h2>Version 1.0<a class="headerlink" href="#version-1-0" title="永久链接至标题">¶</a></h2>
+<p>(Released on July 26th 2013, codename Revival)</p>
+<ul class="simple">
+<li><p>support python 2.6, 2.7, 3.3+ and pypy - drop all other versions</p></li>
+<li><p>use tox for testing on different pythons</p></li>
+<li><p>Added support for the locale plural rules defined by the CLDR.</p></li>
+<li><p>Added <cite>format_timedelta</cite> function to support localized formatting of
+relative times with strings such as “2 days” or “1 month” (<a class="reference external" href="http://babel.edgewall.org/ticket/126">ticket #126</a>).</p></li>
+<li><p>Fixed negative offset handling of Catalog._set_mime_headers (<a class="reference external" href="http://babel.edgewall.org/ticket/165">ticket #165</a>).</p></li>
+<li><p>Fixed the case where messages containing square brackets would break with
+an unpack error.</p></li>
+<li><p>updated to CLDR 23</p></li>
+<li><p>Make the CLDR import script work with Python 2.7.</p></li>
+<li><p>Fix various typos.</p></li>
+<li><p>Sort output of list-locales.</p></li>
+<li><p>Make the POT-Creation-Date of the catalog being updated equal to
+POT-Creation-Date of the template used to update (<a class="reference external" href="http://babel.edgewall.org/ticket/148">ticket #148</a>).</p></li>
+<li><p>Use a more explicit error message if no option or argument (command) is
+passed to pybabel (<a class="reference external" href="http://babel.edgewall.org/ticket/81">ticket #81</a>).</p></li>
+<li><p>Keep the PO-Revision-Date if it is not the default value (<a class="reference external" href="http://babel.edgewall.org/ticket/148">ticket #148</a>).</p></li>
+<li><p>Make –no-wrap work by reworking –width’s default and mimic xgettext’s
+behaviour of always wrapping comments (<a class="reference external" href="http://babel.edgewall.org/ticket/145">ticket #145</a>).</p></li>
+<li><p>Add –project and –version options for commandline (<a class="reference external" href="http://babel.edgewall.org/ticket/173">ticket #173</a>).</p></li>
+<li><p>Add a __ne__() method to the Local class.</p></li>
+<li><p>Explicitly sort instead of using sorted() and don’t assume ordering
+(Jython compatibility).</p></li>
+<li><p>Removed ValueError raising for string formatting message checkers if the
+string does not contain any string formattings (<a class="reference external" href="http://babel.edgewall.org/ticket/150">ticket #150</a>).</p></li>
+<li><p>Fix Serbian plural forms (<a class="reference external" href="http://babel.edgewall.org/ticket/213">ticket #213</a>).</p></li>
+<li><p>Small speed improvement in format_date() (<a class="reference external" href="http://babel.edgewall.org/ticket/216">ticket #216</a>).</p></li>
+<li><p>Fix so frontend.CommandLineInterface.run does not accumulate logging
+handlers (<a class="reference external" href="http://babel.edgewall.org/ticket/227">ticket #227</a>, reported with initial patch by dfraser)</p></li>
+<li><p>Fix exception if environment contains an invalid locale setting
+(<a class="reference external" href="http://babel.edgewall.org/ticket/200">ticket #200</a>)</p></li>
+<li><p>use cPickle instead of pickle for better performance (<a class="reference external" href="http://babel.edgewall.org/ticket/225">ticket #225</a>)</p></li>
+<li><p>Only use bankers round algorithm as a tie breaker if there are two nearest
+numbers, round as usual if there is only one nearest number (<a class="reference external" href="http://babel.edgewall.org/ticket/267">ticket #267</a>,
+patch by Martin)</p></li>
+<li><p>Allow disabling cache behaviour in LazyProxy (<a class="reference external" href="http://babel.edgewall.org/ticket/208">ticket #208</a>, initial patch
+from Pedro Algarvio)</p></li>
+<li><p>Support for context-aware methods during message extraction (<a class="reference external" href="http://babel.edgewall.org/ticket/229">ticket #229</a>,
+patch from David Rios)</p></li>
+<li><p>“init” and “update” commands support “–no-wrap” option (<a class="reference external" href="http://babel.edgewall.org/ticket/289">ticket #289</a>)</p></li>
+<li><p>fix formatting of fraction in format_decimal() if the input value is a float
+with more than 7 significant digits (<a class="reference external" href="http://babel.edgewall.org/ticket/183">ticket #183</a>)</p></li>
+<li><p>fix format_date() with datetime parameter (<a class="reference external" href="http://babel.edgewall.org/ticket/282">ticket #282</a>, patch from Xavier
+Morel)</p></li>
+<li><p>fix format_decimal() with small Decimal values (<a class="reference external" href="http://babel.edgewall.org/ticket/214">ticket #214</a>, patch from
+George Lund)</p></li>
+<li><p>fix handling of messages containing ‘\n’ (<a class="reference external" href="http://babel.edgewall.org/ticket/198">ticket #198</a>)</p></li>
+<li><p>handle irregular multi-line msgstr (no “” as first line) gracefully
+(<a class="reference external" href="http://babel.edgewall.org/ticket/171">ticket #171</a>)</p></li>
+<li><p>parse_decimal() now returns Decimals not floats, API change (<a class="reference external" href="http://babel.edgewall.org/ticket/178">ticket #178</a>)</p></li>
+<li><p>no warnings when running setup.py without installed setuptools (<a class="reference external" href="http://babel.edgewall.org/ticket/262">ticket #262</a>)</p></li>
+<li><p>modified Locale.__eq__ method so Locales are only equal if all of their
+attributes (language, territory, script, variant) are equal</p></li>
+<li><p>resort to hard-coded message extractors/checkers if pkg_resources is
+installed but no egg-info was found (<a class="reference external" href="http://babel.edgewall.org/ticket/230">ticket #230</a>)</p></li>
+<li><p>format_time() and format_datetime() now accept also floats (<a class="reference external" href="http://babel.edgewall.org/ticket/242">ticket #242</a>)</p></li>
+<li><p>add babel.support.NullTranslations class similar to gettext.NullTranslations
+but with all of Babel’s new gettext methods (<a class="reference external" href="http://babel.edgewall.org/ticket/277">ticket #277</a>)</p></li>
+<li><p>“init” and “update” commands support “–width” option (<a class="reference external" href="http://babel.edgewall.org/ticket/284">ticket #284</a>)</p></li>
+<li><p>fix ‘input_dirs’ option for setuptools integration (<a class="reference external" href="http://babel.edgewall.org/ticket/232">ticket #232</a>, initial
+patch by Étienne Bersac)</p></li>
+<li><p>ensure .mo file header contains the same information as the source .po file
+(<a class="reference external" href="http://babel.edgewall.org/ticket/199">ticket #199</a>)</p></li>
+<li><p>added support for get_language_name() on the locale objects.</p></li>
+<li><p>added support for get_territory_name() on the locale objects.</p></li>
+<li><p>added support for get_script_name() on the locale objects.</p></li>
+<li><p>added pluralization support for currency names and added a ‘¤¤¤’
+pattern for currencies that includes the full name.</p></li>
+<li><p>depend on pytz now and wrap it nicer.  This gives us improved support
+for things like timezone transitions and an overall nicer API.</p></li>
+<li><p>Added support for explicit charset to PO file reading.</p></li>
+<li><p>Added experimental Python 3 support.</p></li>
+<li><p>Added better support for returning timezone names.</p></li>
+<li><p>Don’t throw away a Catalog’s obsolete messages when updating it.</p></li>
+<li><p>Added basic likelySubtag resolving when doing locale parsing and no
+match can be found.</p></li>
+</ul>
+</section>
+<section id="version-0-9-6">
+<h2>Version 0.9.6<a class="headerlink" href="#version-0-9-6" title="永久链接至标题">¶</a></h2>
+<p>(released on March 17th 2011)</p>
+<ul class="simple">
+<li><p>Backport r493-494: documentation typo fixes.</p></li>
+<li><p>Make the CLDR import script work with Python 2.7.</p></li>
+<li><p>Fix various typos.</p></li>
+<li><p>Fixed Python 2.3 compatibility (<a class="reference external" href="http://babel.edgewall.org/ticket/146">ticket #146</a>, <a class="reference external" href="http://babel.edgewall.org/ticket/233">ticket #233</a>).</p></li>
+<li><p>Sort output of list-locales.</p></li>
+<li><p>Make the POT-Creation-Date of the catalog being updated equal to
+POT-Creation-Date of the template used to update (<a class="reference external" href="http://babel.edgewall.org/ticket/148">ticket #148</a>).</p></li>
+<li><p>Use a more explicit error message if no option or argument (command) is
+passed to pybabel (<a class="reference external" href="http://babel.edgewall.org/ticket/81">ticket #81</a>).</p></li>
+<li><p>Keep the PO-Revision-Date if it is not the default value (<a class="reference external" href="http://babel.edgewall.org/ticket/148">ticket #148</a>).</p></li>
+<li><p>Make –no-wrap work by reworking –width’s default and mimic xgettext’s
+behaviour of always wrapping comments (<a class="reference external" href="http://babel.edgewall.org/ticket/145">ticket #145</a>).</p></li>
+<li><p>Fixed negative offset handling of Catalog._set_mime_headers (<a class="reference external" href="http://babel.edgewall.org/ticket/165">ticket #165</a>).</p></li>
+<li><p>Add –project and –version options for commandline (<a class="reference external" href="http://babel.edgewall.org/ticket/173">ticket #173</a>).</p></li>
+<li><p>Add a __ne__() method to the Local class.</p></li>
+<li><p>Explicitly sort instead of using sorted() and don’t assume ordering
+(Python 2.3 and Jython compatibility).</p></li>
+<li><p>Removed ValueError raising for string formatting message checkers if the
+string does not contain any string formattings (<a class="reference external" href="http://babel.edgewall.org/ticket/150">ticket #150</a>).</p></li>
+<li><p>Fix Serbian plural forms (<a class="reference external" href="http://babel.edgewall.org/ticket/213">ticket #213</a>).</p></li>
+<li><p>Small speed improvement in format_date() (<a class="reference external" href="http://babel.edgewall.org/ticket/216">ticket #216</a>).</p></li>
+<li><p>Fix number formatting for locales where CLDR specifies alt or draft
+items (<a class="reference external" href="http://babel.edgewall.org/ticket/217">ticket #217</a>)</p></li>
+<li><p>Fix bad check in format_time (<a class="reference external" href="http://babel.edgewall.org/ticket/257">ticket #257</a>, reported with patch and tests by
+jomae)</p></li>
+<li><p>Fix so frontend.CommandLineInterface.run does not accumulate logging
+handlers (<a class="reference external" href="http://babel.edgewall.org/ticket/227">ticket #227</a>, reported with initial patch by dfraser)</p></li>
+<li><p>Fix exception if environment contains an invalid locale setting
+(<a class="reference external" href="http://babel.edgewall.org/ticket/200">ticket #200</a>)</p></li>
+</ul>
+</section>
+<section id="version-0-9-5">
+<h2>Version 0.9.5<a class="headerlink" href="#version-0-9-5" title="永久链接至标题">¶</a></h2>
+<p>(released on April 6th 2010)</p>
+<ul class="simple">
+<li><p>Fixed the case where messages containing square brackets would break with
+an unpack error.</p></li>
+<li><p>Backport of r467: Fuzzy matching regarding plurals should <em>NOT</em> be checked
+against len(message.id)  because this is always 2, instead, it’s should be
+checked against catalog.num_plurals (<a class="reference external" href="http://babel.edgewall.org/ticket/212">ticket #212</a>).</p></li>
+</ul>
+</section>
+<section id="version-0-9-4">
+<h2>Version 0.9.4<a class="headerlink" href="#version-0-9-4" title="永久链接至标题">¶</a></h2>
+<p>(released on August 25th 2008)</p>
+<ul class="simple">
+<li><p>Currency symbol definitions that is defined with choice patterns in the
+CLDR data are no longer imported, so the symbol code will be used instead.</p></li>
+<li><p>Fixed quarter support in date formatting.</p></li>
+<li><p>Fixed a serious memory leak that was introduces by the support for CLDR
+aliases in 0.9.3 (<a class="reference external" href="http://babel.edgewall.org/ticket/128">ticket #128</a>).</p></li>
+<li><p>Locale modifiers such as “&#64;euro” are now stripped from locale identifiers
+when parsing (<a class="reference external" href="http://babel.edgewall.org/ticket/136">ticket #136</a>).</p></li>
+<li><p>The system locales “C” and “POSIX” are now treated as aliases for
+“en_US_POSIX”, for which the CLDR provides the appropriate data. Thanks to
+Manlio Perillo for the suggestion.</p></li>
+<li><p>Fixed JavaScript extraction for regular expression literals (<a class="reference external" href="http://babel.edgewall.org/ticket/138">ticket #138</a>)
+and concatenated strings.</p></li>
+<li><p>The <cite>Translation</cite> class in <cite>babel.support</cite> can now manage catalogs with
+different message domains, and exposes the family of <cite>d*gettext</cite> functions
+(<a class="reference external" href="http://babel.edgewall.org/ticket/137">ticket #137</a>).</p></li>
+</ul>
+</section>
+<section id="version-0-9-3">
+<h2>Version 0.9.3<a class="headerlink" href="#version-0-9-3" title="永久链接至标题">¶</a></h2>
+<p>(released on July 9th 2008)</p>
+<ul class="simple">
+<li><p>Fixed invalid message extraction methods causing an UnboundLocalError.</p></li>
+<li><p>Extraction method specification can now use a dot instead of the colon to
+separate module and function name (<a class="reference external" href="http://babel.edgewall.org/ticket/105">ticket #105</a>).</p></li>
+<li><p>Fixed message catalog compilation for locales with more than two plural
+forms (<a class="reference external" href="http://babel.edgewall.org/ticket/95">ticket #95</a>).</p></li>
+<li><p>Fixed compilation of message catalogs for locales with more than two plural
+forms where the translations were empty (<a class="reference external" href="http://babel.edgewall.org/ticket/97">ticket #97</a>).</p></li>
+<li><p>The stripping of the comment tags in comments is optional now and
+is done for each line in a comment.</p></li>
+<li><p>Added a JavaScript message extractor.</p></li>
+<li><p>Updated to CLDR 1.6.</p></li>
+<li><p>Fixed timezone calculations when formatting datetime and time values.</p></li>
+<li><p>Added a <cite>get_plural</cite> function into the plurals module that returns the
+correct plural forms for a locale as tuple.</p></li>
+<li><p>Added support for alias definitions in the CLDR data files, meaning that
+the chance for items missing in certain locales should be greatly reduced
+(<a class="reference external" href="http://babel.edgewall.org/ticket/68">ticket #68</a>).</p></li>
+</ul>
+</section>
+<section id="version-0-9-2">
+<h2>Version 0.9.2<a class="headerlink" href="#version-0-9-2" title="永久链接至标题">¶</a></h2>
+<p>(released on February 4th 2008)</p>
+<ul class="simple">
+<li><p>Fixed catalogs’ charset values not being recognized (<a class="reference external" href="http://babel.edgewall.org/ticket/66">ticket #66</a>).</p></li>
+<li><p>Numerous improvements to the default plural forms.</p></li>
+<li><p>Fixed fuzzy matching when updating message catalogs (<a class="reference external" href="http://babel.edgewall.org/ticket/82">ticket #82</a>).</p></li>
+<li><p>Fixed bug in catalog updating, that in some cases pulled in translations
+from different catalogs based on the same template.</p></li>
+<li><p>Location lines in PO files do no longer get wrapped at hyphens in file
+names (<a class="reference external" href="http://babel.edgewall.org/ticket/79">ticket #79</a>).</p></li>
+<li><p>Fixed division by zero error in catalog compilation on empty catalogs
+(<a class="reference external" href="http://babel.edgewall.org/ticket/60">ticket #60</a>).</p></li>
+</ul>
+</section>
+<section id="version-0-9-1">
+<h2>Version 0.9.1<a class="headerlink" href="#version-0-9-1" title="永久链接至标题">¶</a></h2>
+<p>(released on September 7th 2007)</p>
+<ul class="simple">
+<li><p>Fixed catalog updating when a message is merged that was previously simple
+but now has a plural form, for example by moving from <cite>gettext</cite> to
+<cite>ngettext</cite>, or vice versa.</p></li>
+<li><p>Fixed time formatting for 12 am and 12 pm.</p></li>
+<li><p>Fixed output encoding of the <cite>pybabel –list-locales</cite> command.</p></li>
+<li><p>MO files are now written in binary mode on windows (<a class="reference external" href="http://babel.edgewall.org/ticket/61">ticket #61</a>).</p></li>
+</ul>
+</section>
+<section id="version-0-9">
+<h2>Version 0.9<a class="headerlink" href="#version-0-9" title="永久链接至标题">¶</a></h2>
+<p>(released on August 20th 2007)</p>
+<ul class="simple">
+<li><p>The <cite>new_catalog</cite> distutils command has been renamed to <cite>init_catalog</cite> for
+consistency with the command-line frontend.</p></li>
+<li><p>Added compilation of message catalogs to MO files (<a class="reference external" href="http://babel.edgewall.org/ticket/21">ticket #21</a>).</p></li>
+<li><p>Added updating of message catalogs from POT files (<a class="reference external" href="http://babel.edgewall.org/ticket/22">ticket #22</a>).</p></li>
+<li><p>Support for significant digits in number formatting.</p></li>
+<li><p>Apply proper “banker’s rounding” in number formatting in a cross-platform
+manner.</p></li>
+<li><p>The number formatting functions now also work with numbers represented by
+Python <cite>Decimal</cite> objects (<a class="reference external" href="http://babel.edgewall.org/ticket/53">ticket #53</a>).</p></li>
+<li><p>Added extensible infrastructure for validating translation catalogs.</p></li>
+<li><p>Fixed the extractor not filtering out messages that didn’t validate against
+the keyword’s specification (<a class="reference external" href="http://babel.edgewall.org/ticket/39">ticket #39</a>).</p></li>
+<li><p>Fixed the extractor raising an exception when encountering an empty string
+msgid. It now emits a warning to stderr.</p></li>
+<li><p>Numerous Python message extractor fixes: it now handles nested function
+calls within a gettext function call correctly, uses the correct line number
+for multi-line function calls, and other small fixes (tickets <a class="reference external" href="http://babel.edgewall.org/ticket/38">ticket #38</a> and
+<a class="reference external" href="http://babel.edgewall.org/ticket/39">ticket #39</a>).</p></li>
+<li><p>Improved support for detecting Python string formatting fields in message
+strings (<a class="reference external" href="http://babel.edgewall.org/ticket/57">ticket #57</a>).</p></li>
+<li><p>CLDR upgraded to the 1.5 release.</p></li>
+<li><p>Improved timezone formatting.</p></li>
+<li><p>Implemented scientific number formatting.</p></li>
+<li><p>Added mechanism to lookup locales by alias, for cases where browsers insist
+on including only the language code in the <cite>Accept-Language</cite> header, and
+sometimes even the incorrect language code.</p></li>
+</ul>
+</section>
+<section id="version-0-8-1">
+<h2>Version 0.8.1<a class="headerlink" href="#version-0-8-1" title="永久链接至标题">¶</a></h2>
+<p>(released on July 2nd 2007)</p>
+<ul class="simple">
+<li><p><cite>default_locale()</cite> would fail when the value of the <cite>LANGUAGE</cite> environment
+variable contained multiple language codes separated by colon, as is
+explicitly allowed by the GNU gettext tools. As the <cite>default_locale()</cite>
+function is called at the module level in some modules, this bug would
+completely break importing these modules on systems where <cite>LANGUAGE</cite> is set
+that way.</p></li>
+<li><p>The character set specified in PO template files is now respected when
+creating new catalog files based on that template. This allows the use of
+characters outside the ASCII range in POT files (<a class="reference external" href="http://babel.edgewall.org/ticket/17">ticket #17</a>).</p></li>
+<li><p>The default ordering of messages in generated POT files, which is based on
+the order those messages are found when walking the source tree, is no
+longer subject to differences between platforms; directory and file names
+are now always sorted alphabetically.</p></li>
+<li><p>The Python message extractor now respects the special encoding comment to be
+able to handle files containing non-ASCII characters (<a class="reference external" href="http://babel.edgewall.org/ticket/23">ticket #23</a>).</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">N_</span></code> (gettext noop) to the extractor’s default keywords.</p></li>
+<li><p>Made locale string parsing more robust, and also take the script part into
+account (<a class="reference external" href="http://babel.edgewall.org/ticket/27">ticket #27</a>).</p></li>
+<li><p>Added a function to list all locales for which locale data is available.</p></li>
+<li><p>Added a command-line option to the <cite>pybabel</cite> command which prints out all
+available locales (<a class="reference external" href="http://babel.edgewall.org/ticket/24">ticket #24</a>).</p></li>
+<li><p>The name of the command-line script has been changed from just <cite>babel</cite> to
+<cite>pybabel</cite> to avoid a conflict with the OpenBabel project (<a class="reference external" href="http://babel.edgewall.org/ticket/34">ticket #34</a>).</p></li>
+</ul>
+</section>
+<section id="version-0-8">
+<h2>Version 0.8<a class="headerlink" href="#version-0-8" title="永久链接至标题">¶</a></h2>
+<p>(released on June 20th 2007)</p>
+<ul class="simple">
+<li><p>First public release</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Babel Changelog</a><ul>
+<li><a class="reference internal" href="#version-2-9-1">Version 2.9.1</a><ul>
+<li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-9-0">Version 2.9.0</a><ul>
+<li><a class="reference internal" href="#upcoming-version-support-changes">Upcoming version support changes</a></li>
+<li><a class="reference internal" href="#improvements">Improvements</a></li>
+<li><a class="reference internal" href="#id1">Bugfixes</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-8-1">Version 2.8.1</a><ul>
+<li><a class="reference internal" href="#id2">Bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-8-0">Version 2.8.0</a><ul>
+<li><a class="reference internal" href="#id3">Improvements</a></li>
+<li><a class="reference internal" href="#id4">Bugfixes</a></li>
+<li><a class="reference internal" href="#docs">Docs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-7-0">Version 2.7.0</a><ul>
+<li><a class="reference internal" href="#possibly-incompatible-changes">Possibly incompatible changes</a></li>
+<li><a class="reference internal" href="#id5">Improvements</a></li>
+<li><a class="reference internal" href="#id6">Bugfixes</a></li>
+<li><a class="reference internal" href="#tooling-docs">Tooling &amp; docs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-6-0">Version 2.6.0</a><ul>
+<li><a class="reference internal" href="#id7">Possibly incompatible changes</a></li>
+<li><a class="reference internal" href="#other-changes">Other changes</a></li>
+<li><a class="reference internal" href="#id8">Bugfixes</a></li>
+<li><a class="reference internal" href="#id9">Tooling &amp; docs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-5-3">Version 2.5.3</a></li>
+<li><a class="reference internal" href="#version-2-5-2">Version 2.5.2</a><ul>
+<li><a class="reference internal" href="#id10">Bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-5-1">Version 2.5.1</a><ul>
+<li><a class="reference internal" href="#minor-improvements-and-bugfixes">Minor Improvements and bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-5-0">Version 2.5.0</a><ul>
+<li><a class="reference internal" href="#new-features">New Features</a></li>
+<li><a class="reference internal" href="#id11">Minor Improvements and bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-4-0">Version 2.4.0</a><ul>
+<li><a class="reference internal" href="#id12">New Features</a></li>
+<li><a class="reference internal" href="#id13">Minor Improvements and bugfixes</a></li>
+<li><a class="reference internal" href="#internal-improvements">Internal improvements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-3-4">Version 2.3.4</a><ul>
+<li><a class="reference internal" href="#id14">Bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-3-3">Version 2.3.3</a><ul>
+<li><a class="reference internal" href="#id15">Bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-3-2">Version 2.3.2</a><ul>
+<li><a class="reference internal" href="#id16">Bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-3-1">Version 2.3.1</a></li>
+<li><a class="reference internal" href="#version-2-3">Version 2.3</a><ul>
+<li><a class="reference internal" href="#id17">Internal improvements</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#id18">Bugfixes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-2">Version 2.2</a><ul>
+<li><a class="reference internal" href="#id19">Bugfixes</a></li>
+<li><a class="reference internal" href="#id22">Features</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-2-1">Version 2.1</a></li>
+<li><a class="reference internal" href="#version-2-0">Version 2.0</a></li>
+<li><a class="reference internal" href="#version-1-4">Version 1.4</a></li>
+<li><a class="reference internal" href="#version-1-3">Version 1.3</a></li>
+<li><a class="reference internal" href="#version-1-2">Version 1.2</a></li>
+<li><a class="reference internal" href="#version-1-1">Version 1.1</a></li>
+<li><a class="reference internal" href="#version-1-0">Version 1.0</a></li>
+<li><a class="reference internal" href="#version-0-9-6">Version 0.9.6</a></li>
+<li><a class="reference internal" href="#version-0-9-5">Version 0.9.5</a></li>
+<li><a class="reference internal" href="#version-0-9-4">Version 0.9.4</a></li>
+<li><a class="reference internal" href="#version-0-9-3">Version 0.9.3</a></li>
+<li><a class="reference internal" href="#version-0-9-2">Version 0.9.2</a></li>
+<li><a class="reference internal" href="#version-0-9-1">Version 0.9.1</a></li>
+<li><a class="reference internal" href="#version-0-9">Version 0.9</a></li>
+<li><a class="reference internal" href="#version-0-8-1">Version 0.8.1</a></li>
+<li><a class="reference internal" href="#version-0-8">Version 0.8</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="dev.html" title="上一章">Babel Development</a></li>
+      <li>Next: <a href="license.html" title="下一章">License</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

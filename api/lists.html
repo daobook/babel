@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>List Formatting &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/babel.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Messages and Catalogs" href="messages/index.html" />
+    <link rel="prev" title="Languages" href="languages.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="messages/index.html" title="Messages and Catalogs"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="languages.html" title="Languages"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Babel 2.9.1 文档</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">API Reference</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">List Formatting</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-babel.lists">
+<span id="list-formatting"></span><h1>List Formatting<a class="headerlink" href="#module-babel.lists" title="永久链接至标题">¶</a></h1>
+<p>This module lets you format lists of items in a locale-dependent manner.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="babel.lists.format_list">
+<span class="sig-prename descclassname"><span class="pre">babel.lists.</span></span><span class="sig-name descname"><span class="pre">format_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'standard'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en_US_POSIX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#babel.lists.format_list" title="永久链接至目标">¶</a></dt>
+<dd><p>Format the items in <cite>lst</cite> as a list.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_list</span><span class="p">([</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">],</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
+<span class="go">u&#39;apples, oranges, and pears&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_list</span><span class="p">([</span><span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;oranges&#39;</span><span class="p">,</span> <span class="s1">&#39;pears&#39;</span><span class="p">],</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;zh&#39;</span><span class="p">)</span>
+<span class="go">u&#39;apples、oranges和pears&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_list</span><span class="p">([</span><span class="s1">&#39;omena&#39;</span><span class="p">,</span> <span class="s1">&#39;peruna&#39;</span><span class="p">,</span> <span class="s1">&#39;aplari&#39;</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;or&#39;</span><span class="p">,</span> <span class="n">locale</span><span class="o">=</span><span class="s1">&#39;fi&#39;</span><span class="p">)</span>
+<span class="go">u&#39;omena, peruna tai aplari&#39;</span>
+</pre></div>
+</div>
+<p>These styles are defined, but not all are necessarily available in all locales.
+The following text is verbatim from the Unicode TR35-49 spec [1].</p>
+<ul class="simple">
+<li><p>standard:
+A typical ‘and’ list for arbitrary placeholders.
+eg. “January, February, and March”</p></li>
+<li><p>standard-short:
+A short version of a ‘and’ list, suitable for use with short or abbreviated placeholder values.
+eg. “Jan., Feb., and Mar.”</p></li>
+<li><p>or:
+A typical ‘or’ list for arbitrary placeholders.
+eg. “January, February, or March”</p></li>
+<li><p>or-short:
+A short version of an ‘or’ list.
+eg. “Jan., Feb., or Mar.”</p></li>
+<li><p>unit:
+A list suitable for wide units.
+eg. “3 feet, 7 inches”</p></li>
+<li><p>unit-short:
+A list suitable for short units
+eg. “3 ft, 7 in”</p></li>
+<li><p>unit-narrow:
+A list suitable for narrow units, where space on the screen is very limited.
+eg. “3′ 7″”</p></li>
+</ul>
+<p>[1]: <a class="reference external" href="https://www.unicode.org/reports/tr35/tr35-49/tr35-general.html#ListPatterns">https://www.unicode.org/reports/tr35/tr35-49/tr35-general.html#ListPatterns</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lst</strong> – a sequence of items to format in to a list</p></li>
+<li><p><strong>style</strong> – the style to format the list with. See above for description.</p></li>
+<li><p><strong>locale</strong> – the locale</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="../index.html">
+  <img class="logo" src="../_static/logo_small.png" alt="Logo"/>
+</a></p><h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Reference</a><ul>
+      <li>Previous: <a href="languages.html" title="上一章">Languages</a></li>
+      <li>Next: <a href="messages/index.html" title="下一章">Messages and Catalogs</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

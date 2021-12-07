@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Working with Message Catalogs &#8212; Babel 2.9.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/babel.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Command-Line Interface" href="cmdline.html" />
+    <link rel="prev" title="Number Formatting" href="numbers.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="cmdline.html" title="Command-Line Interface"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="numbers.html" title="Number Formatting"
+             accesskey="P">上一页</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Babel 2.9.1 文档</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Working with Message Catalogs</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="working-with-message-catalogs">
+<span id="messages"></span><h1>Working with Message Catalogs<a class="headerlink" href="#working-with-message-catalogs" title="永久链接至标题">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="永久链接至标题">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">gettext</span></code> translation system enables you to mark any strings used in your
+application as subject to localization, by wrapping them in functions such as
+<code class="docutils literal notranslate"><span class="pre">gettext(str)</span></code> and <code class="docutils literal notranslate"><span class="pre">ngettext(singular,</span> <span class="pre">plural,</span> <span class="pre">num)</span></code>. For brevity, the
+<code class="docutils literal notranslate"><span class="pre">gettext</span></code> function is often aliased to <code class="docutils literal notranslate"><span class="pre">_(str)</span></code>, so you can write:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>instead of just:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to make the string “Hello” localizable.</p>
+<p>Message catalogs are collections of translations for such localizable messages
+used in an application. They are commonly stored in PO (Portable Object) and MO
+(Machine Object) files, the formats of which are defined by the GNU <a class="reference external" href="https://www.gnu.org/software/gettext/">gettext</a>
+tools and the GNU <a class="reference external" href="https://sourceforge.net/projects/translation/">translation project</a>.</p>
+<blockquote>
+<div></div></blockquote>
+<p>The general procedure for building message catalogs looks something like this:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>use a tool (such as <code class="docutils literal notranslate"><span class="pre">xgettext</span></code>) to extract localizable strings from the
+code base and write them to a POT (PO Template) file.</p></li>
+<li><p>make a copy of the POT file for a specific locale (for example, “en_US”)
+and start translating the messages</p></li>
+<li><p>use a tool such as <code class="docutils literal notranslate"><span class="pre">msgfmt</span></code> to compile the locale PO file into a binary
+MO file</p></li>
+<li><p>later, when code changes make it necessary to update the translations, you
+regenerate the POT file and merge the changes into the various
+locale-specific PO files, for example using <code class="docutils literal notranslate"><span class="pre">msgmerge</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>Python provides the <a class="reference external" href="https://docs.python.org/3/library/gettext.html#module-gettext" title="(在 Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gettext</span></code></a> module as part of the standard library,
+which enables applications to work with appropriately generated MO files.</p>
+<p>As <code class="docutils literal notranslate"><span class="pre">gettext</span></code> provides a solid and well supported foundation for translating
+application messages, Babel does not reinvent the wheel, but rather reuses this
+infrastructure, and makes it easier to build message catalogs for Python
+applications.</p>
+</section>
+<section id="message-extraction">
+<h2>Message Extraction<a class="headerlink" href="#message-extraction" title="永久链接至标题">¶</a></h2>
+<p>Babel provides functionality similar to that of the <code class="docutils literal notranslate"><span class="pre">xgettext</span></code> program,
+except that only extraction from Python source files is built-in, while support
+for other file formats can be added using a simple extension mechanism.</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">xgettext</span></code>, which is usually invoked once for every file, the routines
+for message extraction in Babel operate on directories. While the per-file
+approach of <code class="docutils literal notranslate"><span class="pre">xgettext</span></code> works nicely with projects using a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>,
+Python projects rarely use <code class="docutils literal notranslate"><span class="pre">make</span></code>, and thus a different mechanism is needed
+for extracting messages from the heterogeneous collection of source files that
+many Python projects are composed of.</p>
+<p>When message extraction is based on directories instead of individual files,
+there needs to be a way to configure which files should be treated in which
+manner. For example, while many projects may contain <code class="docutils literal notranslate"><span class="pre">.html</span></code> files, some of
+those files may be static HTML files that don’t contain localizable message,
+while others may be <a class="reference external" href="http://jinja.pocoo.org/">Jinja2</a> templates, and still others may contain <a class="reference external" href="https://genshi.edgewall.org/">Genshi</a>
+markup templates. Some projects may even mix HTML files for different templates
+languages (for whatever reason). Therefore the way in which messages are
+extracted from source files can not only depend on the file extension, but
+needs to be controllable in a precise manner.</p>
+<p>Babel accepts a configuration file to specify this mapping of files to
+extraction methods, which is described below.</p>
+<section id="front-ends">
+<span id="frontends"></span><h3>Front-Ends<a class="headerlink" href="#front-ends" title="永久链接至标题">¶</a></h3>
+<p>Babel provides two different front-ends to access its functionality for working
+with message catalogs:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A <a class="reference internal" href="cmdline.html#cmdline"><span class="std std-ref">Command-Line Interface</span></a>, and</p></li>
+<li><p><a class="reference internal" href="setup.html#setup-integration"><span class="std std-ref">Distutils/Setuptools Integration</span></a></p></li>
+</ul>
+</div></blockquote>
+<p>Which one you choose depends on the nature of your project. For most modern
+Python projects, the distutils/setuptools integration is probably more
+convenient.</p>
+</section>
+<section id="extraction-method-mapping-and-configuration">
+<span id="mapping"></span><h3>Extraction Method Mapping and Configuration<a class="headerlink" href="#extraction-method-mapping-and-configuration" title="永久链接至标题">¶</a></h3>
+<p>The mapping of extraction methods to files in Babel is done via a configuration
+file. This file maps extended glob patterns to the names of the extraction
+methods, and can also set various options for each pattern (which options are
+available depends on the specific extraction method).</p>
+<p>For example, the following configuration adds extraction of messages from both
+Genshi markup templates and text templates:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extraction from Python source files</span>
+
+<span class="k">[python: **.py]</span>
+
+<span class="c1"># Extraction from Genshi HTML and text templates</span>
+
+<span class="k">[genshi: **/templates/**.html]</span>
+<span class="na">ignore_tags</span> <span class="o">=</span> <span class="s">script,style</span>
+<span class="na">include_attrs</span> <span class="o">=</span> <span class="s">alt title summary</span>
+
+<span class="k">[genshi: **/templates/**.txt]</span>
+<span class="na">template_class</span> <span class="o">=</span> <span class="s">genshi.template:TextTemplate</span>
+<span class="na">encoding</span> <span class="o">=</span> <span class="s">ISO-8819-15</span>
+
+<span class="c1"># Extraction from JavaScript files</span>
+
+<span class="k">[javascript: **.js]</span>
+<span class="na">extract_messages</span> <span class="o">=</span> <span class="s">$._, jQuery._</span>
+</pre></div>
+</div>
+<p>The configuration file syntax is based on the format commonly found in <code class="docutils literal notranslate"><span class="pre">.INI</span></code>
+files on Windows systems, and as supported by the <code class="docutils literal notranslate"><span class="pre">ConfigParser</span></code> module in
+the Python standard library. Section names (the strings enclosed in square
+brackets) specify both the name of the extraction method, and the extended glob
+pattern to specify the files that this extraction method should be used for,
+separated by a colon. The options in the sections are passed to the extraction
+method. Which options are available is specific to the extraction method used.</p>
+<p>The extended glob patterns used in this configuration are similar to the glob
+patterns provided by most shells. A single asterisk (<code class="docutils literal notranslate"><span class="pre">*</span></code>) is a wildcard for
+any number of characters (except for the pathname component separator “/”),
+while a question mark (<code class="docutils literal notranslate"><span class="pre">?</span></code>) only matches a single character. In addition,
+two subsequent asterisk characters (<code class="docutils literal notranslate"><span class="pre">**</span></code>) can be used to make the wildcard
+match any directory level, so the pattern <code class="docutils literal notranslate"><span class="pre">**.txt</span></code> matches any file with the
+extension <code class="docutils literal notranslate"><span class="pre">.txt</span></code> in any directory.</p>
+<p>Lines that start with a <code class="docutils literal notranslate"><span class="pre">#</span></code> or <code class="docutils literal notranslate"><span class="pre">;</span></code> character are ignored and can be used
+for comments. Empty lines are ignored, too.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>if you’re performing message extraction using the command Babel
+provides for integration into <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> scripts, you can also
+provide this configuration in a different way, namely as a keyword
+argument to the <code class="docutils literal notranslate"><span class="pre">setup()</span></code> function. See
+<a class="reference internal" href="setup.html#setup-integration"><span class="std std-ref">Distutils/Setuptools Integration</span></a> for more information.</p>
+</div>
+<section id="default-extraction-methods">
+<h4>Default Extraction Methods<a class="headerlink" href="#default-extraction-methods" title="永久链接至标题">¶</a></h4>
+<p>Babel comes with a few builtin extractors: <code class="docutils literal notranslate"><span class="pre">python</span></code> (which extracts
+messages from Python source files), <code class="docutils literal notranslate"><span class="pre">javascript</span></code>, and <code class="docutils literal notranslate"><span class="pre">ignore</span></code> (which
+extracts nothing).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">python</span></code> extractor is by default mapped to the glob pattern <code class="docutils literal notranslate"><span class="pre">**.py</span></code>,
+meaning it’ll be applied to all files with the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension in any
+directory. If you specify your own mapping configuration, this default mapping
+is discarded, so you need to explicitly add it to your mapping (as shown in the
+example above.)</p>
+</section>
+<section id="referencing-extraction-methods">
+<span id="id1"></span><h4>Referencing Extraction Methods<a class="headerlink" href="#referencing-extraction-methods" title="永久链接至标题">¶</a></h4>
+<p>To be able to use short extraction method names such as “genshi”, you need to
+have <a class="reference external" href="http://peak.telecommunity.com/DevCenter/PkgResources">pkg_resources</a> installed, and the package implementing that extraction
+method needs to have been installed with its meta data (the <a class="reference external" href="http://peak.telecommunity.com/DevCenter/PythonEggs">egg-info</a>).</p>
+<p>If this is not possible for some reason, you need to map the short names to
+fully qualified function names in an extract section in the mapping
+configuration. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some custom extraction method</span>
+
+<span class="k">[extractors]</span>
+<span class="na">custom</span> <span class="o">=</span> <span class="s">mypackage.module:extract_custom</span>
+
+<span class="k">[custom: **.ctm]</span>
+<span class="na">some_option</span> <span class="o">=</span> <span class="s">foo</span>
+</pre></div>
+</div>
+<p>Note that the builtin extraction methods <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">ignore</span></code> are available
+by default, even if <a class="reference external" href="http://peak.telecommunity.com/DevCenter/PkgResources">pkg_resources</a> is not installed. You should never need to
+explicitly define them in the <code class="docutils literal notranslate"><span class="pre">[extractors]</span></code> section.</p>
+</section>
+</section>
+<section id="writing-extraction-methods">
+<h3>Writing Extraction Methods<a class="headerlink" href="#writing-extraction-methods" title="永久链接至标题">¶</a></h3>
+<p>Adding new methods for extracting localizable methods is easy. First, you’ll
+need to implement a function that complies with the following interface:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_xxx</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">keywords</span><span class="p">,</span> <span class="n">comment_tags</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extract messages from XXX files.</span>
+
+<span class="sd">    :param fileobj: the file-like object the messages should be extracted</span>
+<span class="sd">                    from</span>
+<span class="sd">    :param keywords: a list of keywords (i.e. function names) that should</span>
+<span class="sd">                     be recognized as translation functions</span>
+<span class="sd">    :param comment_tags: a list of translator tags to search for and</span>
+<span class="sd">                         include in the results</span>
+<span class="sd">    :param options: a dictionary of additional options (optional)</span>
+<span class="sd">    :return: an iterator over ``(lineno, funcname, message, comments)``</span>
+<span class="sd">             tuples</span>
+<span class="sd">    :rtype: ``iterator``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Any strings in the tuples produced by this function must be either
+<code class="docutils literal notranslate"><span class="pre">unicode</span></code> objects, or <code class="docutils literal notranslate"><span class="pre">str</span></code> objects using plain ASCII characters.
+That means that if sources contain strings using other encodings, it
+is the job of the extractor implementation to do the decoding to
+<code class="docutils literal notranslate"><span class="pre">unicode</span></code> objects.</p>
+</div>
+<p>Next, you should register that function as an entry point. This requires your
+<code class="docutils literal notranslate"><span class="pre">setup.py</span></code> script to use <a class="reference external" href="http://peak.telecommunity.com/DevCenter/setuptools">setuptools</a>, and your package to be installed with
+the necessary metadata. If that’s taken care of, add something like the
+following to your <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="o">...</span>
+
+    <span class="n">entry_points</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    [babel.extractors]</span>
+<span class="s2">    xxx = your.package:extract_xxx</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>That is, add your extraction method to the entry point group
+<code class="docutils literal notranslate"><span class="pre">babel.extractors</span></code>, where the name of the entry point is the name that people
+will use to reference the extraction method, and the value being the module and
+the name of the function (separated by a colon) implementing the actual
+extraction.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>As shown in <a class="reference internal" href="#referencing-extraction-methods">Referencing Extraction Methods</a>, declaring an entry
+point is not  strictly required, as users can still reference the
+extraction  function directly. But whenever possible, the entry point
+should be  declared to make configuration more convenient.</p>
+</div>
+</section>
+<section id="translator-comments">
+<h3>Translator Comments<a class="headerlink" href="#translator-comments" title="永久链接至标题">¶</a></h3>
+<p>First of all what are comments tags. Comments tags are excerpts of text to
+search for in comments, only comments, right before the python <a class="reference external" href="https://docs.python.org/3/library/gettext.html#module-gettext" title="(在 Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gettext</span></code></a>
+calls, as shown on the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: This is a comment about `Foo Bar`</span>
+<span class="n">_</span><span class="p">(</span><span class="s1">&#39;Foo Bar&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The comments tag for the above example would be <code class="docutils literal notranslate"><span class="pre">NOTE:</span></code>, and the translator
+comment for that tag would be <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">comment</span> <span class="pre">about</span> <span class="pre">`Foo</span> <span class="pre">Bar`</span></code>.</p>
+<p>The resulting output in the catalog template would be something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#. This is a comment about `Foo Bar`</span>
+<span class="c1">#: main.py:2</span>
+<span class="n">msgid</span> <span class="s2">&quot;Foo Bar&quot;</span>
+<span class="n">msgstr</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Now, you might ask, why would I need that?</p>
+<p>Consider this simple case; you have a menu item called “manual”. You know what
+it means, but when the translator sees this they will wonder did you mean:</p>
+<ol class="arabic simple">
+<li><p>a document or help manual, or</p></li>
+<li><p>a manual process?</p></li>
+</ol>
+<p>This is the simplest case where a translation comment such as
+“The installation manual” helps to clarify the situation and makes a translator
+more productive.</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Whether translator comments can be extracted depends on the extraction
+method in use. The Python extractor provided by Babel does implement
+this feature, but others may not.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/logo_small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Working with Message Catalogs</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#message-extraction">Message Extraction</a><ul>
+<li><a class="reference internal" href="#front-ends">Front-Ends</a></li>
+<li><a class="reference internal" href="#extraction-method-mapping-and-configuration">Extraction Method Mapping and Configuration</a><ul>
+<li><a class="reference internal" href="#default-extraction-methods">Default Extraction Methods</a></li>
+<li><a class="reference internal" href="#referencing-extraction-methods">Referencing Extraction Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#writing-extraction-methods">Writing Extraction Methods</a></li>
+<li><a class="reference internal" href="#translator-comments">Translator Comments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="numbers.html" title="上一章">Number Formatting</a></li>
+      <li>Next: <a href="cmdline.html" title="下一章">Command-Line Interface</a></li>
+  </ul></li>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2021, The Babel Team.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>
