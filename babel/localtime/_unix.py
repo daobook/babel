@@ -20,9 +20,8 @@ def _tz_from_env(tzenv):
 
     # TZ specifies a zoneinfo zone.
     try:
-        tz = pytz.timezone(tzenv)
         # That worked, so we return this:
-        return tz
+        return pytz.timezone(tzenv)
     except pytz.UnknownTimeZoneError:
         raise pytz.UnknownTimeZoneError(
             "tzlocal() does not support non-zoneinfo timezones like %s. \n"
@@ -39,8 +38,7 @@ def _get_localzone(_root='/'):
     In normal usage you call the function without parameters.
     """
 
-    tzenv = os.environ.get('TZ')
-    if tzenv:
+    if tzenv := os.environ.get('TZ'):
         return _tz_from_env(tzenv)
 
     # This is actually a pretty reliable way to test for the local time

@@ -62,14 +62,13 @@ def denormalize(string):
 
     :param string: the string to denormalize
     """
-    if '\n' in string:
-        escaped_lines = string.splitlines()
-        if string.startswith('""'):
-            escaped_lines = escaped_lines[1:]
-        lines = map(unescape, escaped_lines)
-        return ''.join(lines)
-    else:
+    if '\n' not in string:
         return unescape(string)
+    escaped_lines = string.splitlines()
+    if string.startswith('""'):
+        escaped_lines = escaped_lines[1:]
+    lines = map(unescape, escaped_lines)
+    return ''.join(lines)
 
 
 class PoFileError(Exception):
@@ -103,10 +102,7 @@ class _NormalizedString(object):
         return os.linesep.join(self._strs)
 
     def __cmp__(self, other):
-        if not other:
-            return 1
-
-        return _cmp(str(self), str(other))
+        return 1 if not other else _cmp(str(self), str(other))
 
     def __gt__(self, other):
         return self.__cmp__(other) > 0
@@ -170,7 +166,7 @@ class PoFileParser(object):
         """
         self.translations.sort()
         if len(self.messages) > 1:
-            msgid = tuple([m.denormalize() for m in self.messages])
+            msgid = tuple(m.denormalize() for m in self.messages)
         else:
             msgid = self.messages[0].denormalize()
         if isinstance(msgid, (list, tuple)):
@@ -183,10 +179,7 @@ class PoFileParser(object):
             string = tuple(string)
         else:
             string = self.translations[0][1].denormalize()
-        if self.context:
-            msgctxt = self.context.denormalize()
-        else:
-            msgctxt = None
+        msgctxt = self.context.denormalize() if self.context else None
         message = Message(msgid, string, list(self.locations), set(self.flags),
                           self.auto_comments, self.user_comments, lineno=self.offset + 1,
                           context=msgctxt)
@@ -280,9 +273,7 @@ class PoFileParser(object):
             for flag in line[2:].lstrip().split(','):
                 self.flags.append(flag.strip())
         elif line[1:].startswith('.'):
-            # These are called auto-comments
-            comment = line[2:].strip()
-            if comment:  # Just check that we're not adding empty comments
+            if comment := line[2:].strip():
                 self.auto_comments.append(comment)
         else:
             # These are called user comments
@@ -532,10 +523,10 @@ def write_po(fileobj, catalog, width=76, no_location=False, omit_header=False,
             _write('#%s %s\n' % (prefix, line.strip()))
 
     def _write_message(message, prefix=''):
+        if message.context:
+            _write('%smsgctxt %s\n' % (prefix,
+                                       _normalize(message.context, prefix)))
         if isinstance(message.id, (list, tuple)):
-            if message.context:
-                _write('%smsgctxt %s\n' % (prefix,
-                                           _normalize(message.context, prefix)))
             _write('%smsgid %s\n' % (prefix, _normalize(message.id[0], prefix)))
             _write('%smsgid_plural %s\n' % (
                 prefix, _normalize(message.id[1], prefix)
@@ -550,9 +541,6 @@ def write_po(fileobj, catalog, width=76, no_location=False, omit_header=False,
                     prefix, idx, _normalize(string, prefix)
                 ))
         else:
-            if message.context:
-                _write('%smsgctxt %s\n' % (prefix,
-                                           _normalize(message.context, prefix)))
             _write('%smsgid %s\n' % (prefix, _normalize(message.id, prefix)))
             _write('%smsgstr %s\n' % (
                 prefix, _normalize(message.string or '', prefix)

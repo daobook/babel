@@ -38,7 +38,7 @@ def test_locale_comparison():
     assert en_US == en_US
     assert en_US == en_US_2
     assert en_US != fi_FI
-    assert not (en_US != en_US_2)
+    assert en_US == en_US_2
     assert en_US is not None
     assert en_US != bad_en_US
     assert fi_FI != bad_en_US
@@ -324,4 +324,4 @@ def test_issue_601_no_language_name_but_has_variant():
     # Instead, it's better to return None altogether, as we can't reliably format
     # part of a language name.
 
-    assert Locale.parse('fi_FI').get_display_name('kw_GB') == None
+    assert Locale.parse('fi_FI').get_display_name('kw_GB') is None

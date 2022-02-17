@@ -54,7 +54,7 @@ def _parse_datetime_header(value):
         hours_offset_s, mins_offset_s = rest[:2], rest[2:]
 
         # Make them all integers
-        plus_minus = int(plus_minus_s + '1')
+        plus_minus = int(f'{plus_minus_s}1')
         hours_offset = int(hours_offset_s)
         mins_offset = int(mins_offset_s)
 
@@ -365,13 +365,17 @@ class Catalog(object):
     """)
 
     def _get_mime_headers(self):
-        headers = []
-        headers.append(('Project-Id-Version',
-                        '%s %s' % (self.project, self.version)))
-        headers.append(('Report-Msgid-Bugs-To', self.msgid_bugs_address))
-        headers.append(('POT-Creation-Date',
-                        format_datetime(self.creation_date, 'yyyy-MM-dd HH:mmZ',
-                                        locale='en')))
+        headers = [
+            ('Project-Id-Version', '%s %s' % (self.project, self.version)),
+            ('Report-Msgid-Bugs-To', self.msgid_bugs_address),
+            (
+                'POT-Creation-Date',
+                format_datetime(
+                    self.creation_date, 'yyyy-MM-dd HH:mmZ', locale='en'
+                ),
+            ),
+        ]
+
         if isinstance(self.revision_date, (datetime, time_, int, float)):
             headers.append(('PO-Revision-Date',
                             format_datetime(self.revision_date,
@@ -390,10 +394,14 @@ class Catalog(object):
         if self.locale is not None:
             headers.append(('Plural-Forms', self.plural_forms))
         headers.append(('MIME-Version', '1.0'))
-        headers.append(('Content-Type',
-                        'text/plain; charset=%s' % self.charset))
-        headers.append(('Content-Transfer-Encoding', '8bit'))
-        headers.append(('Generated-By', 'Babel %s\n' % VERSION))
+        headers.extend(
+            (
+                ('Content-Type', 'text/plain; charset=%s' % self.charset),
+                ('Content-Transfer-Encoding', '8bit'),
+                ('Generated-By', 'Babel %s\n' % VERSION),
+            )
+        )
+
         return headers
 
     def _force_text(self, s, encoding='utf-8', errors='strict'):
@@ -425,7 +433,7 @@ class Catalog(object):
                 if 'charset' in params:
                     self.charset = params['charset'].lower()
             elif name == 'plural-forms':
-                _, params = parse_header(' ;' + value)
+                _, params = parse_header(f' ;{value}')
                 self._num_plurals = int(params.get('nplurals', 2))
                 self._plural_expr = params.get('plural', '(n != 1)')
             elif name == 'pot-creation-date':
@@ -497,9 +505,7 @@ class Catalog(object):
 
         :type: `int`"""
         if self._num_plurals is None:
-            num = 2
-            if self.locale:
-                num = get_plural(self.locale)[0]
+            num = get_plural(self.locale)[0] if self.locale else 2
             self._num_plurals = num
         return self._num_plurals
 
@@ -516,9 +522,7 @@ class Catalog(object):
 
         :type: `str`"""
         if self._plural_expr is None:
-            expr = '(n != 1)'
-            if self.locale:
-                expr = get_plural(self.locale)[1]
+            expr = get_plural(self.locale)[1] if self.locale else '(n != 1)'
             self._plural_expr = expr
         return self._plural_expr
 
@@ -549,9 +553,7 @@ class Catalog(object):
         were added, yielding a `Message` object for every entry.
 
         :rtype: ``iterator``"""
-        buf = []
-        for name, value in self.mime_headers:
-            buf.append('%s: %s' % (name, value))
+        buf = ['%s: %s' % (name, value) for name, value in self.mime_headers]
         flags = set()
         if self.fuzzy:
             flags |= {'fuzzy'}
@@ -560,9 +562,7 @@ class Catalog(object):
             yield self._messages[key]
 
     def __repr__(self):
-        locale = ''
-        if self.locale:
-            locale = ' %s' % self.locale
+        locale = ' %s' % self.locale if self.locale else ''
         return '<%s %r%s>' % (type(self).__name__, self.domain, locale)
 
     def __delitem__(self, id):
@@ -600,8 +600,7 @@ class Catalog(object):
         """
         assert isinstance(message, Message), 'expected a Message object'
         key = self._key_for(id, message.context)
-        current = self._messages.get(key)
-        if current:
+        if current := self._messages.get(key):
             if message.pluralizable and not current.pluralizable:
                 # The new message adds pluralization
                 current.id = message.id
@@ -669,8 +668,7 @@ class Catalog(object):
         :rtype: ``iterator``
         """
         for message in self._messages.values():
-            errors = message.check(catalog=self)
-            if errors:
+            if errors := message.check(catalog=self):
                 yield message, errors
 
     def get(self, id, context=None):

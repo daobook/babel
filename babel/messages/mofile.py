@@ -52,17 +52,16 @@ def read_mo(fileobj):
 
     # Now put all messages from the .mo file buffer into the catalog
     # dictionary
-    for i in range(0, msgcount):
+    for _ in range(msgcount):
         mlen, moff = unpack(ii, buf[origidx:origidx + 8])
         mend = moff + mlen
         tlen, toff = unpack(ii, buf[transidx:transidx + 8])
         tend = toff + tlen
-        if mend < buflen and tend < buflen:
-            msg = buf[moff:mend]
-            tmsg = buf[toff:tend]
-        else:
+        if mend >= buflen or tend >= buflen:
             raise IOError(0, 'File is corrupt', filename)
 
+        msg = buf[moff:mend]
+        tmsg = buf[toff:tend]
         # See if we're looking at GNU .mo conventions for metadata
         if mlen == 0:
             # Catalog description
@@ -89,10 +88,9 @@ def read_mo(fileobj):
             if catalog.charset:
                 msg = [x.decode(catalog.charset) for x in msg]
                 tmsg = [x.decode(catalog.charset) for x in tmsg]
-        else:
-            if catalog.charset:
-                msg = msg.decode(catalog.charset)
-                tmsg = tmsg.decode(catalog.charset)
+        elif catalog.charset:
+            msg = msg.decode(catalog.charset)
+            tmsg = tmsg.decode(catalog.charset)
         catalog[msg] = Message(msg, tmsg, context=ctxt)
 
         # advance to next entry in the seek tables

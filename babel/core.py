@@ -213,9 +213,9 @@ class Locale(object):
         :param available: the list of locale identifiers available
         :param aliases: a dictionary of aliases for locale identifiers
         """
-        identifier = negotiate_locale(preferred, available, sep=sep,
-                                      aliases=aliases)
-        if identifier:
+        if identifier := negotiate_locale(
+            preferred, available, sep=sep, aliases=aliases
+        ):
             return Locale.parse(identifier, sep=sep)
 
     @classmethod
@@ -331,13 +331,17 @@ class Locale(object):
         raise UnknownLocaleError(input_id)
 
     def __eq__(self, other):
-        for key in ('language', 'territory', 'script', 'variant'):
-            if not hasattr(other, key):
-                return False
-        return (self.language == other.language) and \
-            (self.territory == other.territory) and \
-            (self.script == other.script) and \
-            (self.variant == other.variant)
+        return next(
+            (
+                False
+                for key in ('language', 'territory', 'script', 'variant')
+                if not hasattr(other, key)
+            ),
+            (self.language == other.language)
+            and (self.territory == other.territory)
+            and (self.script == other.script)
+            and (self.variant == other.variant),
+        )
 
     def __ne__(self, other):
         return not self.__eq__(other)
@@ -387,8 +391,7 @@ class Locale(object):
                 details.append(locale.territories.get(self.territory))
             if self.variant:
                 details.append(locale.variants.get(self.variant))
-            details = filter(None, details)
-            if details:
+            if details := filter(None, details):
                 retval += ' (%s)' % u', '.join(details)
         return retval
 
@@ -961,8 +964,7 @@ def default_locale(category=None, aliases=LOCALE_ALIASES):
     """
     varnames = (category, 'LANGUAGE', 'LC_ALL', 'LC_CTYPE', 'LANG')
     for name in filter(None, varnames):
-        locale = os.getenv(name)
-        if locale:
+        if locale := os.getenv(name):
             if name == 'LANGUAGE' and ':' in locale:
                 # the LANGUAGE variable may contain a colon-separated list of
                 # language codes; we just pick the language on the list
@@ -1029,8 +1031,7 @@ def negotiate_locale(preferred, available, sep='_', aliases=LOCALE_ALIASES):
         if ll in available:
             return locale
         if aliases:
-            alias = aliases.get(ll)
-            if alias:
+            if alias := aliases.get(ll):
                 alias = alias.replace('_', sep)
                 if alias.lower() in available:
                     return alias
@@ -1094,9 +1095,8 @@ def parse_locale(identifier, sep='_'):
         raise ValueError('expected only letters, got %r' % lang)
 
     script = territory = variant = None
-    if parts:
-        if len(parts[0]) == 4 and parts[0].isalpha():
-            script = parts.pop(0).title()
+    if parts and len(parts[0]) == 4 and parts[0].isalpha():
+        script = parts.pop(0).title()
 
     if parts:
         if len(parts[0]) == 2 and parts[0].isalpha():
@@ -1104,10 +1104,13 @@ def parse_locale(identifier, sep='_'):
         elif len(parts[0]) == 3 and parts[0].isdigit():
             territory = parts.pop(0)
 
-    if parts:
-        if len(parts[0]) == 4 and parts[0][0].isdigit() or \
-                len(parts[0]) >= 5 and parts[0][0].isalpha():
-            variant = parts.pop()
+    if parts and (
+        len(parts[0]) == 4
+        and parts[0][0].isdigit()
+        or len(parts[0]) >= 5
+        and parts[0][0].isalpha()
+    ):
+        variant = parts.pop()
 
     if parts:
         raise ValueError('%r is not a valid locale identifier' % identifier)

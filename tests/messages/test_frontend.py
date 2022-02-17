@@ -1300,8 +1300,7 @@ def configure_cli_command(cmdline):
     """
     args = shlex.split(cmdline)
     cli = CommandLineInterface()
-    cmdinst = cli._configure_command(cmdname=args[0], argv=args[1:])
-    return cmdinst
+    return cli._configure_command(cmdname=args[0], argv=args[1:])
 
 
 def configure_distutils_command(cmdline):

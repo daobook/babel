@@ -238,8 +238,9 @@ def format_compound_unit(
     # Look for a specific compound unit first...
 
     if numerator_unit and denominator_unit and denominator_value == 1:
-        compound_unit = _find_compound_unit(numerator_unit, denominator_unit, locale=locale)
-        if compound_unit:
+        if compound_unit := _find_compound_unit(
+            numerator_unit, denominator_unit, locale=locale
+        ):
             return format_unit(numerator_value, compound_unit, length=length, format=format, locale=locale)
 
     # ... failing that, construct one "by hand".

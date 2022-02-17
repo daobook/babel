@@ -402,15 +402,11 @@ class NullTranslations(gettext.NullTranslations, object):
         """
         ctxt_msg_id = self.CONTEXT_ENCODING % (context, singular)
         try:
-            tmsg = self._catalog[(ctxt_msg_id, self.plural(num))]
-            return tmsg
+            return self._catalog[(ctxt_msg_id, self.plural(num))]
         except KeyError:
             if self._fallback:
                 return self._fallback.npgettext(context, singular, plural, num)
-            if num == 1:
-                return singular
-            else:
-                return plural
+            return singular if num == 1 else plural
 
     def lnpgettext(self, context, singular, plural, num):
         """Equivalent to ``npgettext()``, but the translation is returned in the
@@ -426,10 +422,7 @@ class NullTranslations(gettext.NullTranslations, object):
         except KeyError:
             if self._fallback:
                 return self._fallback.lnpgettext(context, singular, plural, num)
-            if num == 1:
-                return singular
-            else:
-                return plural
+            return singular if num == 1 else plural
 
     def upgettext(self, context, message):
         """Look up the `context` and `message` id in the catalog and return the
@@ -464,10 +457,7 @@ class NullTranslations(gettext.NullTranslations, object):
         except KeyError:
             if self._fallback:
                 return self._fallback.unpgettext(context, singular, plural, num)
-            if num == 1:
-                tmsg = str(singular)
-            else:
-                tmsg = str(plural)
+            tmsg = str(singular) if num == 1 else str(plural)
         return tmsg
 
     def dpgettext(self, domain, context, message):

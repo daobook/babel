@@ -65,10 +65,7 @@ def _get_dt_and_tzinfo(dt_or_tzinfo):
         tzinfo = UTC
     elif isinstance(dt_or_tzinfo, (datetime, time)):
         dt = _get_datetime(dt_or_tzinfo)
-        if dt.tzinfo is not None:
-            tzinfo = dt.tzinfo
-        else:
-            tzinfo = UTC
+        tzinfo = dt.tzinfo if dt.tzinfo is not None else UTC
     else:
         dt = None
         tzinfo = dt_or_tzinfo
@@ -122,7 +119,7 @@ def _get_datetime(instant):
     """
     if instant is None:
         return datetime_.utcnow()
-    elif isinstance(instant, int) or isinstance(instant, float):
+    elif isinstance(instant, (int, float)):
         return datetime_.utcfromtimestamp(instant)
     elif isinstance(instant, time):
         return datetime_.combine(date.today(), instant)
@@ -470,7 +467,7 @@ def get_timezone_gmt(datetime=None, width='long', locale=LC_TIME, return_z=False
         return 'Z'
     elif seconds == 0 and width == 'iso8601_short':
         return u'%+03d' % hours
-    elif width == 'short' or width == 'iso8601_short':
+    elif width in ['short', 'iso8601_short']:
         pattern = u'%+03d%02d'
     elif width == 'iso8601':
         pattern = u'%+03d:%02d'
@@ -635,14 +632,9 @@ def get_timezone_name(dt_or_tzinfo=None, width='long', uncommon=False,
         if dt is None:
             zone_variant = 'generic'
         else:
-            dst = tzinfo.dst(dt)
-            if dst:
-                zone_variant = 'daylight'
-            else:
-                zone_variant = 'standard'
-    else:
-        if zone_variant not in ('generic', 'standard', 'daylight'):
-            raise ValueError('Invalid zone variation')
+            zone_variant = 'daylight' if (dst := tzinfo.dst(dt)) else 'standard'
+    elif zone_variant not in ('generic', 'standard', 'daylight'):
+        raise ValueError('Invalid zone variation')
 
     # Get the canonical time-zone code
     zone = get_global('zone_aliases').get(zone, zone)
@@ -650,12 +642,10 @@ def get_timezone_name(dt_or_tzinfo=None, width='long', uncommon=False,
         return zone
     info = locale.time_zones.get(zone, {})
     # Try explicitly translated zone names first
-    if width in info:
-        if zone_variant in info[width]:
-            return info[width][zone_variant]
+    if width in info and zone_variant in info[width]:
+        return info[width][zone_variant]
 
-    metazone = get_global('meta_zones').get(zone)
-    if metazone:
+    if metazone := get_global('meta_zones').get(zone):
         metazone_info = locale.meta_zones.get(metazone, {})
         if width in metazone_info:
             name = metazone_info[width].get(zone_variant)
@@ -935,7 +925,7 @@ def format_timedelta(delta, granularity='second', threshold=.85,
                 yield unit_rel_patterns['future']
             else:
                 yield unit_rel_patterns['past']
-        a_unit = 'duration-' + a_unit
+        a_unit = f'duration-{a_unit}'
         yield locale._data['unit_patterns'].get(a_unit, {}).get(format)
 
     for unit, secs_per_unit in TIMEDELTA_UNITS:
@@ -1043,9 +1033,9 @@ def format_interval(start, end, skeleton=None, tzinfo=None, fuzzy=True, locale=L
             skeleton = match_skeleton(skeleton, interval_formats)
         else:
             skeleton = None
-        if not skeleton:  # Still no match whatsoever?
-            # > Otherwise, format the start and end datetime using the fallback pattern.
-            return _format_fallback_interval(start, end, skeleton, tzinfo, locale)
+    if not skeleton:  # Still no match whatsoever?
+        # > Otherwise, format the start and end datetime using the fallback pattern.
+        return _format_fallback_interval(start, end, skeleton, tzinfo, locale)
 
     skel_formats = interval_formats[skeleton]
 
@@ -1064,15 +1054,16 @@ def format_interval(start, end, skeleton=None, tzinfo=None, fuzzy=True, locale=L
     # > single date using availableFormats, and return.
 
     for field in PATTERN_CHAR_ORDER:  # These are in largest-to-smallest order
-        if field in skel_formats:
-            if start_fmt.extract(field) != end_fmt.extract(field):
-                # > If there is a match, use the pieces of the corresponding pattern to
-                # > format the start and end datetime, as above.
-                return "".join(
-                    parse_pattern(pattern).apply(instant, locale)
-                    for pattern, instant
-                    in zip(skel_formats[field], (start, end))
-                )
+        if field in skel_formats and start_fmt.extract(
+            field
+        ) != end_fmt.extract(field):
+            # > If there is a match, use the pieces of the corresponding pattern to
+            # > format the start and end datetime, as above.
+            return "".join(
+                parse_pattern(pattern).apply(instant, locale)
+                for pattern, instant
+                in zip(skel_formats[field], (start, end))
+            )
 
     # > Otherwise, format the start and end datetime using the fallback pattern.
 
@@ -1127,10 +1118,7 @@ def get_period_id(time, tzinfo=None, type=None, locale=LC_TIME):
             if start_ok and end_ok:
                 return rule_id
 
-    if seconds_past_midnight < 43200:
-        return "am"
-    else:
-        return "pm"
+    return "am" if seconds_past_midnight < 43200 else "pm"
 
 
 def parse_date(string, locale=LC_TIME):
@@ -1164,10 +1152,7 @@ def parse_date(string, locale=LC_TIME):
 
     numbers = re.findall(r'(\d+)', string)
     year = numbers[indexes['Y']]
-    if len(year) == 2:
-        year = 2000 + int(year)
-    else:
-        year = int(year)
+    year = 2000 + int(year) if len(year) == 2 else int(year)
     month = int(numbers[indexes['M']])
     day = int(numbers[indexes['D']])
     if month > 12:
@@ -1225,8 +1210,7 @@ class DateTimePattern(object):
         return self.pattern
 
     def __str__(self):
-        pat = self.pattern
-        return pat
+        return self.pattern
 
     def __mod__(self, other):
         if type(other) is not DateTimeFormat:
@@ -1395,10 +1379,7 @@ class DateTimeFormat(object):
             num = 3
         weekday = self.value.weekday()
         width = {3: 'abbreviated', 4: 'wide', 5: 'narrow', 6: 'short'}[num]
-        if char == 'c':
-            context = 'stand-alone'
-        else:
-            context = 'format'
+        context = 'stand-alone' if char == 'c' else 'format'
         return get_day_names(width, context, self.locale)[weekday]
 
     def format_day_of_year(self, num):
@@ -1678,7 +1659,7 @@ def untokenize_pattern(tokens):
         if tok_type == "field":
             output.append(tok_value[0] * tok_value[1])
         elif tok_type == "chars":
-            if not any(ch in PATTERN_CHARS for ch in tok_value):  # No need to quote
+            if all(ch not in PATTERN_CHARS for ch in tok_value):  # No need to quote
                 output.append(tok_value)
             else:
                 output.append("'%s'" % tok_value.replace("'", "''"))
@@ -1756,7 +1737,7 @@ def match_skeleton(skeleton, options, allow_different_fields=False):
     # Filter out falsy values and sort for stability; when `interval_formats` is passed in, there may be a None key.
     options = sorted(option for option in options if option)
 
-    if 'z' in skeleton and not any('z' in option for option in options):
+    if 'z' in skeleton and all('z' not in option for option in options):
         skeleton = skeleton.replace('z', 'v')
 
     get_input_field_width = dict(t[1] for t in tokenize_pattern(skeleton) if t[0] == "field").get

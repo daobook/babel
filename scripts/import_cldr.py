@@ -45,8 +45,7 @@ weekdays = {'mon': 0, 'tue': 1, 'wed': 2, 'thu': 3, 'fri': 4, 'sat': 5,
 
 def _text(elem):
     buf = [elem.text or '']
-    for child in elem:
-        buf.append(_text(child))
+    buf.extend(_text(child) for child in elem)
     buf.append(elem.tail or '')
     return u''.join(filter(None, buf)).strip()
 
@@ -89,13 +88,11 @@ def _translate_alias(ctxt, path):
     for part in parts:
         if part == '..':
             keys.pop()
+        elif match := TYPE_ATTR_RE.match(part):
+            keys.append(match.group(1))
         else:
-            match = TYPE_ATTR_RE.match(part)
-            if match:
-                keys.append(match.group(1))
-            else:
-                assert NAME_RE.match(part)
-                keys.append(NAME_MAP.get(part, part))
+            assert NAME_RE.match(part)
+            keys.append(NAME_MAP.get(part, part))
     return keys
 
 
@@ -115,9 +112,11 @@ def _extract_plural_rules(file_path):
     rule_dict = {}
     prsup = parse(file_path)
     for elem in prsup.findall('.//plurals/pluralRules'):
-        rules = []
-        for rule in elem.findall('pluralRule'):
-            rules.append((rule.attrib['count'], str(rule.text)))
+        rules = [
+            (rule.attrib['count'], str(rule.text))
+            for rule in elem.findall('pluralRule')
+        ]
+
         pr = PluralRule(rules)
         for locale in elem.attrib['locales'].split():
             rule_dict[locale] = pr
@@ -142,17 +141,15 @@ def _compact_dict(dict):
     """
     "Compact" the given dict by removing items whose value is None or False.
     """
-    out_dict = {}
-    for key, value in dict.items():
-        if value is not None and value is not False:
-            out_dict[key] = value
-    return out_dict
+    return {
+        key: value
+        for key, value in dict.items()
+        if value is not None and value is not False
+    }
 
 
 def debug_repr(obj):
-    if isinstance(obj, PluralRule):
-        return obj.abstract
-    return repr(obj)
+    return obj.abstract if isinstance(obj, PluralRule) else repr(obj)
 
 
 def write_datafile(path, data, dump_json=False):
@@ -160,7 +157,7 @@ def write_datafile(path, data, dump_json=False):
         pickle.dump(data, outfile, 2)
     if dump_json:
         import json
-        with open(path + '.json', 'w') as outfile:
+        with open(f'{path}.json', 'w') as outfile:
             json.dump(data, outfile, indent=4, default=debug_repr)
 
 
@@ -278,8 +275,7 @@ def parse_global(srcdir, sup):
 
     # Variant aliases
     for alias in sup_metadata.findall('.//alias/variantAlias'):
-        repl = alias.attrib.get('replacement')
-        if repl:
+        if repl := alias.attrib.get('replacement'):
             variant_aliases[alias.attrib['type']] = repl
 
     # Likely subtags
@@ -321,12 +317,10 @@ def parse_global(srcdir, sup):
 
     # Languages in territories
     for territory in sup.findall('.//territoryInfo/territory'):
-        languages = {}
-        for language in territory.findall('./languagePopulation'):
-            languages[language.attrib['type']] = {
+        languages = {language.attrib['type']: {
                 'population_percent': float(language.attrib['populationPercent']),
                 'official_status': language.attrib.get('officialStatus'),
-            }
+            } for language in territory.findall('./languagePopulation')}
         territory_languages[territory.attrib['type']] = languages
     return global_data
 
@@ -334,9 +328,10 @@ def parse_global(srcdir, sup):
 def _process_local_datas(sup, srcdir, destdir, force=False, dump_json=False):
     day_period_rules = parse_day_period_rules(parse(os.path.join(srcdir, 'supplemental', 'dayPeriods.xml')))
     # build a territory containment mapping for inheritance
-    regions = {}
-    for elem in sup.findall('.//territoryContainment/group'):
-        regions[elem.attrib['type']] = elem.attrib['contains'].split()
+    regions = {
+        elem.attrib['type']: elem.attrib['contains'].split()
+        for elem in sup.findall('.//territoryContainment/group')
+    }
 
     # Resolve territory containment
     territory_containment = {}
@@ -363,7 +358,7 @@ def _process_local_datas(sup, srcdir, destdir, force=False, dump_json=False):
             continue
 
         full_filename = os.path.join(srcdir, 'main', filename)
-        data_filename = os.path.join(destdir, 'locale-data', stem + '.dat')
+        data_filename = os.path.join(destdir, 'locale-data', f'{stem}.dat')
 
         data = {}
         if not (force or need_conversion(data_filename, data, full_filename)):
@@ -371,17 +366,11 @@ def _process_local_datas(sup, srcdir, destdir, force=False, dump_json=False):
 
         tree = parse(full_filename)
 
-        language = None
         elem = tree.find('.//identity/language')
-        if elem is not None:
-            language = elem.attrib['type']
-
+        language = elem.attrib['type'] if elem is not None else None
         territory = None
         elem = tree.find('.//identity/territory')
-        if elem is not None:
-            territory = elem.attrib['type']
-        else:
-            territory = '001'  # world
+        territory = elem.attrib['type'] if elem is not None else '001'
         regions = territory_containment.get(territory, [])
 
         log.info(
@@ -436,8 +425,9 @@ def _process_local_datas(sup, srcdir, destdir, force=False, dump_json=False):
         parse_character_order(data, tree)
         parse_measurement_systems(data, tree)
 
-        unsupported_number_systems_string = ', '.join(sorted(data.pop('unsupported_number_systems')))
-        if unsupported_number_systems_string:
+        if unsupported_number_systems_string := ', '.join(
+            sorted(data.pop('unsupported_number_systems'))
+        ):
             log.warning('%s: unsupported number systems were ignored: %s' % (
                 locale_id,
                 unsupported_number_systems_string,
@@ -475,9 +465,10 @@ def _should_skip_elem(elem, type=None, dest=None):
     :param dest: Destination dict. May be elided to skip the dict check.
     :return: skip boolean
     """
-    if 'draft' in elem.attrib or 'alt' in elem.attrib:
-        if dest is None or type in dest:
-            return True
+    if ('draft' in elem.attrib or 'alt' in elem.attrib) and (
+        dest is None or type in dest
+    ):
+        return True
 
 
 def _import_type_text(dest, elem, type=None):

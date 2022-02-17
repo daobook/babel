@@ -547,11 +547,7 @@ def _format_currency_long_name(
     # Step 2.
 
     # Correct number to numeric type, important for looking up plural rules:
-    if isinstance(number, str):
-        number_n = float(number)
-    else:
-        number_n = number
-
+    number_n = float(number) if isinstance(number, str) else number
     # Step 3.
     unit_pattern = get_currency_unit_pattern(currency, count=number_n, locale=locale)
 
@@ -1056,19 +1052,17 @@ class NumberPattern(object):
         scale = maximum - 1 - exp
         digits = str(value.scaleb(scale).quantize(decimal.Decimal(1)))
         if scale <= 0:
-            result = digits + '0' * -scale
-        else:
-            intpart = digits[:-scale]
-            i = len(intpart)
-            j = i + max(minimum - i, 0)
-            result = "{intpart}.{pad:0<{fill}}{fracpart}{fracextra}".format(
+            return digits + '0' * -scale
+        intpart = digits[:-scale]
+        i = len(intpart)
+        j = i + max(minimum - i, 0)
+        return "{intpart}.{pad:0<{fill}}{fracpart}{fracextra}".format(
                 intpart=intpart or '0',
                 pad='',
                 fill=-min(exp + 1, 0),
                 fracpart=digits[i:j],
                 fracextra=digits[j:].rstrip('0'),
             ).rstrip('.')
-        return result
 
     def _format_int(self, value, min, max, locale):
         width = len(value)
@@ -1090,8 +1084,7 @@ class NumberPattern(object):
         integer_part = a
         if group_separator:
             integer_part = self._format_int(a, self.int_prec[0], self.int_prec[1], locale)
-        number = integer_part + self._format_frac(b or '0', locale, frac_prec)
-        return number
+        return integer_part + self._format_frac(b or '0', locale, frac_prec)
 
     def _format_frac(self, value, locale, force_frac=None):
         min, max = force_frac or self.frac_prec

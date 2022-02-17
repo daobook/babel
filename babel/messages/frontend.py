@@ -187,32 +187,44 @@ class compile_catalog(Command):
         po_files = []
         mo_files = []
 
-        if not self.input_file:
-            if self.locale:
-                po_files.append((self.locale,
-                                 os.path.join(self.directory, self.locale,
-                                              'LC_MESSAGES',
-                                              domain + '.po')))
-                mo_files.append(os.path.join(self.directory, self.locale,
-                                             'LC_MESSAGES',
-                                             domain + '.mo'))
-            else:
-                for locale in os.listdir(self.directory):
-                    po_file = os.path.join(self.directory, locale,
-                                           'LC_MESSAGES', domain + '.po')
-                    if os.path.exists(po_file):
-                        po_files.append((locale, po_file))
-                        mo_files.append(os.path.join(self.directory, locale,
-                                                     'LC_MESSAGES',
-                                                     domain + '.mo'))
-        else:
+        if self.input_file:
             po_files.append((self.locale, self.input_file))
             if self.output_file:
                 mo_files.append(self.output_file)
             else:
-                mo_files.append(os.path.join(self.directory, self.locale,
-                                             'LC_MESSAGES',
-                                             domain + '.mo'))
+                mo_files.append(
+                    os.path.join(
+                        self.directory, self.locale, 'LC_MESSAGES', f'{domain}.mo'
+                    )
+                )
+
+
+        elif self.locale:
+            po_files.append(
+                (
+                    self.locale,
+                    os.path.join(
+                        self.directory, self.locale, 'LC_MESSAGES', f'{domain}.po'
+                    ),
+                )
+            )
+
+            mo_files.append(
+                os.path.join(
+                    self.directory, self.locale, 'LC_MESSAGES', f'{domain}.mo'
+                )
+            )
+
+        else:
+            for locale in os.listdir(self.directory):
+                po_file = os.path.join(self.directory, locale, 'LC_MESSAGES', f'{domain}.po')
+                if os.path.exists(po_file):
+                    po_files.append((locale, po_file))
+                    mo_files.append(
+                        os.path.join(
+                            self.directory, locale, 'LC_MESSAGES', f'{domain}.mo'
+                        )
+                    )
 
         if not po_files:
             raise DistutilsOptionError('no message catalogs found')
@@ -225,13 +237,8 @@ class compile_catalog(Command):
                 catalog = read_po(infile, locale)
 
             if self.statistics:
-                translated = 0
-                for message in list(catalog)[1:]:
-                    if message.string:
-                        translated += 1
-                percentage = 0
-                if len(catalog):
-                    percentage = translated * 100 // len(catalog)
+                translated = sum(bool(message.string) for message in list(catalog)[1:])
+                percentage = translated * 100 // len(catalog) if len(catalog) else 0
                 self.log.info(
                     '%d of %d messages (%d%%) translated in %s',
                     translated, len(catalog), percentage, po_file
@@ -369,11 +376,7 @@ class extract_messages(Command):
                     'input-dirs and input-paths are mutually exclusive'
                 )
 
-        if self.no_default_keywords:
-            keywords = {}
-        else:
-            keywords = DEFAULT_KEYWORDS.copy()
-
+        keywords = {} if self.no_default_keywords else DEFAULT_KEYWORDS.copy()
         keywords.update(parse_keywords(listify_value(self.keywords)))
 
         self.keywords = keywords
@@ -422,10 +425,10 @@ class extract_messages(Command):
             if not self.version:
                 self.version = self.distribution.get_version()
 
-        if self.add_location == 'never':
-            self.no_location = True
-        elif self.add_location == 'file':
+        if self.add_location == 'file':
             self.include_lineno = False
+        elif self.add_location == 'never':
+            self.no_location = True
 
     def run(self):
         mappings = self._get_mappings()
@@ -494,9 +497,7 @@ class extract_messages(Command):
         if self.mapping_file:
             with open(self.mapping_file) as fileobj:
                 method_map, options_map = parse_mapping(fileobj)
-            for path in self.input_paths:
-                mappings.append((path, method_map, options_map))
-
+            mappings.extend((path, method_map, options_map) for path in self.input_paths)
         elif getattr(self.distribution, 'message_extractors', None):
             message_extractors = self.distribution.message_extractors
             for path, mapping in message_extractors.items():
@@ -510,9 +511,7 @@ class extract_messages(Command):
                 mappings.append((path, method_map, options_map))
 
         else:
-            for path in self.input_paths:
-                mappings.append((path, DEFAULT_MAPPING, {}))
-
+            mappings.extend((path, DEFAULT_MAPPING, {}) for path in self.input_paths)
         return mappings
 
 
@@ -591,8 +590,10 @@ class init_catalog(Command):
         if not self.output_file and not self.output_dir:
             raise DistutilsOptionError('you must specify the output directory')
         if not self.output_file:
-            self.output_file = os.path.join(self.output_dir, self.locale,
-                                            'LC_MESSAGES', self.domain + '.po')
+            self.output_file = os.path.join(
+                self.output_dir, self.locale, 'LC_MESSAGES', f'{self.domain}.po'
+            )
+
 
         if not os.path.exists(os.path.dirname(self.output_file)):
             os.makedirs(os.path.dirname(self.output_file))
@@ -723,22 +724,30 @@ class update_catalog(Command):
 
     def run(self):
         po_files = []
-        if not self.output_file:
-            if self.locale:
-                po_files.append((self.locale,
-                                 os.path.join(self.output_dir, self.locale,
-                                              'LC_MESSAGES',
-                                              self.domain + '.po')))
-            else:
-                for locale in os.listdir(self.output_dir):
-                    po_file = os.path.join(self.output_dir, locale,
-                                           'LC_MESSAGES',
-                                           self.domain + '.po')
-                    if os.path.exists(po_file):
-                        po_files.append((locale, po_file))
-        else:
+        if self.output_file:
             po_files.append((self.locale, self.output_file))
 
+        elif self.locale:
+            po_files.append(
+                (
+                    self.locale,
+                    os.path.join(
+                        self.output_dir,
+                        self.locale,
+                        'LC_MESSAGES',
+                        f'{self.domain}.po',
+                    ),
+                )
+            )
+
+        else:
+            for locale in os.listdir(self.output_dir):
+                po_file = os.path.join(
+                    self.output_dir, locale, 'LC_MESSAGES', f'{self.domain}.po'
+                )
+
+                if os.path.exists(po_file):
+                    po_files.append((locale, po_file))
         if not po_files:
             raise DistutilsOptionError('no message catalogs found')
 
@@ -856,7 +865,7 @@ class CommandLineInterface(object):
         self._configure_logging(options.loglevel)
         if options.list_locales:
             identifiers = localedata.locale_identifiers()
-            longest = max([len(identifier) for identifier in identifiers])
+            longest = max(len(identifier) for identifier in identifiers)
             identifiers.sort()
             format = u'%%-%ds %%s' % (longest + 1)
             for identifier in identifiers:
@@ -896,7 +905,7 @@ class CommandLineInterface(object):
     def _help(self):
         print(self.parser.format_help())
         print("commands:")
-        longest = max([len(command) for command in self.commands])
+        longest = max(len(command) for command in self.commands)
         format = "  %%-%ds %%s" % max(8, longest + 1)
         commands = sorted(self.commands.items())
         for name, description in commands:
@@ -1042,10 +1051,7 @@ def parse_keywords(strings=[]):
     """
     keywords = {}
     for string in strings:
-        if ':' in string:
-            funcname, indices = string.split(':')
-        else:
-            funcname, indices = string, None
+        funcname, indices = string.split(':') if ':' in string else (string, None)
         if funcname not in keywords:
             if indices:
                 inds = []

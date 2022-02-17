@@ -42,21 +42,7 @@ def extract_operands(source):
     n = abs(source)
     i = int(n)
     if isinstance(n, float):
-        if i == n:
-            n = i
-        else:
-            # Cast the `float` to a number via the string representation.
-            # This is required for Python 2.6 anyway (it will straight out fail to
-            # do the conversion otherwise), and it's highly unlikely that the user
-            # actually wants the lossless conversion behavior (quoting the Python
-            # documentation):
-            # > If value is a float, the binary floating point value is losslessly
-            # > converted to its exact decimal equivalent.
-            # > This conversion can often require 53 or more digits of precision.
-            # Should the user want that behavior, they can simply pass in a pre-
-            # converted `Decimal` instance of desired accuracy.
-            n = decimal.Decimal(str(n))
-
+        n = i if i == n else decimal.Decimal(str(n))
     if isinstance(n, decimal.Decimal):
         dec_tuple = n.as_tuple()
         exp = dec_tuple.exponent
@@ -113,8 +99,7 @@ class PluralRule(object):
             elif key in found:
                 raise ValueError('tag %r defined twice' % key)
             found.add(key)
-            ast = _Parser(expr).ast
-            if ast:
+            if ast := _Parser(expr).ast:
                 self.abstract.append((key, ast))
 
     def __repr__(self):
@@ -133,9 +118,7 @@ class PluralRule(object):
         :param rules: the rules as list or dict, or a `PluralRule` object
         :raise RuleError: if the expression is malformed
         """
-        if isinstance(rules, cls):
-            return rules
-        return cls(rules)
+        return rules if isinstance(rules, cls) else cls(rules)
 
     @property
     def rules(self):
@@ -182,8 +165,11 @@ def to_javascript(rule):
     """
     to_js = _JavaScriptCompiler().compile
     result = ['(function(n) { return ']
-    for tag, ast in PluralRule.parse(rule).abstract:
-        result.append('%s ? %r : ' % (to_js(ast), tag))
+    result.extend(
+        '%s ? %r : ' % (to_js(ast), tag)
+        for tag, ast in PluralRule.parse(rule).abstract
+    )
+
     result.append('%r; })' % _fallback_tag)
     return ''.join(result)
 
@@ -218,10 +204,11 @@ def to_python(rule):
         'def evaluate(n):',
         ' n, i, v, w, f, t = extract_operands(n)',
     ]
-    for tag, ast in PluralRule.parse(rule).abstract:
-        # the str() call is to coerce the tag to the native string.  It's
-        # a limited ascii restricted set of tags anyways so that is fine.
-        result.append(' if (%s): return %r' % (to_python_func(ast), str(tag)))
+    result.extend(
+        ' if (%s): return %r' % (to_python_func(ast), str(tag))
+        for tag, ast in PluralRule.parse(rule).abstract
+    )
+
     result.append(' return %r' % _fallback_tag)
     code = compile('\n'.join(result), '<rule>', 'exec')
     eval(code, namespace)
@@ -245,8 +232,11 @@ def to_gettext(rule):
     _get_index = [tag for tag in _plural_tags if tag in used_tags].index
 
     result = ['nplurals=%d; plural=(' % len(used_tags)]
-    for tag, ast in rule.abstract:
-        result.append('%s ? %d : ' % (_compile(ast), _get_index(tag)))
+    result.extend(
+        '%s ? %d : ' % (_compile(ast), _get_index(tag))
+        for tag, ast in rule.abstract
+    )
+
     result.append('%d)' % _get_index(_fallback_tag))
     return ''.join(result)
 
@@ -451,11 +441,10 @@ class _Parser(object):
         method = 'in'
         if skip_token(self.tokens, 'word', 'within'):
             method = 'within'
-        else:
-            if not skip_token(self.tokens, 'word', 'in'):
-                if negated:
-                    raise RuleError('Cannot negate operator based rules.')
-                return self.newfangled_relation(left)
+        elif not skip_token(self.tokens, 'word', 'in'):
+            if negated:
+                raise RuleError('Cannot negate operator based rules.')
+            return self.newfangled_relation(left)
         rv = 'relation', (method, left, self.range_list())
         return negate(rv) if negated else rv
 
@@ -487,9 +476,11 @@ class _Parser(object):
         if word is None or word[1] not in _VARS:
             raise RuleError('Expected identifier variable')
         name = word[1]
-        if skip_token(self.tokens, 'word', 'mod'):
-            return 'mod', ((name, ()), self.value())
-        elif skip_token(self.tokens, 'symbol', '%'):
+        if (
+            skip_token(self.tokens, 'word', 'mod')
+            or not skip_token(self.tokens, 'word', 'mod')
+            and skip_token(self.tokens, 'symbol', '%')
+        ):
             return 'mod', ((name, ()), self.value())
         return ident_node(name)
 
@@ -517,7 +508,7 @@ class _Compiler(object):
 
     def compile(self, arg):
         op, args = arg
-        return getattr(self, 'compile_' + op)(*args)
+        return getattr(self, f'compile_{op}')(*args)
 
     compile_n = lambda x: 'n'
     compile_i = lambda x: 'i'

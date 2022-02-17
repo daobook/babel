@@ -145,7 +145,7 @@ def extract_from_dir(dirname=None, method_map=DEFAULT_MAPPING,
         for filename in filenames:
             filepath = os.path.join(root, filename).replace(os.sep, '/')
 
-            for message_tuple in check_and_call_extract_file(
+            yield from check_and_call_extract_file(
                 filepath,
                 method_map,
                 options_map,
@@ -154,8 +154,7 @@ def extract_from_dir(dirname=None, method_map=DEFAULT_MAPPING,
                 comment_tags,
                 strip_comment_tags,
                 dirpath=absname,
-            ):
-                yield message_tuple
+            )
 
 
 def check_and_call_extract_file(filepath, method_map, options_map,
@@ -322,10 +321,7 @@ def extract(method, fileobj, keywords=DEFAULT_KEYWORDS, comment_tags=(),
                    options=options or {})
 
     for lineno, funcname, messages, comments in results:
-        if funcname:
-            spec = keywords[funcname] or (1,)
-        else:
-            spec = (1,)
+        spec = keywords[funcname] or (1,) if funcname else (1, )
         if not isinstance(messages, (list, tuple)):
             messages = [messages]
         if not messages:
@@ -354,11 +350,7 @@ def extract(method, fileobj, keywords=DEFAULT_KEYWORDS, comment_tags=(),
             continue
 
         # keyword spec indexes are 1 based, therefore '-1'
-        if isinstance(spec[0], tuple):
-            # context-aware *gettext method
-            first_msg_index = spec[1] - 1
-        else:
-            first_msg_index = spec[0] - 1
+        first_msg_index = spec[1] - 1 if isinstance(spec[0], tuple) else spec[0] - 1
         if not messages[first_msg_index]:
             # An empty string msgid isn't valid, emit a warning
             where = '%s:%i' % (hasattr(fileobj, 'name') and
@@ -450,10 +442,7 @@ def extract_python(fileobj, keywords, comment_tags, options):
                 else:
                     messages.append(None)
 
-                if len(messages) > 1:
-                    messages = tuple(messages)
-                else:
-                    messages = messages[0]
+                messages = tuple(messages) if len(messages) > 1 else messages[0]
                 # Comments don't apply unless they immediately preceed the
                 # message
                 if translator_comments and \
@@ -565,13 +554,11 @@ def extract_javascript(fileobj, keywords, comment_tags, options):
             value = token.value[2:-2].strip()
             for comment_tag in comment_tags:
                 if value.startswith(comment_tag):
-                    lines = value.splitlines()
-                    if lines:
+                    if lines := value.splitlines():
                         lines[0] = lines[0].strip()
                         lines[1:] = dedent('\n'.join(lines[1:])).splitlines()
-                        for offset, line in enumerate(lines):
-                            translator_comments.append((token.lineno + offset,
-                                                        line))
+                        translator_comments.extend((token.lineno + offset,
+                                                        line) for offset, line in enumerate(lines))
                     break
 
         elif funcname and call_stack == 0:

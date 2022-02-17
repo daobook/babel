@@ -9,6 +9,7 @@
     :copyright: (c) 2013-2021 by the Babel Team.
     :license: BSD, see LICENSE for more details.
 """
+
 from collections import namedtuple
 import re
 
@@ -26,7 +27,7 @@ dotted_name_re = re.compile(r'[\w$_][\w\d$_.]*[\w\d$_.]', re.UNICODE)
 division_re = re.compile(r'/=?')
 regex_re = re.compile(r'/(?:[^/\\]*(?:\\.[^/\\]*)*)/[a-zA-Z]*', re.DOTALL)
 line_re = re.compile(r'(\r\n|\n|\r)')
-line_join_re = re.compile(r'\\' + line_re.pattern)
+line_join_re = re.compile(f'\\\\{line_re.pattern}')
 uni_escape_re = re.compile(r'[a-fA-F0-9]{1,4}')
 
 Token = namedtuple('Token', 'type value lineno')

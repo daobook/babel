@@ -10,6 +10,7 @@
     :license: BSD, see LICENSE for more details.
 """
 
+
 import sys
 import pytz
 import time
@@ -27,11 +28,7 @@ _cached_tz = None
 _cache_lock = RLock()
 
 STDOFFSET = timedelta(seconds=-time.timezone)
-if time.daylight:
-    DSTOFFSET = timedelta(seconds=-time.altzone)
-else:
-    DSTOFFSET = STDOFFSET
-
+DSTOFFSET = timedelta(seconds=-time.altzone) if time.daylight else STDOFFSET
 DSTDIFF = DSTOFFSET - STDOFFSET
 ZERO = timedelta(0)
 
@@ -39,16 +36,10 @@ ZERO = timedelta(0)
 class _FallbackLocalTimezone(tzinfo):
 
     def utcoffset(self, dt):
-        if self._isdst(dt):
-            return DSTOFFSET
-        else:
-            return STDOFFSET
+        return DSTOFFSET if self._isdst(dt) else STDOFFSET
 
     def dst(self, dt):
-        if self._isdst(dt):
-            return DSTDIFF
-        else:
-            return ZERO
+        return DSTDIFF if self._isdst(dt) else ZERO
 
     def tzname(self, dt):
         return time.tzname[self._isdst(dt)]

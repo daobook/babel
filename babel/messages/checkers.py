@@ -24,14 +24,10 @@ _string_format_compatibilities = [
 
 def num_plurals(catalog, message):
     """Verify the number of plurals in the translation."""
-    if not message.pluralizable:
-        if not isinstance(message.string, str):
-            raise TranslationError("Found plural forms for non-pluralizable "
-                                   "message")
-        return
-
-    # skip further tests if no catalog is provided.
-    elif catalog is None:
+    if not message.pluralizable and not isinstance(message.string, str):
+        raise TranslationError("Found plural forms for non-pluralizable "
+                               "message")
+    elif not message.pluralizable or catalog is None:
         return
 
     msgstrs = message.string
@@ -102,20 +98,16 @@ def _validate_format(format, alternative):
     def _compatible(a, b):
         if a == b:
             return True
-        for set in _string_format_compatibilities:
-            if a in set and b in set:
-                return True
-        return False
+        return any(a in set and b in set for set in _string_format_compatibilities)
 
     def _check_positional(results):
         positional = None
         for name, char in results:
             if positional is None:
                 positional = name is None
-            else:
-                if (name is None) != positional:
-                    raise TranslationError('format string mixes positional '
-                                           'and named placeholders')
+            elif (name is None) != positional:
+                raise TranslationError('format string mixes positional '
+                                       'and named placeholders')
         return bool(positional)
 
     a, b = map(_parse, (format, alternative))
@@ -160,9 +152,12 @@ def _find_checkers():
     except ImportError:
         pass
     else:
-        for entry_point in working_set.iter_entry_points('babel.checkers'):
-            checkers.append(entry_point.load())
-    if len(checkers) == 0:
+        checkers.extend(
+            entry_point.load()
+            for entry_point in working_set.iter_entry_points('babel.checkers')
+        )
+
+    if not checkers:
         # if pkg_resources is not available or no usable egg-info was found
         # (see #230), just resort to hard-coded checkers
         return [num_plurals, python_format]

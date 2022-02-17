@@ -129,7 +129,7 @@ def main():
         fail('Could not parse changelog')
 
     version, release_date, codename = rv
-    dev_version = bump_version(version) + '-dev'
+    dev_version = f'{bump_version(version)}-dev'
 
     info('Releasing %s (codename %s, release date %s)',
          version, codename, release_date.strftime('%d/%m/%Y'))

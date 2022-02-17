@@ -123,8 +123,7 @@ def parse_future_flags(fp, encoding='latin-1'):
         for m in PYTHON_FUTURE_IMPORT_re.finditer(body):
             names = [x.strip().strip('()') for x in m.group(1).split(',')]
             for name in names:
-                feature = getattr(__future__, name, None)
-                if feature:
+                if feature := getattr(__future__, name, None):
                     flags |= feature.compiler_flag
     finally:
         fp.seek(pos)
